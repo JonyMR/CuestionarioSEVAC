@@ -7,7 +7,7 @@ use App\Models\Product;
   
 class Wizard extends Component
 {
-    public $currentStep = 1;
+    public $currentStep = 26;
 
     public $email, $nombre, $pre5, $cargo, $area, $ente, $nameSys, $cadp, $docsSys, $startSys, $updSys, $infSys, $noSys,
     $pre6, $perioRes, $lastRes, $pre7, $noRes, $pre8, $pre9, $RegCont9, $RegPre9, $RegAdm9, $RegTra9, $RegCP9,
@@ -583,7 +583,7 @@ class Wizard extends Component
      */
     public function submitForm()
     {
-        Response::create([
+        Respuesta::create([
             'email' => $this->email,
             'nombre' =>$this->nombre,
             'cargo' => $this->cargo,

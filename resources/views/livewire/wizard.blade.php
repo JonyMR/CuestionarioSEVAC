@@ -101,11 +101,11 @@
                             <h3> Step 3</h3>
                             <div class="form-group">
 
-                                <label for="title">a. ¿Cuál es el nombre del Sistema que utiliza?</label><br>
+                                <label for="title">¿Cuál es el nombre del Sistema que utiliza?</label><br>
                                 <input type="text" wire:model="nameSys" class="form-control" id="resnameSys" placeholder="Nombre del Sistema">
                                 @error('nameSys') <span class="error">{{ $message }}<br></span> @enderror<br>
 
-                                <label for="title">b. Su sistema es: {{$cadp}}</label><br>
+                                <label for="title">Su sistema es:</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="cadp" value="Comprado" {{ $cadp = 'Comprado' ? "checked" : "" }}> Comprado</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="cadp" value="Arrendado" {{ $cadp = 'Arrendado' ? "checked" : "" }}> Arrendado</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="cadp" value="Propio" {{ $cadp = 'Propio' ? "checked" : "" }}> Desarrollo Propio</label>
@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="title">c. ¿Con qué documentación cuenta?</label><br>
+                                <label for="title">¿Con qué documentación cuenta?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="docsSys" value="manual" {{ $docsSys = 'manual' ? "checked" : "" }}> Manual de Usuario</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="docsSys" value="procesos" {{ $docsSys = 'procesos' ? "checked" : "" }}> Documentación de Procesos</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="docsSys" value="manual y procesos" {{ $docsSys = 'ambos' ? "checked" : "" }}> Ambos</label><br>
@@ -122,11 +122,11 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="title">d. ¿Desde cuando usa este sistema?</label><br>
+                                <label for="title">¿Desde cuando usa este sistema?</label><br>
                                 <input type="date" id="fstartSys" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="startSys"><br>
                                 @error('startSys') <span class="error">{{ $message }}<br></span> @enderror
 
-                                <br><label for="title">e. ¿cuándo fue la última vez que se realizaron acualizaciones al sistema apegadas a las normas emitidas por el LGCG?</label><br>
+                                <br><label for="title">¿Cuándo fue la última vez que se realizaron acualizaciones al sistema apegadas a las normas emitidas por el LGCG?</label><br>
                                 <input type="date" id="fupdSys" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="updSys">
                                 @error('updSys') <span class="error">{{ $message }}<br></span> @enderror
 
@@ -146,7 +146,7 @@
                             <h3> Step 4</h3>
                             <div class="form-group">
 
-                                <label for="title">a. ¿Por qué?</label><br>
+                                <label for="title">¿Por qué?</label><br>
                                 <textarea type="text" wire:model="noSys" class="form-control" id="resnoSys" placeholder="Motivo por el que no cuenta con un Sistema"> </textarea><br>
                                 @error('noSys') <span class="error">{{ $message }}<br></span> @enderror
 
@@ -163,7 +163,7 @@
                     <div class="col-md-12">
                             <h3> Step 5</h3>
                             <div class="form-group">
-                                <label for="title">a. Ingresa la empresa a la que le compraste el Sistema:</label><br>
+                                <label for="title">Ingresa la empresa a la que le compraste el Sistema:</label><br>
                                 <input type="text" wire:model="infSys" class="form-control" id="resinfSys" placeholder="Nombre de la Empresa"><br>
                                 @error('infSys') <span class="error">{{ $message }}<br></span> @enderror
 
@@ -180,7 +180,7 @@
                     <div class="col-md-12">
                             <h3> Step 6</h3>
                             <div class="form-group">
-                                <label for="title">a. Ingresa la empresa a la que le arrendas el Sistema:</label><br>
+                                <label for="title">Ingresa la empresa a la que le arrendas el Sistema:</label><br>
                                 <input type="text" wire:model="infSys" class="form-control" id="resinfSys" placeholder="Nombre de la Empresa"><br>
                                 @error('infSys') <span class="error">{{ $message }}<br></span> @enderror
 
@@ -197,7 +197,7 @@
                     <div class="col-md-12">
                             <h3> Step 5</h3>
                             <div class="form-group">
-                                <label for="title">a. ¿Con que documentación de tu Sistema Propio cuentas?</label><br>
+                                <label for="title">¿Con que documentación de tu Sistema Propio cuentas?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="infSys" value="registro" {{ $infSys = 'registro' ? "checked" : "" }}> Registro</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="infSys" value="patente" {{ $infSys = 'patente' ? "checked" : "" }}> Patente</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="infSys" value="ambos" {{ $infSys = 'ambos' ? "checked" : "" }}> Ambos</label><br>
@@ -236,7 +236,7 @@
                             <h3> Step 9</h3>
                             <div class="form-group">
 
-                                <label for="title">a. ¿Con que periodicidad realizan los respaldos?</label><br>
+                                <label for="title">¿Con que periodicidad realizan los respaldos?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="perioRes" value="diario" {{ $perioRes = 'diario' ? "checked" : "" }}> Diario</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="perioRes" value="semanal" {{ $perioRes = 'semanal' ? "checked" : "" }}> Semanal</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="perioRes" value="mensual" {{ $perioRes = 'mensual' ? "checked" : "" }}> Mensual</label><br>
@@ -244,7 +244,7 @@
                                 <label class="radio-inline"><input type="radio" wire:model="perioRes" value="evento" {{ $perioRes = 'evento' ? "checked" : "" }}> Por Evento</label>
                                 @error('perioRes') <span class="error">{{ $message }}<br></span> @enderror 
 
-                                <br><label for="title">b. ¿Cuándo fue la última vez que se realizó?</label><br>
+                                <br><label for="title">¿Cuándo fue la última vez que se realizó?</label><br>
                                 <input type="date" id="flastRes" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="lastRes">
                                 @error('lastRes') <span class="error">{{ $message }}<br></span> @enderror
                             </div>
@@ -279,7 +279,7 @@
                     <div class="col-md-12">
                             <h3> Step 11</h3>
                             <div class="form-group">
-                            <label for="title">a. ¿Por qué?</label><br>
+                            <label for="title">¿Por qué?</label><br>
                                 <textarea type="text" wire:model="noRes" class="form-control" id="resnoRes" placeholder="Motivo por el que no cuenta con un Sistema"> </textarea><br>
                                 @error('noRes') <span class="error">{{ $message }}<br></span> @enderror                                
 
@@ -332,7 +332,7 @@
                     <div class="col-md-12">
                             <h3> Step 14</h3>
                             <div class="form-group">
-                            <label for="title">a. Ingresa cual de los apartados y en que porcentaje:</label><br>
+                            <label for="title">Ingresa cual de los apartados y en que porcentaje:</label><br>
 
                             <label>Registros Contables:<input type="text" wire:model="RegCont9" class="form-control" id="resRegCont9" placeholder = "100%"></label><br>
                             @error('RegCont9') <span class="error">{{ $message }}<br></span> @enderror
@@ -485,17 +485,219 @@
                 </div>
             </div>
 
+        <!-- ************** STEP 20 **************** -->
+        <div class="row setup-content {{ $currentStep != 20 ? 'displayNone' : '' }}" id="step-20">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                            <h3> Step 20</h3>
+                            <div class="form-group">
+                            <label for="title">15.- Para el caso de los registros de Cuenta Pública Estatal, de la totalidad 
+                                de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento? (De aplicación exclusiva al Ejecutivo del Estado).</label><br>
+
+                            <label>Resultados Generales y Consolidados:<input type="text" wire:model="ResGenCon15" class="form-control" id="resResGenCon15" placeholder = "100%"></label><br>
+                            @error('ResGenCon15') <span class="error">{{ $message }}<br></span> @enderror
+
+                            <label>Tomo del Poder Ejecutivo:<input type="text" wire:model="TomoPE15" class="form-control" id="resTomoPE15" placeholder = "100%"></label><br>
+                            @error('TomoPE15') <span class="error">{{ $message }}<br></span> @enderror
+
+                            <label>Tomo del Poder Legislativo:<input type="text" wire:model="TomoPL15" class="form-control" id="resTomoPL15" placeholder = "100%"></label><br>
+                            @error('TomoPL15') <span class="error">{{ $message }}<br></span> @enderror
+
+                            <label>Tomo del Poder Judicial:<input type="text" wire:model="TomoPJ15" class="form-control" id="resTomoPJ15" placeholder = "100%"></label><br>
+                            @error('TomoPJ15') <span class="error">{{ $message }}<br></span> @enderror
+
+                            <label>Tomo de Órganos Autónomos:<input type="text" wire:model="TomoOA15" class="form-control" id="resTomoOA15" placeholder = "100%"></label><br>
+                            @error('TomoOA15') <span class="error">{{ $message }}<br></span> @enderror
+
+                            <label>Información Financiera Consolidada del Sector Paraestatal:<input type="text" wire:model="InfFin15" class="form-control" id="resInfFin15" placeholder = "100%"></label><br>
+                            @error('InfFin15') <span class="error">{{ $message }}<br></span> @enderror
+
+                            <label>Tomo del Sector Paraestatal:<input type="text" wire:model="TomoSP15" class="form-control" id="resTomoSP15" placeholder = "100%"></label><br>
+                            @error('TomoSP15') <span class="error">{{ $message }}<br></span> @enderror
+
+                            </div>
+                            <button class="btn btn-primary nextBtn btn-lg pull-right" wire:click="twentiethStepSubmit" type="button" >Siguiente</button>
+                            <button class="btn btn-danger nextBtn btn-lg pull-right" type="button" wire:click="back(19)">Atras</button>
+                    </div>
+                </div>
+            </div>
+
+        <!-- ************** STEP 21 **************** -->
+        <div class="row setup-content {{ $currentStep != 21 ? 'displayNone' : '' }}" id="step-21">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                            <h3> Step 21</h3>
+                            <div class="form-group">
+                            <label for="title">16.- Para el caso de los registros de Cuenta Pública Municipal, de la totalidad 
+                                de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento?.</label><br>
+
+                            <label>Resultados Generales y Consolidados:<input type="text" wire:model="ResGenCon16" class="form-control" id="resResGenCon16" placeholder = "100%"></label><br>
+                            @error('ResGenCon16') <span class="error">{{ $message }}<br></span> @enderror
+
+                            <label>Información Financiera del Municipio:<input type="text" wire:model="InfFinMun16" class="form-control" id="resInfFinMun16" placeholder = "100%"></label><br>
+                            @error('InfFinMun16') <span class="error">{{ $message }}<br></span> @enderror
+
+                            <label>Tomo del Sector Paramunicipal:<input type="text" wire:model="TomoSP16" class="form-control" id="resTomoSP16" placeholder = "100%"></label><br>
+                            @error('TomoSP16') <span class="error">{{ $message }}<br></span> @enderror
+
+                            <label>Información Financiera Consolidada del Sector Paramunicipal:<input type="text" wire:model="InfFin16" class="form-control" id="resInfFin16" placeholder = "100%"></label><br>
+                            @error('InfFin16') <span class="error">{{ $message }}<br></span> @enderror
 
 
+                            </div>
+                            <button class="btn btn-primary nextBtn btn-lg pull-right" wire:click="twentyfirstStepSubmit" type="button" >Siguiente</button>
+                            <button class="btn btn-danger nextBtn btn-lg pull-right" type="button" wire:click="back(20)">Atras</button>
+                    </div>
+                </div>
+            </div>
+
+        <!-- ************** STEP 22 **************** -->
+        <div class="row setup-content {{ $currentStep != 22 ? 'displayNone' : '' }}" id="step-22">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                            <h3> Step 22</h3>
+                            <div class="form-group">
+
+                                <label for="title">17.- En cuestión de conectividad ¿Su ente público cuenta con conexión a Internet?</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre17" value="1" {{ $pre17 = '1' ? "checked" : "" }}> Si</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre17" value="0" {{ $pre17 = '0' ? "checked" : "" }}> No</label>
+                                @error('pre17') <span class="error">{{ $message }}</span> @enderror
+
+                            </div>
+                            <button class="btn btn-primary nextBtn btn-lg pull-right" wire:click="twentysecondStepSubmit" type="button" >Siguiente</button>
+                            <button class="btn btn-danger nextBtn btn-lg pull-right" type="button" wire:click="back(21)">Atras</button>
+                    </div>
+                </div>
+            </div>
+
+        <!-- ************** STEP 23 **************** -->
+        <div class="row setup-content {{ $currentStep != 23 ? 'displayNone' : '' }}" id="step-23">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                            <h3> Step 23</h3>
+                            <div class="form-group">
+
+                                <label for="title">18.- ¿Cuenta con personas especializadas en TIC'S?</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre18" value="0" {{ $pre18 = '0' ? "checked" : "" }}> 0</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre18" value="1" {{ $pre18 = '1' ? "checked" : "" }}> 1</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre18" value="2-5" {{ $pre18 = '2-5' ? "checked" : "" }}> 2-5</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre18" value="6-10" {{ $pre18 = '6-10' ? "checked" : "" }}> 6-10</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre18" value="Más de 10" {{ $pre18 = 'Más de 10' ? "checked" : "" }}> Más de 10</label>
+                                
+                                @error('pre18') <span class="error">{{ $message }}</span> @enderror
+
+                            </div>
+                            <button class="btn btn-primary nextBtn btn-lg pull-right" wire:click="twentythirdStepSubmit" type="button" >Siguiente</button>
+                            <button class="btn btn-danger nextBtn btn-lg pull-right" type="button" wire:click="back(22)">Atras</button>
+                    </div>
+                </div>
+            </div>            
+
+        <!-- ************** STEP 24 **************** -->
+        <div class="row setup-content {{ $currentStep != 24 ? 'displayNone' : '' }}" id="step-24">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                            <h3> Step 24</h3>
+                            <div class="form-group">
+
+                                <label for="title">19.- ¿Cómo considera la calidad de la conexión a Internet? Siendo 1 muy malo y 10 excelente.</label><br>
+                                <br><label>Muy malo</label><br><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre19" value="1" {{ $pre19 = '1' ? "checked" : "" }}> 1</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre19" value="2" {{ $pre19 = '2' ? "checked" : "" }}> 2</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre19" value="3" {{ $pre19 = '3' ? "checked" : "" }}> 3</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre19" value="4" {{ $pre19 = '4' ? "checked" : "" }}> 4</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre19" value="5" {{ $pre19 = '5' ? "checked" : "" }}> 5</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre19" value="6" {{ $pre19 = '6' ? "checked" : "" }}> 6</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre19" value="7" {{ $pre19 = '7' ? "checked" : "" }}> 7</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre19" value="8" {{ $pre19 = '8' ? "checked" : "" }}> 8</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre19" value="9" {{ $pre19 = '9' ? "checked" : "" }}> 9</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre19" value="10" {{ $pre19 = '10' ? "checked" : "" }}> 10 </label>
+                                <br><br><label>Excelente</label>
+
+                                
+                                @error('pre17') <span class="error">{{ $message }}</span> @enderror
+
+                            </div>
+                            <button class="btn btn-primary nextBtn btn-lg pull-right" wire:click="twentyfourthStepSubmit" type="button" >Siguiente</button>
+                            <button class="btn btn-danger nextBtn btn-lg pull-right" type="button" wire:click="back(23)">Atras</button>
+                    </div>
+                </div>
+            </div>
+
+        <!-- ************** STEP 25 **************** -->
+        <div class="row setup-content {{ $currentStep != 25 ? 'displayNone' : '' }}" id="step-25">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                            <h3> Step 25</h3>
+                            <div class="form-group">
+
+                                <label for="title">20.- ¿Cuáles son las fallas mas frecuentes?</label><br>
+                                <textarea type="text" wire:model="pre20" class="form-control" id="respre20" placeholder="Escriba aquí las fallas mas frecuentes en su red de Internet."> </textarea><br>
+                                @error('pre20') <span class="error">{{ $message }}<br></span> @enderror
+
+                            </div>
+                            <button class="btn btn-primary nextBtn btn-lg pull-right" wire:click="twentyfifthStepSubmit" type="button" >Siguiente</button>
+                            <button class="btn btn-danger nextBtn btn-lg pull-right" type="button" wire:click="back(24)">Atras</button>
+                    </div>
+                </div>
+            </div>
+
+        <!-- ************** STEP 26 **************** -->
+        <div class="row setup-content {{ $currentStep != 26 ? 'displayNone' : '' }}" id="step-26">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                            <h3> Step 26</h3>
+                            <div class="form-group">
+
+                                <label for="title">21.- ¿Utilizan herramientas informáticas adicionales??</label><br><br>
+
+                                <label for="title">Plataformas de Videoconferencia: </label><br>
+                                <fieldset>
+                                <div>
+                                    <input type="checkbox" id="zoom" name="zoom" value="zoom" checked  wire:model="platVideo" {{ $platVideo = 'Zoom' ? "checked" : "" }}/>
+                                    <label for="zoom">Zoom</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="meet" name="meet" value="meet" wire:model="platVideo" {{ $platVideo = 'Meet' ? "checked" : "" }}/>
+                                    <label for="meet">Meet</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="skype" name="skype" value="skype" wire:model="platVideo" {{ $platVideo = 'Skype' ? "checked" : "" }}/>
+                                    <label for="skype">Skype</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="teams" name="teams" value="teams" wire:model="platVideo" {{ $platVideo = 'Teams' ? "checked" : "" }}/>
+                                    <label for="teams">Teams</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="otro" name="otro" value="otro" wire:model="platVideo" {{ $platVideo = 'Otro' ? "checked" : "" }}/>
+                                    <label for="otro">Otros:</label>
+                                </div>
+                                </fieldset>
+
+                                <label for="title">Herramientas para conversión de PDF: </label><br>
+                                <fieldset>
+                                <div>
+                                    <input type="checkbox" id="nitro" name="nitro" value="nitro" wire:model="nitro" {{ $convPDF = 'NitroPDF' ? "checked" : "" }}/>
+                                    <label for="nitro">NitroPDF</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="meet" name="meet" value="adobe" wire:model="adobe" {{ $convPDF = 'Adobe' ? "checked" : "" }}/>
+                                    <label for="meet">Adobe</label> 
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="otro2" name="otro2" value="otro2" wire:model="otros" {{ $convPDF = 'Otro' ? "checked" : "" }}/>
+                                    <label for="otro2">Otros:</label>
+                                </div>
+                                </fieldset>
 
 
-
-
-
-
-
-
-
+                            </div>
+                            <button class="btn btn-primary nextBtn btn-lg pull-right" wire:click="twentysixthStepSubmit" type="button" >Siguiente</button>
+                            <button class="btn btn-danger nextBtn btn-lg pull-right" type="button" wire:click="back(25)">Atras</button>
+                    </div>
+                </div>
+            </div>
 
 
 
