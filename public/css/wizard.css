@@ -6,15 +6,15 @@ body{
 	overflow: hidden;
 	/*CSS counters to number the steps*/
 	counter-reset: step;
-	width: 60%;
-	margin: 0 auto 30px;
+	width: 100%;
+	margin: 0 auto 0px;
 }
 .progressbar li {
     list-style-type: none;
     color: white;
     text-transform: uppercase;
-    font-size: 18px;
-    width: 33.33%;
+    font-size: 8px;
+    width: 5.75%;
     float: left;
     position: relative;
     text-decoration: none;

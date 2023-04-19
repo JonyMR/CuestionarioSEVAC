@@ -11,7 +11,7 @@ class Wizard extends Component
 
     public $email, $nombre, $pre5, $cargo, $area, $ente, $nameSys, $cadp, $docsSys, $startSys, $updSys, $infSys, $noSys,
     $pre6, $perioRes, $lastRes, $pre7, $noRes, $pre8, $pre9, $RegCont9, $RegPre9, $RegAdm9, $RegTra9, $RegCP9,
-    $InstC10, $RegCont10, $RepCont10, $ClasP10, $RegPre11, $RepPre11, $PrePro11, $ContBie12, $RecFed12, $ContCont13, $ContPre13, 
+    $InstC10, $RegCont10, $RepCont10, $ClasP11, $RegPre11, $RepPre11, $PrePro11, $ContBie12, $RecFed12, $ContCont13, $ContPre13, 
     $ContProg13, $TVAn14, $TVTri14, $OtrAn14, $OtrTri14, $ResGenCon15, $TomoPE15, $TomoPL15, $TomoPJ15, $TomoOA15, $InfFin15, $TomoSP15,   
     $ResGenCon16, $InfFinMun16, $TomoSP16, $InfFin16, $pre17, $pre18, $pre19, $pre20, $platVideo, $convPDF, $sopRem,
     $otrasHerramientas, $Cantidad22, $Temas22, $Impartido22, $Area22, $pre23, $area23, $pre24, $pre25, $pre26, $porque26, 
@@ -60,7 +60,7 @@ class Wizard extends Component
         $validatedData = $this->validate([
             'pre5' => 'required',                               
         ]);
-        if ('pre5') {
+        if ($this->pre5) {
             $this->currentStep = 3;
         }else {
             $this->currentStep = 4;
@@ -68,7 +68,6 @@ class Wizard extends Component
         
     }
 
-  
      /**********************************************************************************************************
      * Step 3 Si en la pregunta 5 responden que si, se les pregunta todo esto
      *
@@ -84,9 +83,9 @@ class Wizard extends Component
             'updSys' => 'required',                            
         ]);
 
-        if ($cadp == 'Comprado') {
+        if ($this->cadp == 'Comprado') {
             $this->currentStep = 5;
-        }else if($cadp == 'Arrendado'){
+        }else if($this->cadp == 'Arrendado'){
             $this->currentStep = 6;
         }else{
             $this->currentStep = 7;
@@ -167,7 +166,7 @@ class Wizard extends Component
             'pre6' => 'required',                               
         ]);
 
-        if ($pre6) {
+        if ($this->pre6) {
             $this->currentStep = 9;
         }else {
             $this->currentStep = 10;
@@ -201,7 +200,7 @@ class Wizard extends Component
             'pre7' => 'required',                              
         ]);
 
-        if ($pre7) {
+        if ($this->pre7) {
             $this->currentStep = 12;
         }else {
             $this->currentStep = 11;
@@ -247,7 +246,7 @@ class Wizard extends Component
             'pre9' => 'required',                               
         ]);
 
-        if ($pre9) {
+        if ($this->pre9) {
             $this->currentStep = 14;
         }else {
             $this->currentStep = 15;
