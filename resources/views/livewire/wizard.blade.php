@@ -45,6 +45,8 @@
             </ul>-->
         </div>
 
+        
+
         <!-- ************** STEP 0 **************** -->
         <div class="row setup-content {{ $currentStep != 0 ? 'displayNone' : '' }}" id="step-0">
                 <div class="col-xs-12">
@@ -81,22 +83,23 @@
                         <div class="form-group">
                             <br><h4>DATOS DEL ENTE PÚBLICO.</h4>
                             <label for="title">1.- Ingresa tu correo electrónico:</label>
-                            <input type="text" wire:model="email" class="form-control" id="correo" placeholder="usuario@ejemplo.com" name = "correo">
+                            <input type="text" wire:model="email" class="form-control" id="correo" placeholder="usuario@ejemplo.com" name = "correo" wire:keydown.tab="checkMail">
+                            <label>{{$mailMessage}}</label>
                             @error('email') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             <br><label for="title">2.- Ingresa tu nombre completo y cargo:</label>
-                            <input type="text" wire:model="nombre" class="form-control" id="resnombre" placeholder="Nombre Completo">
+                            <input type="text" wire:model="nombre" class="form-control" id="resnombre" placeholder="Nombre Completo" wire:click = "checkMail">
                             @error('nombre') <span style="color:red">{{ $message }}<br></span> @enderror
                             
-                            <p></p><input type="text" wire:model="cargo" class="form-control" id="rescargo" placeholder="Cargo">
+                            <p></p><input type="text" wire:model="cargo" class="form-control" id="rescargo" placeholder="Cargo" wire:click = "checkMail">
                             @error('cargo') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             <br><label for="title">3.- Ingresa tu área de Adscripción:</label>
-                            <input type="text" wire:model="area" class="form-control" id="resarea" placeholder="Área de Adscripción">
+                            <input type="text" wire:model="area" class="form-control" id="resarea" placeholder="Área de Adscripción" wire:click = "checkMail">
                             @error('area') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             <br><label for="title">4.- Ingresa el Ente Público al que perteneces:</label>
-                            <input type="text" wire:model="ente" class="form-control" id="resente" placeholder="Ente Público">
+                            <input type="text" wire:model="ente" class="form-control" id="resente" placeholder="Ente Público" wire:click = "checkMail">
                             @error('ente') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             
@@ -903,30 +906,27 @@
             </div>
 
                     <!-- ************** STEP 34 **************** -->
-        <div class="row setup-content {{ $currentStep != 34 ? 'displayNone' : '' }}" id="step-34">
-                <div class="col-xs-12">
+                    <center><div class="row setup-content {{ $currentStep != 34 ? 'displayNone' : '' }}" id="step-34">
+        <div class="col-xs-12">
                     <div class="col-md-12">
-                            <h3> Formulario terminado</h3>
-                            <center><div class="form-group">
+                            <h3> ¡Cuestionario terminado!</h3>
+                            <div class="form-group">
+                                <h4>Presione el botón de Enviar para terminar o revise de nuevo las preguntas.<h4><br>
 
-                                <label for="title">Presione el botón de Enviar para terminar o revise de nuevo las preguntas.</label><br>
 
-
-                            </div></center>
-                            <center>
-                            
+                            </div>
                             <button class="btn btn-secondary" type="button" wire:click="back(33)">Atras</button>
                             <button class="btn btn-success" wire:click="submitForm" type="button">Enviar</button>
-                            </center>
+                            
                     </div>
                 </div>
-            </div>
+            </div></center>
 
                     <!-- ************** STEP 35 **************** -->
                     <div class="row setup-content {{ $currentStep != 35 ? 'displayNone' : '' }}" id="step-35">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                            <center><h1> Gracias por tu participación.</h1></center>
+                            <center><h3>{{$email}} Ha registrado una respuesta a la encuesta, gracias por participar.</h3></center>
                     </div>
                 </div>
             </div>

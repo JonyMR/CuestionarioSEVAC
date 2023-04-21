@@ -21,7 +21,7 @@ class Wizard extends Component
     $pre257, $pre258, $pre259, $pre2510, $pre2511, $pre26, $porque26, 
     $pre27, $porque27, $pre28;
 
-    public $successMessage = '';
+    public $successMessage = '', $mailMessage='';
   
     /**
      * Vista
@@ -56,7 +56,7 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
 
-            'email'  => 'required|unique:respuestas|email',            //Pregunta 1 de forms
+            'email'  => 'required|email|unique:respuestas',            //Pregunta 1 de forms
             'nombre' => 'required',                             //Pregunta 2 de forms
             'cargo' => 'required',                              //Pregunta 2 de forms
             'area' => 'required',                               //Pregunta 3 de forms
@@ -64,13 +64,13 @@ class Wizard extends Component
         ],[//*********Validaciones*****************
         'email.required' => 'El correo electronico es requerido.', 
         'email.email' => 'Use un formato valido de correo electrónico.',
-        'email.unique' => 'Este correo electrónico ya respondió la encuesta, por favor usa otro.',
         'nombre.required' => 'Su nombre completo es requerido.',
         'cargo.required' => 'Su cargo es requerido.',
         'area.required' => 'Su área de adscripción es requerida.',
         'ente.required' => 'Su ente es requerido.',
-    ]);
-                $this->currentStep = 2;
+    ]);  
+            
+            $this->currentStep = 2;
     }
   
     /**********************************************************************************************************
@@ -86,8 +86,10 @@ class Wizard extends Component
             'pre5.required' => 'Por favor elige una de las opciones']);
         
         if ($this->pre5) {
+            
             $this->currentStep = 3;
         }else {
+            
             $this->currentStep = 4;
         }
         
@@ -837,106 +839,110 @@ class Wizard extends Component
     //******************AQUI TERMINAN LOS STEPS****************************************************************
 
 
+
+
+
+
     /**
      * Metodo submit del formulario
      *
      * @return response()
      */
-    public function submitForm()
-    {
-        Respuesta::create([
-            'email' => $this->email,
-            'nombre' =>$this->nombre,
-            'cargo' => $this->cargo,
-            'area' => $this->area,
-            'ente' => $this->ente,
-            'pre5' => $this->pre5,
-            'nameSys' => $this->nameSys,
-            'cadp' => $this->cadp,
-            'docsSys' => $this->docsSys,
-            'startSys' => $this->startSys,
-            'updSys' => $this->updSys,
-            'infSys' => $this->infSys,
-            'noSys' => $this->noSys,
-            'pre6' => $this->pre6,
-            'perioRes' => $this->perioRes,
-            'lastRes' => $this->lastRes,
-            'pre7' => $this->pre7,
-            'noRes' => $this->noRes,
-            'pre8' => $this->pre8,
-            'pre9' => $this->pre9,
-            'RegCont9' => $this->RegCont9,
-            'RegPre9' => $this->RegPre9,
-            'RegAdm9' => $this->RegAdm9,
-            'RegTra9' => $this->RegTra9,
-            'RegCP9' => $this->RegCP9,
-            'InstC10' => $this->InstC10,
-            'RegCont10' => $this->RegCont10,
-            'RepCont10' => $this->RepCont10,
-            'ClasP11' => $this->ClasP11,
-            'RegPre11' => $this->RegPre11,
-            'RepPre11' => $this->RepPre11,
-            'PrePro11' => $this->PrePro11,
-            'ContBie12' => $this->ContBie12,
-            'RecFed12' => $this->RecFed12,
-            'ContCont13' => $this->ContCont13,
-            'ContPre13' => $this->ContPre13,
-            'ContProg13' => $this->ContProg13,
-            'TVAn14' => $this->TVAn14,
-            'TVTri14' => $this->TVTri14,
-            'OtrAn14' => $this->OtrAn14,
-            'OtrTri14' => $this->OtrTri14,
-            'ResGenCon15' => $this->ResGenCon15,
-            'TomoPE15' => $this->TomoPE15,
-            'TomoPL15' => $this->TomoPL15,
-            'TomoPJ15' => $this->TomoPJ15,
-            'TomoOA15' => $this->TomoOA15,
-            'IntFin15' => $this->InfFin15,
-            'TomoSP15' => $this->TomoSP15,
-            'ResGenCon16' => $this->ResGenCon16,
-            'InfFinMun16' => $this->InfFinMun16,
-            'TomoSP16' => $this->TomoSP16,
-            'InfFin16' => $this->InfFin16,
-            'pre17' => $this->pre17,
-            'pre18' => $this->pre18,
-            'pre19' => $this->pre19,
-            'pre20' => $this->pre20,
-            'zoom' => $this->zoom,
-            'meet' => $this->meet,
-            'skype' => $this->skype,
-            'teams' => $this->teams,
-            'nitropdf' => $this->nitropdf,
-            'adobe' => $this->adobe,
-            'anydesk' => $this->anydesk,
-            'teamviwer' => $this->teamviwer,
-            'otrasHerramientas' => $this->otrasHerramientas,
-            'Cantidad22' => $this->Cantidad22,
-            'Temas22' => $this->Temas22,
-            'Impartido22' => $this->Impartido22,
-            'Area22' => $this->Area22,
-            'pre23' => $this->pre23,
-            'area23' => $this->area23,
-            'pre24' => $this->pre24,
-            'pre251' => $this->pre251,
-            'pre252' => $this->pre252,
-            'pre253' => $this->pre253,
-            'pre254' => $this->pre254,
-            'pre255' => $this->pre255,
-            'pre256' => $this->pre256,
-            'pre257' => $this->pre257,
-            'pre258' => $this->pre258,
-            'pre259' => $this->pre259,            
-            'pre2510' => $this->pre2510,
-            'pre2511' => $this->pre2511,
-            'pre26' => $this->pre26,
-            'porque26' => $this->porque26,
-            'pre27' => $this->pre27,
-            'porque27' => $this->porque27,
-            'pre28' => $this->pre28,
+    public function submitForm(){
+
+                Respuesta::create([
+                    'email' => $this->email,
+                    'nombre' =>$this->nombre,
+                    'cargo' => $this->cargo,
+                    'area' => $this->area,
+                    'ente' => $this->ente,
+                    'pre5' => $this->pre5,
+                    'nameSys' => $this->nameSys,
+                    'cadp' => $this->cadp,
+                    'docsSys' => $this->docsSys,
+                    'startSys' => $this->startSys,
+                    'updSys' => $this->updSys,
+                    'infSys' => $this->infSys,
+                    'noSys' => $this->noSys,
+                    'pre6' => $this->pre6,
+                    'perioRes' => $this->perioRes,
+                    'lastRes' => $this->lastRes,
+                    'pre7' => $this->pre7,
+                    'noRes' => $this->noRes,
+                    'pre8' => $this->pre8,
+                    'pre9' => $this->pre9,
+                    'RegCont9' => $this->RegCont9,
+                    'RegPre9' => $this->RegPre9,
+                    'RegAdm9' => $this->RegAdm9,
+                    'RegTra9' => $this->RegTra9,
+                    'RegCP9' => $this->RegCP9,
+                    'InstC10' => $this->InstC10,
+                    'RegCont10' => $this->RegCont10,
+                    'RepCont10' => $this->RepCont10,
+                    'ClasP11' => $this->ClasP11,
+                    'RegPre11' => $this->RegPre11,
+                    'RepPre11' => $this->RepPre11,
+                    'PrePro11' => $this->PrePro11,
+                    'ContBie12' => $this->ContBie12,
+                    'RecFed12' => $this->RecFed12,
+                    'ContCont13' => $this->ContCont13,
+                    'ContPre13' => $this->ContPre13,
+                    'ContProg13' => $this->ContProg13,
+                    'TVAn14' => $this->TVAn14,
+                    'TVTri14' => $this->TVTri14,
+                    'OtrAn14' => $this->OtrAn14,
+                    'OtrTri14' => $this->OtrTri14,
+                    'ResGenCon15' => $this->ResGenCon15,
+                    'TomoPE15' => $this->TomoPE15,
+                    'TomoPL15' => $this->TomoPL15,
+                    'TomoPJ15' => $this->TomoPJ15,
+                    'TomoOA15' => $this->TomoOA15,
+                    'IntFin15' => $this->InfFin15,
+                    'TomoSP15' => $this->TomoSP15,
+                    'ResGenCon16' => $this->ResGenCon16,
+                    'InfFinMun16' => $this->InfFinMun16,
+                    'TomoSP16' => $this->TomoSP16,
+                    'InfFin16' => $this->InfFin16,
+                    'pre17' => $this->pre17,
+                    'pre18' => $this->pre18,
+                    'pre19' => $this->pre19,
+                    'pre20' => $this->pre20,
+                    'zoom' => $this->zoom,
+                    'meet' => $this->meet,
+                    'skype' => $this->skype,
+                    'teams' => $this->teams,
+                    'nitropdf' => $this->nitropdf,
+                    'adobe' => $this->adobe,
+                    'anydesk' => $this->anydesk,
+                    'teamviwer' => $this->teamviwer,
+                    'otrasHerramientas' => $this->otrasHerramientas,
+                    'Cantidad22' => $this->Cantidad22,
+                    'Temas22' => $this->Temas22,
+                    'Impartido22' => $this->Impartido22,
+                    'Area22' => $this->Area22,
+                    'pre23' => $this->pre23,
+                    'area23' => $this->area23,
+                    'pre24' => $this->pre24,
+                    'pre251' => $this->pre251,
+                    'pre252' => $this->pre252,
+                    'pre253' => $this->pre253,
+                    'pre254' => $this->pre254,
+                    'pre255' => $this->pre255,
+                    'pre256' => $this->pre256,
+                    'pre257' => $this->pre257,
+                    'pre258' => $this->pre258,
+                    'pre259' => $this->pre259,            
+                    'pre2510' => $this->pre2510,
+                    'pre2511' => $this->pre2511,
+                    'pre26' => $this->pre26,
+                    'porque26' => $this->porque26,
+                    'pre27' => $this->pre27,
+                    'porque27' => $this->porque27,
+                    'pre28' => $this->pre28,
+                ]);
             
-        ]);
   
-        $this->successMessage = 'Respuesta enviada correctamente.';
+        $this->successMessage = 'Respuestas enviada correctamente.';
   
         $this->clearForm();
   
@@ -953,6 +959,15 @@ class Wizard extends Component
         $this->currentStep = $step;    
     }
   
+    public function checkMail(){
+        if(DB::table('respuestas')->where('email', $this->email)->exists()){
+            $this -> mailMessage = 'Este correo ya respondio la encuesta';
+            $this->currentStep = 35;
+        }
+    }
+
+
+
     /**
      * Limpiar Formulario
      *
