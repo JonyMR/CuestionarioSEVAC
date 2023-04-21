@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('responses', function (Blueprint $table) {
+        Schema::create('respuestas', function (Blueprint $table) {
 
             $table -> string('email')->nullable();
             $table -> string('nombre')->nullable();
@@ -45,11 +45,11 @@ return new class extends Migration
 
             $table -> boolean('pre9')->default(0);
             //Campos a llenar si en la 9 responde que si:
-            $table -> integer('RegCont9')->default(0);
-            $table -> integer('RegPre9')->default(0);
-            $table -> integer('RegAdm9')->default(0);
-            $table -> integer('RegTra9')->default(0);
-            $table -> integer('RegCP9')->default(0);
+            $table -> integer('RegCont9')->nullable();
+            $table -> integer('RegPre9')->nullable();
+            $table -> integer('RegAdm9')->nullable();
+            $table -> integer('RegTra9')->nullable();
+            $table -> integer('RegCP9')->nullable();
 
             $table -> integer('InstC10')->default(0);
             $table -> integer('RegCont10')->default(0);
@@ -90,9 +90,14 @@ return new class extends Migration
             $table -> integer('pre19')->default(0);
             $table -> longText('pre20')->nullable();
             //Pregunta 21
-            $table -> string('platVideo')->nullable();
-            $table -> string('convPDF')->nullable();
-            $table -> string('sopRem')->nullable();
+            $table -> boolean('zoom')->nullable();
+            $table -> boolean('meet')->nullable();
+            $table -> boolean('skype')->nullable();
+            $table -> boolean('teams')->nullable();
+            $table -> boolean('nitropdf')->nullable();
+            $table -> boolean('adobe')->nullable();
+            $table -> boolean('anydesk')->nullable();
+            $table -> boolean('teamviwer')->nullable();
             $table -> string('otrasHerramientas')->nullable();
 
             $table -> integer('Cantidad22')->default(0);
@@ -104,7 +109,19 @@ return new class extends Migration
             $table -> string('area23')->nullable();
 
             $table -> boolean('pre24')->default(0);
-            $table -> longText('pre25')->nullable();
+
+            //opciones pregunta 25
+            $table -> string('pre251')->nullable();
+            $table -> string('pre252')->nullable();
+            $table -> string('pre253')->nullable();
+            $table -> string('pre254')->nullable();
+            $table -> string('pre255')->nullable();
+            $table -> string('pre256')->nullable();
+            $table -> string('pre257')->nullable();
+            $table -> string('pre258')->nullable();
+            $table -> string('pre259')->nullable();
+            $table -> string('pre2510')->nullable();
+            $table -> string('pre2511')->nullable();
 
             $table -> boolean('pre26')->default(0);
             $table -> longText('porque26')->nullable();
@@ -113,6 +130,8 @@ return new class extends Migration
             $table -> longText('porque27')->nullable();
 
             $table -> longText('pre28')->nullable();
+
+            $table -> timestamps();
 
         });
     }

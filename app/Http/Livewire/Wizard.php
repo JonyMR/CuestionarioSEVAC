@@ -3,18 +3,22 @@
 namespace App\Http\Livewire;
   
 use Livewire\Component;
-use App\Models\Product;
+use App\Models\Respuesta;
+use Illuminate\Support\Facades\DB;
   
 class Wizard extends Component
 {
-    public $currentStep = 26;
+    public $currentStep = 0;
+
+
 
     public $email, $nombre, $pre5, $cargo, $area, $ente, $nameSys, $cadp, $docsSys, $startSys, $updSys, $infSys, $noSys,
     $pre6, $perioRes, $lastRes, $pre7, $noRes, $pre8, $pre9, $RegCont9, $RegPre9, $RegAdm9, $RegTra9, $RegCP9,
     $InstC10, $RegCont10, $RepCont10, $ClasP11, $RegPre11, $RepPre11, $PrePro11, $ContBie12, $RecFed12, $ContCont13, $ContPre13, 
     $ContProg13, $TVAn14, $TVTri14, $OtrAn14, $OtrTri14, $ResGenCon15, $TomoPE15, $TomoPL15, $TomoPJ15, $TomoOA15, $InfFin15, $TomoSP15,   
-    $ResGenCon16, $InfFinMun16, $TomoSP16, $InfFin16, $pre17, $pre18, $pre19, $pre20, $platVideo, $convPDF, $sopRem,
-    $otrasHerramientas, $Cantidad22, $Temas22, $Impartido22, $Area22, $pre23, $area23, $pre24, $pre25, $pre26, $porque26, 
+    $ResGenCon16, $InfFinMun16, $TomoSP16, $InfFin16, $pre17, $pre18, $pre19, $pre20, $zoom, $meet, $skype, $teams, $nitropdf, $adobe, $anydesk, $teamviwer,
+    $otrasHerramientas, $Cantidad22, $Temas22, $Impartido22, $Area22, $pre23, $area23, $pre24, $pre251, $pre252, $pre253, $pre254, $pre255, $pre256,
+    $pre257, $pre258, $pre259, $pre2510, $pre2511, $pre26, $porque26, 
     $pre27, $porque27, $pre28;
 
     public $successMessage = '';
@@ -31,6 +35,18 @@ class Wizard extends Component
   
     //****************************AQUI EMPIEZAN LOS STEPS******************************************************
 
+        /**********************************************************************************************************
+     * Step 0
+     *
+     * @return response()
+     */
+    public function ceroStepSubmit()
+    {
+
+ 
+        $this->currentStep = 1;
+    }
+
     /**********************************************************************************************************
      * Step 1
      *
@@ -40,14 +56,21 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
 
-            'email'  => 'required|unique:responses',            //Pregunta 1 de forms
+            'email'  => 'required|unique:respuestas|email',            //Pregunta 1 de forms
             'nombre' => 'required',                             //Pregunta 2 de forms
             'cargo' => 'required',                              //Pregunta 2 de forms
             'area' => 'required',                               //Pregunta 3 de forms
             'ente' => 'required',                               //Pregunta 4 de forms
-        ]);
- 
-        $this->currentStep = 2;
+        ],[//*********Validaciones*****************
+        'email.required' => 'El correo electronico es requerido.', 
+        'email.email' => 'Use un formato valido de correo electrónico.',
+        'email.unique' => 'Este correo electrónico ya respondió la encuesta, por favor usa otro.',
+        'nombre.required' => 'Su nombre completo es requerido.',
+        'cargo.required' => 'Su cargo es requerido.',
+        'area.required' => 'Su área de adscripción es requerida.',
+        'ente.required' => 'Su ente es requerido.',
+    ]);
+                $this->currentStep = 2;
     }
   
     /**********************************************************************************************************
@@ -59,7 +82,9 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'pre5' => 'required',                               
-        ]);
+        ],[//*********Validaciones*****************
+            'pre5.required' => 'Por favor elige una de las opciones']);
+        
         if ($this->pre5) {
             $this->currentStep = 3;
         }else {
@@ -81,7 +106,13 @@ class Wizard extends Component
             'docsSys' => 'required',
             'startSys' => 'required',
             'updSys' => 'required',                            
-        ]);
+        ],[//*********Validaciones*****************
+            'nameSys.required' => 'Ingresa el nombre del Sistema',
+            'cadp.required' => 'Por favor elige una de las opciones',
+            'docsSys.required' => 'Por favor elige una de las opciones',
+            'startSys.required' => 'Por favor selecciona una fecha',
+            'updSys.required' => 'Por favor selecciona una fecha',
+    ]);
 
         if ($this->cadp == 'Comprado') {
             $this->currentStep = 5;
@@ -103,7 +134,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'noSys' => 'required',                               
-        ]);
+        ],[//*********Validaciones*****************
+            'noSys.required' => 'Por favor explica el por que no cuentas con un sistema.',]);
 
         $this->currentStep = 8;
     }
@@ -118,7 +150,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'infSys' => 'required',                               
-        ]);
+        ], [//*********Validaciones*****************
+            'infSys.required' => 'Ingresa el nombre de la empresa a la que le compraste el Sistema.',]);
 
         $this->currentStep = 8;
     }
@@ -134,7 +167,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'infSys' => 'required',                                
-        ]);
+        ], [//*********Validaciones*****************
+            'infSys.required' => 'Ingresa el nombre de la empresa a la que le arrendaste el Sistema.',]);
 
         $this->currentStep = 8;
     }
@@ -150,7 +184,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'infSys' => 'required',                                
-        ]);
+        ], [//*********Validaciones*****************
+            'infSys.required' => 'Por favor selecciona una opción',]);
 
         $this->currentStep = 8;
     }
@@ -164,7 +199,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'pre6' => 'required',                               
-        ]);
+        ], [//*********Validaciones*****************
+            'pre6.required' => 'Por favor selecciona una opción',]);
 
         if ($this->pre6) {
             $this->currentStep = 9;
@@ -184,7 +220,9 @@ class Wizard extends Component
         $validatedData = $this->validate([
             'perioRes' => 'required',
             'lastRes' => 'required',                               
-        ]);
+        ], [//*********Validaciones*****************
+            'perioRes.required' => 'Por favor selecciona una opción',
+            'lastRes.required' => 'Por favor selecciona una fecha.',]);
 
         $this->currentStep = 10;
     }
@@ -198,7 +236,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'pre7' => 'required',                              
-        ]);
+        ], [//*********Validaciones*****************
+            'pre7.required' => 'Por favor selecciona una opción',]);
 
         if ($this->pre7) {
             $this->currentStep = 12;
@@ -216,7 +255,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'noRes' => 'required',                              
-        ]);
+        ],[//*********Validaciones*****************
+            'noRes.required' => 'Explica el motivo por el que no hacen respaldos en medios externos.']);
 
             $this->currentStep = 12;
     }
@@ -230,7 +270,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'pre8' => 'required',                               
-        ]);
+        ], [//*********Validaciones*****************
+            'pre8.required' => 'Por favor selecciona una opción',]);
 
         $this->currentStep = 13;
     }
@@ -244,7 +285,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'pre9' => 'required',                               
-        ]);
+        ], [//*********Validaciones*****************
+            'pre9.required' => 'Por favor selecciona una opción',]);
 
         if ($this->pre9) {
             $this->currentStep = 14;
@@ -262,12 +304,37 @@ class Wizard extends Component
     public function fourteenthStepSubmit()
     {
         $validatedData = $this->validate([
-            'RegCont9' => 'required|numeric',
-            'RegPre9' => 'required|numeric',
-            'RegAdm9' => 'required|numeric',
-            'RegTra9' => 'required|numeric',
-            'RegCP9' => 'required|numeric'
-        ]);
+            'RegCont9' => 'required|numeric|min:0|max:100|integer',
+            'RegPre9' => 'required|numeric|min:0|max:100|integer',
+            'RegAdm9' => 'required|numeric|min:0|max:100|integer',
+            'RegTra9' => 'required|numeric|min:0|max:100|integer',
+            'RegCP9' => 'required|numeric|min:0|max:100|integer'
+        ],[//*********Validaciones*****************
+            'RegCont9.required' => 'Este campo es obligatorio.',
+            'Reg.Cont9.numeric' => 'Ingresa un valor numérico.',
+            'RegCont9.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegCont9.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegCont9.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'RegPre9.required' => 'Este campo es obligatorio.',
+            'RegPre9.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegPre9.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegPre9.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'RegAdm9.required' => 'Este campo es obligatorio',
+            'RegAdm9.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegAdm9.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegAdm9.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'RegTra9.required' => 'Este campo es obligatorio.',
+            'RegTra9.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegTra9.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegTra9.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'RegCP9.required' => 'Este campo es obligatorio.',
+            'RegCP9.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegCP9.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegCP9.integer' => 'Ingresa un número entero, sin decimales.']);
 
         $this->currentStep = 15;
     }
@@ -281,9 +348,26 @@ class Wizard extends Component
     public function fifteenthStepSubmit()
     {
         $validatedData = $this->validate([
-            'InstC10' => 'required|numeric',
-            'RegCont10' => 'required|numeric',
-            'RepCont10' => 'required|numeric',                                 
+            'InstC10' => 'required|numeric|min:0|max:100|integer',
+            'RegCont10' => 'required|numeric|min:0|max:100|integer',
+            'RepCont10' => 'required|numeric|min:0|max:100|integer',                                 
+        ],[//*********Validaciones*****************
+
+            'InstC10.required' => 'Este campo es obligatorio.',
+            'InstC10.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'InstC10.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'InstC10.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'RegCont10.required' => 'Este campo es obligatorio',
+            'RegCont10.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegCont10.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegCont10.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'RepCont10.required' => 'Este campo es obligatorio',
+            'RepCont10.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RepCont10.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RepCont10.integer' => 'Ingresa un número entero, sin decimales.',
+
         ]);
 
         $this->currentStep = 16;
@@ -298,10 +382,30 @@ class Wizard extends Component
     public function sixteenthStepSubmit()
     {
         $validatedData = $this->validate([
-            'ClasP11' => 'required|numeric',
-            'RegPre11' => 'required|numeric',
-            'RepPre11' => 'required|numeric',                                 
-            'PrePro11' => 'required|numeric',
+            'ClasP11' => 'required|numeric|min:0|max:100|integer',
+            'RegPre11' => 'required|numeric|min:0|max:100|integer',
+            'RepPre11' => 'required|numeric|min:0|max:100|integer',                                 
+            'PrePro11' => 'required|numeric|min:0|max:100|integer',
+        ],[//*********Validaciones*****************
+            'ClasP11.required' => 'Este campo es obligatorio',
+            'ClasP11.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ClasP11.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ClasP11.integer' => 'Ingresa un número entero, sin decimales.',
+            
+            'RegPre11.required' => 'Este campo es obligatorio',
+            'RegPre11.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegPre11.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RegPre11.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'RepPre11.required' => 'Este campo es obligatorio',
+            'RepPre11.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RepPre11.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RepPre11.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'PrePro11.required' => 'Este campo es obligatorio',
+            'PrePro11.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'PrePro11.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'PrePro11.integer' => 'Ingresa un número entero, sin decimales.',
         ]);
 
         $this->currentStep = 17;
@@ -315,8 +419,18 @@ class Wizard extends Component
     public function seventeenthStepSubmit()
     {
         $validatedData = $this->validate([
-            'ContBie12' => 'required|numeric',
-            'RecFed12' => 'required|numeric',
+            'ContBie12' => 'required|numeric|min:0|max:100|integer',
+            'RecFed12' => 'required|numeric|min:0|max:100|integer',
+        ],[
+            'ContBie12.required' => 'Este campo es obligatorio',
+            'ContBie12.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContBie12.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContBie12.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'RecFed12.required' => 'Este campo es obligatorio',
+            'RecFed12.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RecFed12.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'RecFed12.integer' => 'Ingresa un número entero, sin decimales.',
         ]);
 
         $this->currentStep = 18;
@@ -330,9 +444,24 @@ class Wizard extends Component
     public function eigteenthStepSubmit()
     {
         $validatedData = $this->validate([
-            'ContCont13' => 'required|numeric',
-            'ContPre13' => 'required|numeric',
-            'ContProg13' => 'required|numeric',
+            'ContCont13' => 'required|numeric|min:0|max:100|integer',
+            'ContPre13' => 'required|numeric|min:0|max:100|integer',
+            'ContProg13' => 'required|numeric|min:0|max:100|integer',
+        ],[
+            'ContCont13.required' => 'Este campo es obligatorio',
+            'ContCont13.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContCont13.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContCont13.integer' => 'Ingresa un número entero, sin decimales.',
+            
+            'ContPre13.required' => 'Este campo es obligatorio',
+            'ContPre13.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContPre13.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContPre13.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'ContProg13.required' => 'Este campo es obligatorio',
+            'ContProg13.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContProg13.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContProg13.integer' => 'Ingresa un número entero, sin decimales.',
         ]);
 
         $this->currentStep = 19;
@@ -346,10 +475,30 @@ class Wizard extends Component
     public function nineteenthStepSubmit()
     {
         $validatedData = $this->validate([
-            'TVAn14' => 'required|numeric',
-            'TVTri14' => 'required|numeric',
-            'OtrAn14' => 'required|numeric',
-            'OtrTri14' => 'required|numeric',
+            'TVAn14' => 'required|numeric|min:0|max:100|integer',
+            'TVTri14' => 'required|numeric|min:0|max:100|integer',
+            'OtrAn14' => 'required|numeric|min:0|max:100|integer',
+            'OtrTri14' => 'required|numeric|min:0|max:100|integer',
+        ],[
+            'TVAn14.required' => 'Este campo es obligatorio',
+            'TVAn14.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVAn14.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVAn14.integer' => 'Ingresa un número entero, sin decimales.',
+            
+            'TVTri14.required' => 'Este campo es obligatorio',
+            'TVTri14.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVTri14.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVTri14.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'OtrAn14.required' => 'Este campo es obligatorio',
+            'OtrAn14.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OtrAn14.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OtrAn14.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'OtrTri14.required' => 'Este campo es obligatorio',
+            'OtrTri14.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OtrTri14.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OtrTri14.integer' => 'Ingresa un número entero, sin decimales.',
         ]);
 
         $this->currentStep = 20;
@@ -363,13 +512,48 @@ class Wizard extends Component
     public function twentiethStepSubmit()
     {
         $validatedData = $this->validate([
-            'ResGenCon15' => 'required|numeric',
-            'TomoPE15' => 'required|numeric',
-            'TomoPL15' => 'required|numeric',
-            'TomoPJ15' => 'required|numeric',
-            'TomoOA15' => 'required|numeric',
-            'InfFin15' => 'required|numeric',
-            'TomoSP15' => 'required|numeric',
+            'ResGenCon15' => 'required|numeric|min:0|max:100|integer',
+            'TomoPE15' => 'required|numeric|min:0|max:100|integer',
+            'TomoPL15' => 'required|numeric|min:0|max:100|integer',
+            'TomoPJ15' => 'required|numeric|min:0|max:100|integer',
+            'TomoOA15' => 'required|numeric|min:0|max:100|integer',
+            'InfFin15' => 'required|numeric|min:0|max:100|integer',
+            'TomoSP15' => 'required|numeric|min:0|max:100|integer',
+        ],[
+            'ResGenCon15.required' => 'Este campo es obligatorio',
+            'ResGenCon15.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ResGenCon15.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ResGenCon15.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'TomoPE15.required' => 'Este campo es obligatorio',
+            'TomoPE15.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TomoPE15.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TomoPE15.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'TomoPL15.required' => 'Este campo es obligatorio',
+            'TomoPL15.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TomoPL15.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TomoPL15.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'TomoPJ15.required' => 'Este campo es obligatorio',
+            'TomoPJ15.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TomoPJ15.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TomoPJ15.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'TomoOA15.required' => 'Este campo es obligatorio',
+            'TomoOA15.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TomoOA15.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TomoOA15.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'InfFin15.required' => 'Este campo es obligatorio',
+            'InfFin15.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'InfFin15.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'InfFin15.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'TomoSP15.required' => 'Este campo es obligatorio',
+            'TomoSP15.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TomoSP15.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TomoSP15.integer' => 'Ingresa un número entero, sin decimales.',
         ]);
 
         $this->currentStep = 21;
@@ -383,10 +567,30 @@ class Wizard extends Component
     public function twentyfirstStepSubmit()
     {
         $validatedData = $this->validate([
-            'ResGenCon16' => 'required|numeric',
-            'InfFinMun16' => 'required|numeric',
-            'TomoSP16' => 'required|numeric',
-            'InfFin16' => 'required|numeric',
+            'ResGenCon16' => 'required|numeric|min:0|max:100|integer',
+            'InfFinMun16' => 'required|numeric|min:0|max:100|integer',
+            'TomoSP16' => 'required|numeric|min:0|max:100|integer',
+            'InfFin16' => 'required|numeric|min:0|max:100|integer',
+        ],[
+            'ResGenCon16.required' => 'Este campo es obligatorio',
+            'ResGenCon16.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ResGenCon16.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ResGenCon16.integer' => 'Ingresa un número entero, sin decimales.',
+            
+            'InfFinMun16.required' => 'Este campo es obligatorio',
+            'InfFinMun16.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'InfFinMun16.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'InfFinMun16.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'TomoSP16.required' => 'Este campo es obligatorio',
+            'TomoSP16.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TomoSP16.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TomoSP16.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'InfFin16.required' => 'Este campo es obligatorio',
+            'InfFin16.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'InfFin16.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'InfFin16.integer' => 'Ingresa un número entero, sin decimales.',
         ]);
 
         $this->currentStep = 22;
@@ -402,6 +606,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'pre17' => 'required',
+        ],[
+            'pre17.required' => 'Por favor elige una opción.'
         ]);
 
         $this->currentStep = 23;
@@ -416,6 +622,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'pre18' => 'required',
+        ],[
+            'pre18.required' => 'Por favor elige una opción.'
         ]);
 
         $this->currentStep = 24;
@@ -430,7 +638,9 @@ class Wizard extends Component
     public function twentyfourthStepSubmit()
     {
         $validatedData = $this->validate([
-            'pre19' => 'required|numeric',
+            'pre19' => 'required',
+        ],[
+            'pre19.required' => 'Por favor elige una opción.'
         ]);
 
         $this->currentStep = 25;
@@ -446,6 +656,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'pre20' => 'required',
+        ],[
+            'pre20.required' => 'Por favor mencione las fallas de internet que presente de manera mas frecuente.'
         ]);
 
         $this->currentStep = 26;
@@ -460,11 +672,17 @@ class Wizard extends Component
     public function twentysixthStepSubmit()
     {
         $validatedData = $this->validate([
-            'platVideo' => 'required',
-            'convPDF' => 'required',
-            'sopRem' => 'required',
+
+            'zoom' => 'nullable',
+            'meet' => 'nullable',
+            'skype' => 'nullable',
+            'teams' => 'nullable',
+            'nitropdf' => 'nullable',
+            'adobe' => 'nullable',
+            'anydesk' => 'nullable',
+            'teamviwer' => 'nullable',
             'otrasHerramientas' => 'required',
-        ]);
+        ],['otrasHerramientas.required' => 'Por favor seleccione una opción.']);
 
         $this->currentStep = 27;
     } 
@@ -479,8 +697,14 @@ class Wizard extends Component
         $validatedData = $this->validate([
             'Cantidad22' => 'required|numeric',
             'Temas22' => 'required',
-            'Impartidos22' => 'required',
+            'Impartido22' => 'required',
             'Area22' => 'required',
+        ],[
+            'Cantidad22.required' => 'Por favor ingrese el número de capacitaciones recibidas.',
+            'Cantidad22.numeric' => 'Por favor ingrese el número de capacitaciones recibidas.',
+            'Temas22.required' => 'Por favor mencione el tema de las capacitaciones.',
+            'Impartido22.required' => 'Por favor mencione quien impartio la capacitación.',
+            'Area22.required' => 'Por favor mencione que área recibió la capacitación.',
         ]);
 
         $this->currentStep = 28;
@@ -496,6 +720,9 @@ class Wizard extends Component
         $validatedData = $this->validate([
             'pre23' => 'required',
             'area23' => 'required',
+        ],[
+            'pre23.required' => 'Por favor selecciona una opción.',
+            'area23.required' => 'Este campo es obligatorio.',
         ]);
 
         $this->currentStep = 29;
@@ -510,6 +737,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'pre24' => 'required',
+        ],[
+            'pre24.required' => 'Por favor selecciona una opción.'
         ]);
 
         $this->currentStep = 30;
@@ -523,7 +752,19 @@ class Wizard extends Component
     public function thirtiethStepSubmit()
     {
         $validatedData = $this->validate([
-            'pre25' => 'required',
+
+            'pre251' => 'nullable',
+            'pre252' => 'nullable',
+            'pre253' => 'nullable',
+            'pre254' => 'nullable',
+            'pre255' => 'nullable',
+            'pre256' => 'nullable',
+            'pre257' => 'nullable',
+            'pre258' => 'nullable',
+            'pre259' => 'nullable',
+            'pre2510' => 'nullable',
+            'pre2511' => 'nullable',
+
         ]);
 
         $this->currentStep = 31;
@@ -539,6 +780,9 @@ class Wizard extends Component
         $validatedData = $this->validate([
             'pre26' => 'required',
             'porque26' => 'required',
+        ],[
+            'pre26.required' => 'Por favor selecciona una opción.',
+            'porque26.required' => 'Este campo es obligatorio.'
         ]);
 
         $this->currentStep = 32;
@@ -554,6 +798,9 @@ class Wizard extends Component
         $validatedData = $this->validate([
             'pre27' => 'required',
             'porque27' => 'required',
+        ],[
+            'pre27.required' => 'Por favor selecciona una opción.',
+            'porque27.required' => 'Este campo es obligatorio.'
         ]);
 
         $this->currentStep = 33;
@@ -568,9 +815,23 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'pre28' => 'required',
+        ],[
+            'pre28.required' => 'Este campo es obligatorio.'
         ]);
 
         $this->currentStep = 34;
+    }
+
+
+        /**********************************************************************************************************
+     * Step 35
+     *
+     * @return response()
+     */
+    public function thirtyfifthStepSubmit()
+    {
+
+        $this->currentStep = 0;
     }
 
     //******************AQUI TERMINAN LOS STEPS****************************************************************
@@ -630,7 +891,7 @@ class Wizard extends Component
             'TomoPL15' => $this->TomoPL15,
             'TomoPJ15' => $this->TomoPJ15,
             'TomoOA15' => $this->TomoOA15,
-            'IntFin15' => $this->IntFin15,
+            'IntFin15' => $this->InfFin15,
             'TomoSP15' => $this->TomoSP15,
             'ResGenCon16' => $this->ResGenCon16,
             'InfFinMun16' => $this->InfFinMun16,
@@ -640,9 +901,14 @@ class Wizard extends Component
             'pre18' => $this->pre18,
             'pre19' => $this->pre19,
             'pre20' => $this->pre20,
-            'platVideo' => $this->platVideo,
-            'convPDF' => $this->convPDF,
-            'sopRem' => $this->sopRem,
+            'zoom' => $this->zoom,
+            'meet' => $this->meet,
+            'skype' => $this->skype,
+            'teams' => $this->teams,
+            'nitropdf' => $this->nitropdf,
+            'adobe' => $this->adobe,
+            'anydesk' => $this->anydesk,
+            'teamviwer' => $this->teamviwer,
             'otrasHerramientas' => $this->otrasHerramientas,
             'Cantidad22' => $this->Cantidad22,
             'Temas22' => $this->Temas22,
@@ -651,20 +917,30 @@ class Wizard extends Component
             'pre23' => $this->pre23,
             'area23' => $this->area23,
             'pre24' => $this->pre24,
-            'pre25' => $this->pre25,
+            'pre251' => $this->pre251,
+            'pre252' => $this->pre252,
+            'pre253' => $this->pre253,
+            'pre254' => $this->pre254,
+            'pre255' => $this->pre255,
+            'pre256' => $this->pre256,
+            'pre257' => $this->pre257,
+            'pre258' => $this->pre258,
+            'pre259' => $this->pre259,            
+            'pre2510' => $this->pre2510,
+            'pre2511' => $this->pre2511,
             'pre26' => $this->pre26,
             'porque26' => $this->porque26,
             'pre27' => $this->pre27,
             'porque27' => $this->porque27,
             'pre28' => $this->pre28,
-            'status' => $this->status,
+            
         ]);
   
         $this->successMessage = 'Respuesta enviada correctamente.';
   
         $this->clearForm();
   
-        $this->currentStep = 1;
+        $this->currentStep = 35;
     }
   
     /**
@@ -730,7 +1006,7 @@ class Wizard extends Component
         $this->TomoPL15 = '';
         $this->TomoPJ15 = '';
         $this->TomoOA15 = '';
-        $this->IntFin15 = '';
+        $this->InfFin15 = '';
         $this->TomoSP15 = '';
         $this->ResGenCon16 = '';
         $this->InfFinMun16 = '';
@@ -740,9 +1016,14 @@ class Wizard extends Component
         $this->pre18 = '';
         $this->pre19 = '';
         $this->pre20 = '';
-        $this->platVideo = '';
-        $this->convPDF = '';
-        $this->sopRem = '';
+        $this->zoom = '';
+        $this->meet = '';
+        $this->skype = '';
+        $this->teams = '';
+        $this->nitropdf = '';
+        $this->adobe = '';
+        $this->anydesk = '';
+        $this->teamviwer = '';
         $this->otrasHerramientas = '';
         $this->Cantidad22 = '';
         $this->Temas22 = '';
@@ -751,12 +1032,22 @@ class Wizard extends Component
         $this->pre23 = '';
         $this->area23 = '';
         $this->pre24 = '';
-        $this->pre25 = '';
+        $this->pre251 = '';
+        $this->pre252 = '';
+        $this->pre253 = '';
+        $this->pre254 = '';
+        $this->pre255 = '';
+        $this->pre256 = '';
+        $this->pre257 = '';
+        $this->pre258 = '';
+        $this->pre259 = '';
+        $this->pre2510 = '';
+        $this->pre2511 = '';
         $this->pre26 = '';
         $this->porque26 = '';
         $this->pre27 = '';
         $this->porque27 = '';
         $this->pre28 = '';
-        $this->status = '';
     }
+
 }
