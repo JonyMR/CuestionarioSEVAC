@@ -91,7 +91,7 @@
                             <input type="text" wire:model="nombre" class="form-control" id="resnombre" placeholder="Jhon Doe" wire:click = "checkMail">
                             @error('nombre') <span style="color:red">{{ $message }}<br></span> @enderror
                             
-                            <p></p><input type="text" wire:model="cargo" class="form-control" id="rescargo" placeholder="Cargo" wire:click = "checkMail">
+                            <p></p><input type="text" wire:model="cargo" class="form-control" id="rescargo" placeholder="Jefe de Dpto." wire:click = "checkMail">
                             @error('cargo') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             <br><label for="title">3.- Ingresa tu área de Adscripción:</label>
@@ -115,7 +115,7 @@
             <div class="row setup-content {{ $currentStep != 2 ? 'displayNone' : '' }}" id="step-2">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                                 <label for="title">5.- ¿Cuenta actualmente con un Sistema que le ayude a realizar el proceso de la Contabilidad Gubernamental?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre5" checked value="1" {{ $pre5 = '1' ? "checked" : "" }}> Si</label><br>
@@ -133,7 +133,7 @@
             <div class="row setup-content {{ $currentStep != 3 ? 'displayNone' : '' }}" id="step-3">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3> <center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
 
                                 <label for="title">¿Cuál es el nombre del Sistema que utiliza?</label><br>
@@ -161,11 +161,11 @@
 
                             <div class="form-group">
                                 <label for="title">¿Desde cuando usa este sistema?</label><br>
-                                <input type="date" id="fstartSys" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="startSys" max="<?php echo $fcha;?>""><br>
+                                <input type="date" class="form-control col-3" id="fstartSys" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="startSys" max="<?php echo $fcha;?>""><br>
                                 @error('startSys') <span style="color:red">{{ $message }}<br></span> @enderror
 
                                 <br><label for="title">¿Cuándo fue la última vez que se realizaron acualizaciones al sistema apegadas a las normas emitidas por el LGCG?</label><br>
-                                <input type="date" id="fupdSys" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="updSys"><br>
+                                <input type="date" id="fupdSys" class="form-control col-3" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="updSys"><br>
                                 @error('updSys') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             </div>
@@ -182,7 +182,7 @@
             <div class="row setup-content {{ $currentStep != 4 ? 'displayNone' : '' }}" id="step-4">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                        <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
 
                                 <label for="title">¿Por qué?</label><br>
@@ -201,7 +201,7 @@
             <div class="row setup-content {{ $currentStep != 5 ? 'displayNone' : '' }}" id="step-5">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                                 <label for="title">Ingresa la empresa a la que le compraste el Sistema:</label><br>
                                 <input type="text" wire:model="infSys" class="form-control" id="resinfSys" placeholder="Nombre de la Empresa"><br>
@@ -219,7 +219,7 @@
             <div class="row setup-content {{ $currentStep != 6 ? 'displayNone' : '' }}" id="step-6">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                                 <label for="title">Ingresa la empresa a la que le arrendas el Sistema:</label><br>
                                 <input type="text" wire:model="infSys" class="form-control" id="resinfSys" placeholder="Nombre de la Empresa"><br>
@@ -237,7 +237,7 @@
             <div class="row setup-content {{ $currentStep != 7 ? 'displayNone' : '' }}" id="step-7">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                                 <label for="title">¿Con que documentación de tu Sistema Propio cuentas?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="infSys" value="registro" {{ $infSys = 'registro' ? "checked" : "" }}> Registro</label><br>
@@ -257,7 +257,7 @@
             <div class="row setup-content {{ $currentStep != 8 ? 'displayNone' : '' }}" id="step-8">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
 
                                 <label for="title">6.- ¿Cuenta con respaldos de la información generada por el Sistema?</label><br>
@@ -277,7 +277,7 @@
             <div class="row setup-content {{ $currentStep != 9 ? 'displayNone' : '' }}" id="step-9">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
 
                                 <label for="title">¿Con que periodicidad realizan los respaldos?</label><br>
@@ -289,7 +289,7 @@
                                 <br>@error('perioRes') <span style="color:red">{{ $message }}<br></span> @enderror 
 
                                 <br><label for="title">¿Cuándo fue la última vez que se realizó?</label><br>
-                                <input type="date" id="flastRes" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="lastRes">
+                                <input type="date" class="form-control col-3" id="flastRes" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="lastRes">
                                 <br>@error('lastRes') <span style="color:red">{{ $message }}<br></span> @enderror
                             </div>
                             
@@ -303,7 +303,7 @@
         <div class="row setup-content {{ $currentStep != 10 ? 'displayNone' : '' }}" id="step-10">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
 
                                 <label for="title">7.- ¿Realiza los respaldos en medios externos al sistema? (USB, Otro equipo, Nube, CD/DVD)?</label><br>
@@ -323,7 +323,7 @@
         <div class="row setup-content {{ $currentStep != 11 ? 'displayNone' : '' }}" id="step-11">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                             <label for="title">¿Por qué?</label><br>
                                 <textarea type="text" wire:model="noRes" class="form-control" id="resnoRes" placeholder="Motivo por el que no realiza respaldos en medios externos."> </textarea><br>
@@ -341,7 +341,7 @@
         <div class="row setup-content {{ $currentStep != 12 ? 'displayNone' : '' }}" id="step-12">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                             <label for="title">8.- ¿El Sistema contable que utiliza genera la información de conformidad a los Manuales de Evaluaciones de la Armonización Contable?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre8" value="1" {{ $pre8 = '1' ? "checked" : "" }}> Si</label><br>
@@ -360,7 +360,7 @@
         <div class="row setup-content {{ $currentStep != 13 ? 'displayNone' : '' }}" id="step-13">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                             <label for="title">9.- ¿El Sistema de contabilidad que genera la infomación le permite atender los apartados del SEvAC?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre9" value="1" {{ $pre9 = '1' ? "checked" : "" }}> Si</label><br>
@@ -379,24 +379,24 @@
         <div class="row setup-content {{ $currentStep != 14 ? 'displayNone' : '' }}" id="step-14">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                             <label for="title">Ingresa cual de los apartados y en que porcentaje:</label><br>
 
-                            <label>Registros Contables:<input type="number" wire:model="RegCont9" class="form-control" id="resRegCont9" placeholder = "100%"
-                            required pattern="[0-9],{3}" max="100" min="0"></label><br>
+                            <label>Registros Contables:<input type="number" wire:model="RegCont9" class="form-control" id="resRegCont9" placeholder = "1-100"
+                            required pattern="[0-9],{3}" max="100" min="0"></label><label>&nbsp%</label><br>
                             @error('RegCont9') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Registros Presupuestales:<input type="number" wire:model="RegPre9" class="form-control" id="resRegPre9" placeholder = "100%"></label><br>
+                            <label>Registros Presupuestales:<input type="number" wire:model="RegPre9" class="form-control" id="resRegPre9" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('RegPre9') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Registros Administrativos:<input type="number" wire:model="RegAdm9" class="form-control" id="resRegAdm9" placeholder = "100%"></label><br>
+                            <label>Registros Administrativos:<input type="number" wire:model="RegAdm9" class="form-control" id="resRegAdm9" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('RegAdm9') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Registros Transparencia:<input type="number" wire:model="RegTra9" class="form-control" id="resRegTra9" placeholder = "100%"></label><br>
+                            <label>Registros Transparencia:<input type="number" wire:model="RegTra9" class="form-control" id="resRegTra9" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('RegTra9') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Registros Cuenta Pública:<input type="number" wire:model="RegCP9" class="form-control" id="resRegCP9" placeholder = "100%"></label><br>
+                            <label>Registros Cuenta Pública:<input type="number" wire:model="RegCP9" class="form-control" id="resRegCP9" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('RegCP9') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             </div>
@@ -411,17 +411,17 @@
         <div class="row setup-content {{ $currentStep != 15 ? 'displayNone' : '' }}" id="step-15">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                             <label for="title">10.- Para el caso de los registros contables, de la totalidad de sus reactivos señale de sus secciones ¿Cuál es su nivel de cumplimiento?</label><br>
 
-                            <label>Instrumentos Contables:<input type="number" wire:model="InstC10" class="form-control" id="resInstC10" placeholder = "100%"></label><br>
+                            <label>Instrumentos Contables:<input type="number" wire:model="InstC10" class="form-control" id="resInstC10" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('InstC10') <span style = "color:red" >{{ $message }}<br></span> @enderror
 
-                            <label>Registros Contables:<input type="number" wire:model="RegCont10" class="form-control" id="resRegCont10" placeholder = "100%"></label><br>
+                            <label>Registros Contables:<input type="number" wire:model="RegCont10" class="form-control" id="resRegCont10" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('RegCont10') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Reportes Contables:<input type="number" wire:model="RepCont10" class="form-control" id="resRepCont10" placeholder = "100%"></label><br>
+                            <label>Reportes Contables:<input type="number" wire:model="RepCont10" class="form-control" id="resRepCont10" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('RepCont10') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             </div>
@@ -436,20 +436,20 @@
         <div class="row setup-content {{ $currentStep != 16 ? 'displayNone' : '' }}" id="step-16">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                             <label for="title">11.- Para el caso de los registros Presupuestales, de la totalidad de sus reactivos señale de sus secciones ¿Cuál es su nivel de cumplimiento?</label><br>
 
-                            <label>Clasificadores Presupuestales:<input type="number" wire:model="ClasP11" class="form-control" id="resClasP11" placeholder = "100%"></label><br>
+                            <label>Clasificadores Presupuestales:<input type="number" wire:model="ClasP11" class="form-control" id="resClasP11" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('ClasP11') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Registros Presupuestarios:<input type="number" wire:model="RegPre11" class="form-control" id="resRegPre11" placeholder = "100%"></label><br>
+                            <label>Registros Presupuestarios:<input type="number" wire:model="RegPre11" class="form-control" id="resRegPre11" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('RegPre11') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Reportes Presupuestarios:<input type="number" wire:model="RepPre11" class="form-control" id="resRepPre11" placeholder = "100%"></label><br>
+                            <label>Reportes Presupuestarios:<input type="number" wire:model="RepPre11" class="form-control" id="resRepPre11" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('RepPre11') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Reportes Programáticos:<input type="number" wire:model="PrePro11" class="form-control" id="PrePro11" placeholder = "100%"></label><br>
+                            <label>Reportes Programáticos:<input type="number" wire:model="PrePro11" class="form-control" id="PrePro11" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('PrePro11') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             </div>
@@ -464,14 +464,14 @@
         <div class="row setup-content {{ $currentStep != 17 ? 'displayNone' : '' }}" id="step-17">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                             <label for="title">12.- Para el caso de los registros Administrativos, de la totalidad de sus reactivos señale de sus secciones ¿Cuál es su nivel de cumplimiento?</label><br>
 
-                            <label>Control de bienes y documentos soporte:<input type="number" wire:model="ContBie12" class="form-control" id="resContBie12" placeholder = "100%"></label><br>
+                            <label>Control de bienes y documentos soporte:<input type="number" wire:model="ContBie12" class="form-control" id="resContBie12" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('ContBie12') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Recursos Federales y Pagos Electrónicos:<input type="number" wire:model="RecFed12" class="form-control" id="resRecFed12" placeholder = "100%"></label><br>
+                            <label>Recursos Federales y Pagos Electrónicos:<input type="number" wire:model="RecFed12" class="form-control" id="resRecFed12" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('RecFed12') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             </div>
@@ -486,18 +486,18 @@
         <div class="row setup-content {{ $currentStep != 18 ? 'displayNone' : '' }}" id="step-18">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                             <label for="title">13.- Para el caso de los registros de Transparencia y Difusión de la información Financiera derivada del Título Quinto de la LGCG, de la totalidad 
                                 de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento?</label><br>
 
-                            <label>Publicar Contenido Contable:<input type="number" wire:model="ContCont13" class="form-control" id="resContCont13" placeholder = "100%"></label><br>
+                            <label>Publicar Contenido Contable:<input type="number" wire:model="ContCont13" class="form-control" id="resContCont13" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('ContCont13') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Publicar Contenido Presupuestario:<input type="number" wire:model="ContPre13" class="form-control" id="resContPre13" placeholder = "100%"></label><br>
+                            <label>Publicar Contenido Presupuestario:<input type="number" wire:model="ContPre13" class="form-control" id="resContPre13" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('ContPre13') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Publicar Contenido Programático:<input type="number" wire:model="ContProg13" class="form-control" id="resContProg13" placeholder = "100%"></label><br>
+                            <label>Publicar Contenido Programático:<input type="number" wire:model="ContProg13" class="form-control" id="resContProg13" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('ContProg13') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             </div>
@@ -512,25 +512,25 @@
         <div class="row setup-content {{ $currentStep != 19 ? 'displayNone' : '' }}" id="step-19">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                             <label for="title">14.- Para el caso de los registros de Transparencia del Título Quinto y Otras Obligaciones de la LGCG, de la totalidad 
                                 de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento?</label><br>
 
                             <h2>Publicar Título V</h2>
 
-                            <label>Anuales:<input type="number" wire:model="TVAn14" class="form-control" id="resTVAn14" placeholder = "100%"></label><br>
+                            <label>Anuales:<input type="number" wire:model="TVAn14" class="form-control" id="resTVAn14" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('TVAn14') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Trimestrales:<input type="number" wire:model="TVTri14" class="form-control" id="resTVTri14" placeholder = "100%"></label><br>
+                            <label>Trimestrales:<input type="number" wire:model="TVTri14" class="form-control" id="resTVTri14" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('TVTri14') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             <h2>Publicar Otras Obligaciones</h2>
 
-                            <label>Anuales:<input type="number" wire:model="OtrAn14" class="form-control" id="resOtrAn14" placeholder = "100%"></label><br>
+                            <label>Anuales:<input type="number" wire:model="OtrAn14" class="form-control" id="resOtrAn14" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('OtrAn14') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Trimestrales:<input type="number" wire:model="OtrTri14" class="form-control" id="resOtrTri14" placeholder = "100%"></label><br>
+                            <label>Trimestrales:<input type="number" wire:model="OtrTri14" class="form-control" id="resOtrTri14" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('OtrTri14') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             </div>
@@ -545,30 +545,30 @@
         <div class="row setup-content {{ $currentStep != 20 ? 'displayNone' : '' }}" id="step-20">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                             <label for="title">15.- Para el caso de los registros de Cuenta Pública Estatal, de la totalidad 
                                 de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento? (De aplicación exclusiva al Ejecutivo del Estado).</label><br>
 
-                            <label>Resultados Generales y Consolidados:<input type="number" wire:model="ResGenCon15" class="form-control" id="resResGenCon15" placeholder = "100%"></label><br>
+                            <label>Resultados Generales y Consolidados:<input type="number" wire:model="ResGenCon15" class="form-control" id="resResGenCon15" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('ResGenCon15') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Tomo del Poder Ejecutivo:<input type="number" wire:model="TomoPE15" class="form-control" id="resTomoPE15" placeholder = "100%"></label><br>
+                            <label>Tomo del Poder Ejecutivo:<input type="number" wire:model="TomoPE15" class="form-control" id="resTomoPE15" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('TomoPE15') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Tomo del Poder Legislativo:<input type="number" wire:model="TomoPL15" class="form-control" id="resTomoPL15" placeholder = "100%"></label><br>
+                            <label>Tomo del Poder Legislativo:<input type="number" wire:model="TomoPL15" class="form-control" id="resTomoPL15" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('TomoPL15') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Tomo del Poder Judicial:<input type="number" wire:model="TomoPJ15" class="form-control" id="resTomoPJ15" placeholder = "100%"></label><br>
+                            <label>Tomo del Poder Judicial:<input type="number" wire:model="TomoPJ15" class="form-control" id="resTomoPJ15" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('TomoPJ15') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Tomo de Órganos Autónomos:<input type="number" wire:model="TomoOA15" class="form-control" id="resTomoOA15" placeholder = "100%"></label><br>
+                            <label>Tomo de Órganos Autónomos:<input type="number" wire:model="TomoOA15" class="form-control" id="resTomoOA15" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('TomoOA15') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Información Financiera Consolidada del Sector Paraestatal:<input type="number" wire:model="InfFin15" class="form-control" id="resInfFin15" placeholder = "100%"></label><br>
+                            <label>Información Financiera Consolidada del Sector Paraestatal:<input type="number" wire:model="InfFin15" class="form-control" id="resInfFin15" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('InfFin15') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Tomo del Sector Paraestatal:<input type="number" wire:model="TomoSP15" class="form-control" id="resTomoSP15" placeholder = "100%"></label><br>
+                            <label>Tomo del Sector Paraestatal:<input type="number" wire:model="TomoSP15" class="form-control" id="resTomoSP15" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('TomoSP15') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             </div>
@@ -583,21 +583,21 @@
         <div class="row setup-content {{ $currentStep != 21 ? 'displayNone' : '' }}" id="step-21">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                             <label for="title">16.- Para el caso de los registros de Cuenta Pública Municipal, de la totalidad 
-                                de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento?.</label><br>
+                                de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento?</label><br>
 
-                            <label>Resultados Generales y Consolidados:<input type="number" wire:model="ResGenCon16" class="form-control" id="resResGenCon16" placeholder = "100%"></label><br>
+                            <label>Resultados Generales y Consolidados:<input type="number" wire:model="ResGenCon16" class="form-control" id="resResGenCon16" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('ResGenCon16') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Información Financiera del Municipio:<input type="number" wire:model="InfFinMun16" class="form-control" id="resInfFinMun16" placeholder = "100%"></label><br>
+                            <label>Información Financiera del Municipio:<input type="number" wire:model="InfFinMun16" class="form-control" id="resInfFinMun16" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('InfFinMun16') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Tomo del Sector Paramunicipal:<input type="number" wire:model="TomoSP16" class="form-control" id="resTomoSP16" placeholder = "100%"></label><br>
+                            <label>Tomo del Sector Paramunicipal:<input type="number" wire:model="TomoSP16" class="form-control" id="resTomoSP16" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('TomoSP16') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <label>Información Financiera Consolidada del Sector Paramunicipal:<input type="number" wire:model="InfFin16" class="form-control" id="resInfFin16" placeholder = "100%"></label><br>
+                            <label>Información Financiera Consolidada del Sector Paramunicipal:<input type="number" wire:model="InfFin16" class="form-control" id="resInfFin16" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('InfFin16') <span style="color:red">{{ $message }}<br></span> @enderror
 
 
@@ -613,7 +613,7 @@
         <div class="row setup-content {{ $currentStep != 22 ? 'displayNone' : '' }}" id="step-22">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
 
                                 <label for="title">17.- En cuestión de conectividad ¿Su ente público cuenta con conexión a Internet?</label><br>
@@ -633,7 +633,7 @@
         <div class="row setup-content {{ $currentStep != 23 ? 'displayNone' : '' }}" id="step-23">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
 
                                 <label for="title">18.- ¿Cuenta con personas especializadas en TIC'S?</label><br>
@@ -657,11 +657,14 @@
         <div class="row setup-content {{ $currentStep != 24 ? 'displayNone' : '' }}" id="step-24">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
 
                                 <label for="title">19.- ¿Cómo considera la calidad de la conexión a Internet? Siendo 1 muy malo y 10 excelente.</label><br>
-                                <br><label>Muy malo</label><br><br>
+                                <br><label>Muy malo <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-angry" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zm6.991-8.38a.5.5 0 1 1 .448.894l-1.009.504c.176.27.285.64.285 1.049 0 .828-.448 1.5-1 1.5s-1-.672-1-1.5c0-.247.04-.48.11-.686a.502.502 0 0 1 .166-.761l2-1zm-6.552 0a.5.5 0 0 0-.448.894l1.009.504A1.94 1.94 0 0 0 5 6.5C5 7.328 5.448 8 6 8s1-.672 1-1.5c0-.247-.04-.48-.11-.686a.502.502 0 0 0-.166-.761l-2-1z"/>
+</svg></label><br><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre19" value="1" {{ $pre19 = '1' ? "checked" : "" }}> 1</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre19" value="2" {{ $pre19 = '2' ? "checked" : "" }}> 2</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre19" value="3" {{ $pre19 = '3' ? "checked" : "" }}> 3</label><br>
@@ -672,7 +675,10 @@
                                 <label class="radio-inline"><input type="radio" wire:model="pre19" value="8" {{ $pre19 = '8' ? "checked" : "" }}> 8</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre19" value="9" {{ $pre19 = '9' ? "checked" : "" }}> 9</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre19" value="10" {{ $pre19 = '10' ? "checked" : "" }}> 10 </label>
-                                <br><br><label>Excelente</label>
+                                <br><br><label>Excelente <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-laughing" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z"/>
+</svg></label>
 
                                 
                                 <br>@error('pre19') <span style="color:red">{{ $message }}</span> @enderror
@@ -689,7 +695,7 @@
         <div class="row setup-content {{ $currentStep != 25 ? 'displayNone' : '' }}" id="step-25">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
 
                                 <label for="title">20.- ¿Cuáles son las fallas mas frecuentes?</label><br>
@@ -708,7 +714,7 @@
         <div class="row setup-content {{ $currentStep != 26 ? 'displayNone' : '' }}" id="step-26">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                    <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
+                    <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
 
                             <label for="title">21.- ¿Utilizan herramientas informáticas adicionales?</label><br>
@@ -743,7 +749,7 @@
         <div class="row setup-content {{ $currentStep != 27 ? 'displayNone' : '' }}" id="step-27">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                            <h3> II. CAPACITACIÓN Y EVALUACIÓN.</h3>
+                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
                             <div class="form-group">
                                 <label for="title">22.- En materia de contabilidad Gubernamental, del periodo de Octubre del 2021 a la fecha, ¿Cuantas capacitaciones ha recibido el ente público?</label><br>
                                 
@@ -774,7 +780,7 @@
         <div class="row setup-content {{ $currentStep != 28 ? 'displayNone' : '' }}" id="step-28">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                            <h3> II. CAPACITACIÓN Y EVALUACIÓN.</h3>
+                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
                             <div class="form-group">
                                 <label for="title">23.- ¿Quién es el personal encargado de dar atención y cumplimiento a la plataforma del SEvAC?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre23" value="interno" {{ $pre23 = 'interno' ? "checked" : "" }}> Interno</label><br>
@@ -796,7 +802,7 @@
         <div class="row setup-content {{ $currentStep != 29 ? 'displayNone' : '' }}" id="step-29">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                            <h3> II. CAPACITACIÓN Y EVALUACIÓN.</h3>
+                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
                             <div class="form-group">
 
                                 <label for="title">24.- ¿Consideras necesario reforzar la capacitación en el uso de la plataforma SEvAC, para la mejora de la evaluación?</label><br>
@@ -816,7 +822,7 @@
         <div class="row setup-content {{ $currentStep != 30 ? 'displayNone' : '' }}" id="step-30">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                            <h3> II. CAPACITACIÓN Y EVALUACIÓN.</h3>
+                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
                             <div class="form-group">
 
                             <label for="title">25.- ¿Sobre qué temas de capacitación que se enlistan a continuación consideras que pudieran apoyarte para la mejora de la evaluación contable?</label><br>
@@ -844,7 +850,7 @@
         <div class="row setup-content {{ $currentStep != 31 ? 'displayNone' : '' }}" id="step-31">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                            <h3> II. CAPACITACIÓN Y EVALUACIÓN.</h3>
+                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
                             <div class="form-group">
 
                                 <label for="title">26.- ¿Es atendido oportunamente por el Ente Fiscalizador Local (ASM), para disipar sus dudas respecto a las observaciones de los reactivos evaluados?</label><br>
@@ -868,7 +874,7 @@
         <div class="row setup-content {{ $currentStep != 32 ? 'displayNone' : '' }}" id="step-32">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                            <h3> II. CAPACITACIÓN Y EVALUACIÓN.</h3>
+                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
                             <div class="form-group">
 
                                 <label for="title">27.- ¿Es atendido oportuna y satisfactoriamente en el tiempo de solventación en cuanto a las dudas de los reactivos observados por el Ente Fiscalizador Local (ASM)?</label><br>
@@ -892,7 +898,7 @@
         <div class="row setup-content {{ $currentStep != 33 ? 'displayNone' : '' }}" id="step-33">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                            <h3> II. CAPACITACIÓN Y EVALUACIÓN.</h3>
+                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
                             <div class="form-group">
 
                                 <label for="title">28.- ¿Describa lo que sugiere que debería implementar el Ente Fiscalizador Local (ASM), para su mejor atención en cuanto a las evaluaciones relacionadas con el SEvAC?</label><br>
@@ -912,7 +918,7 @@
                     <center><div class="row setup-content {{ $currentStep != 34 ? 'displayNone' : '' }}" id="step-34">
         <div class="col-xs-12">
                     <div class="col-md-12">
-                            <h3> ¡Cuestionario terminado!</h3>
+                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
                             <div class="form-group">
                                 <h4>Presione el botón de Enviar para terminar o revise de nuevo las preguntas.<h4><br>
 
@@ -929,7 +935,8 @@
                     <div class="row setup-content {{ $currentStep != 35 ? 'displayNone' : '' }}" id="step-35">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                            <center><h3>{{$email}} Ha respondido la encuesta, gracias por participar.</h3></center>
+                            <center><h3>{{$email}} Ha respondido la encuesta, gracias por participar.</h3><br>
+                            <button class="btn btn-success" wire:click="resetSteps" type="button">Volver al Inicio</button></center>
                     </div>
                 </div>
             </div>

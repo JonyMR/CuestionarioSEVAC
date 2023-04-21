@@ -13,10 +13,10 @@ class Wizard extends Component
 
 
     public $email, $nombre, $pre5, $cargo, $area, $ente, $nameSys, $cadp, $docsSys, $startSys, $updSys, $infSys, $noSys,
-    $pre6, $perioRes, $lastRes, $pre7, $noRes, $pre8, $pre9, $RegCont9=0, $RegPre9=0, $RegAdm9=0, $RegTra9=0, $RegCP9=0,
-    $InstC10=0, $RegCont10=0, $RepCont10=0, $ClasP11=0, $RegPre11=0, $RepPre11=0, $PrePro11=0, $ContBie12=0, $RecFed12=0, $ContCont13=0, $ContPre13=0, 
-    $ContProg13=0, $TVAn14=0, $TVTri14=0, $OtrAn14=0, $OtrTri14=0, $ResGenCon15=0, $TomoPE15=0, $TomoPL15=0, $TomoPJ15=0, $TomoOA15=0, $InfFin15=0, $TomoSP15=0,   
-    $ResGenCon16=0, $InfFinMun16=0, $TomoSP16=0, $InfFin16=0, $pre17, $pre18, $pre19, $pre20, $zoom, $meet, $skype, $teams, $nitropdf, $adobe, $anydesk, $teamviwer,
+    $pre6, $perioRes, $lastRes, $pre7, $noRes, $pre8, $pre9, $RegCont9, $RegPre9, $RegAdm9, $RegTra9, $RegCP9,
+    $InstC10, $RegCont10, $RepCont10, $ClasP11, $RegPre11, $RepPre11, $PrePro11, $ContBie12, $RecFed12, $ContCont13, $ContPre13, 
+    $ContProg13, $TVAn14, $TVTri14, $OtrAn14, $OtrTri14, $ResGenCon15, $TomoPE15, $TomoPL15, $TomoPJ15, $TomoOA15, $InfFin15, $TomoSP15,   
+    $ResGenCon16, $InfFinMun16, $TomoSP16, $InfFin16, $pre17, $pre18, $pre19, $pre20, $zoom, $meet, $skype, $teams, $nitropdf, $adobe, $anydesk, $teamviwer,
     $otrasHerramientas, $Cantidad22, $Temas22, $Impartido22, $Area22, $pre23, $area23, $pre24, $pre251, $pre252, $pre253, $pre254, $pre255, $pre256,
     $pre257, $pre258, $pre259, $pre2510, $pre2511, $pre26, $porque26, 
     $pre27, $porque27, $pre28;
@@ -839,8 +839,16 @@ class Wizard extends Component
     //******************AQUI TERMINAN LOS STEPS****************************************************************
 
 
-
-
+    /**
+     * Metodo submit del formulario
+     *
+     * @return response()
+     */
+    public function resetSteps(){
+        $this -> currentStep = 0;
+        $this -> email = '';
+    }
+    
 
 
     /**
