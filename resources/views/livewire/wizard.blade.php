@@ -88,18 +88,18 @@
                             @error('email') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             <br><label for="title">2.- Ingresa tu nombre completo y cargo:</label>
-                            <input type="text" wire:model="nombre" class="form-control" id="resnombre" placeholder="Nombre Completo" wire:click = "checkMail">
+                            <input type="text" wire:model="nombre" class="form-control" id="resnombre" placeholder="Jhon Doe" wire:click = "checkMail">
                             @error('nombre') <span style="color:red">{{ $message }}<br></span> @enderror
                             
                             <p></p><input type="text" wire:model="cargo" class="form-control" id="rescargo" placeholder="Cargo" wire:click = "checkMail">
                             @error('cargo') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             <br><label for="title">3.- Ingresa tu área de Adscripción:</label>
-                            <input type="text" wire:model="area" class="form-control" id="resarea" placeholder="Área de Adscripción" wire:click = "checkMail">
+                            <input type="text" wire:model="area" class="form-control" id="resarea" placeholder="Rec. Financieros" wire:click = "checkMail">
                             @error('area') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             <br><label for="title">4.- Ingresa el Ente Público al que perteneces:</label>
-                            <input type="text" wire:model="ente" class="form-control" id="resente" placeholder="Ente Público" wire:click = "checkMail">
+                            <input type="text" wire:model="ente" class="form-control" id="resente" placeholder="Secretaría de Finanzas" wire:click = "checkMail">
                             @error('ente') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             
@@ -156,9 +156,12 @@
                                 @error('docsSys') <span style="color:red">{{ $message }}<br></span> @enderror   
                             </div>
 
+
+                            <?php $fcha = date("Y-m-d");?>
+
                             <div class="form-group">
                                 <label for="title">¿Desde cuando usa este sistema?</label><br>
-                                <input type="date" id="fstartSys" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="startSys"><br>
+                                <input type="date" id="fstartSys" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="startSys" max="<?php echo $fcha;?>""><br>
                                 @error('startSys') <span style="color:red">{{ $message }}<br></span> @enderror
 
                                 <br><label for="title">¿Cuándo fue la última vez que se realizaron acualizaciones al sistema apegadas a las normas emitidas por el LGCG?</label><br>
@@ -323,7 +326,7 @@
                     <h3> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</h3>
                             <div class="form-group">
                             <label for="title">¿Por qué?</label><br>
-                                <textarea type="text" wire:model="noRes" class="form-control" id="resnoRes" placeholder="Motivo por el que no cuenta con un Sistema"> </textarea><br>
+                                <textarea type="text" wire:model="noRes" class="form-control" id="resnoRes" placeholder="Motivo por el que no realiza respaldos en medios externos."> </textarea><br>
                                 @error('noRes') <span style="color:red">{{ $message }}<br></span> @enderror                                
 
                             </div>
@@ -745,19 +748,19 @@
                                 <label for="title">22.- En materia de contabilidad Gubernamental, del periodo de Octubre del 2021 a la fecha, ¿Cuantas capacitaciones ha recibido el ente público?</label><br>
                                 
                                 <label for="title">Cantidad: </label><br>
-                                <input type="number" wire:model="Cantidad22" class="form-control" id="resCantidad22" placeholder="Cantidad">
+                                <input type="number" wire:model="Cantidad22" class="form-control" id="resCantidad22" placeholder="Número de capacitaciones recibidas">
                                 @error('Cantidad22') <span style="color:red">{{ $message }}<br></span> @enderror<br>    
 
                                 <label for="title">Temas: </label><br>
-                                <input type="text" wire:model="Temas22" class="form-control" id="resTemas22" placeholder="Temas">
+                                <input type="text" wire:model="Temas22" class="form-control" id="resTemas22" placeholder="SEvAC, LGCG, etc">
                                 @error('Temas22') <span style="color:red">{{ $message }}<br></span> @enderror<br>
 
                                 <label for="title">Impartidos por: </label><br>
-                                <input type="text" wire:model="Impartido22" class="form-control" id="resImpartido22" placeholder="Empresa que lo impartio">
+                                <input type="text" wire:model="Impartido22" class="form-control" id="resImpartido22" placeholder="Empresa que impartió la capacitación">
                                 @error('Impartido22') <span style="color:red">{{ $message }}<br></span> @enderror<br>
 
                                 <label for="title">Área capacitada: </label><br>
-                                <input type="text" wire:model="Area22" class="form-control" id="resArea22" placeholder="Área capacitada">
+                                <input type="text" wire:model="Area22" class="form-control" id="resArea22" placeholder="Recursos Financieros">
                                 @error('Area22') <span style="color:red">{{ $message }}<br></span> @enderror<br>
                             </div>
                             
@@ -779,7 +782,7 @@
                                 @error('pre23') <span style="color:red">{{ $message }}</span> @enderror
 
                                 <br><label for="title">Para cualquier respuesta mencionar de que área del ente público o empresa. </label><br>
-                                <input type="text" wire:model="area23" class="form-control" id="resarea23" placeholder="Área">
+                                <input type="text" wire:model="area23" class="form-control" id="resarea23" placeholder="Recursos Financieros">
                                 @error('area23') <span style="color:red">{{ $message }}<br></span> @enderror<br>
                             </div>
                             
@@ -926,7 +929,7 @@
                     <div class="row setup-content {{ $currentStep != 35 ? 'displayNone' : '' }}" id="step-35">
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                            <center><h3>{{$email}} Ha registrado una respuesta a la encuesta, gracias por participar.</h3></center>
+                            <center><h3>{{$email}} Ha respondido la encuesta, gracias por participar.</h3></center>
                     </div>
                 </div>
             </div>
