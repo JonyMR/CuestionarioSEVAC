@@ -3,7 +3,7 @@
     <div><center>
         <div class="row">
             <div class="col">
-            <img src="\coeac.png"  width="300" height="100">
+            <img src="{{ asset('images/coeac.png') }}"  width="300" height="100">
             </div>
             <div class="col">
                 <h6><br><br>Comisión Instrumentos para la Mejora de la <br>Armonización Contable (CIMAC)</h6>
