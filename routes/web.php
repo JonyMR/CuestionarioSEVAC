@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('default');
 });
 
-Route::get('wizard', function () {
-    return view('default');
+Route::get('completo', function () {
+    return view('completo');
 });

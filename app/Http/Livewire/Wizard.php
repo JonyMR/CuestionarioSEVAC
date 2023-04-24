@@ -18,8 +18,7 @@ class Wizard extends Component
     $ContProg13, $TVAn14, $TVTri14, $OtrAn14, $OtrTri14, $ResGenCon15, $TomoPE15, $TomoPL15, $TomoPJ15, $TomoOA15, $InfFin15, $TomoSP15,   
     $ResGenCon16, $InfFinMun16, $TomoSP16, $InfFin16, $pre17, $pre18, $pre19, $pre20, $zoom, $meet, $skype, $teams, $nitropdf, $adobe, $anydesk, $teamviwer,
     $otrasHerramientas, $pre22, $link, $linklgcg, $motivo, $Cantidad22, $Temas22, $Impartido22, $Area22, $pre23, $area23, $pre24, $pre251, $pre252, $pre253, $pre254, $pre255, $pre256,
-    $pre257, $pre258, $pre259, $pre2510, $pre2511, $pre26, $porque26, 
-    $pre27, $porque27, $pre28;
+    $pre257, $pre258, $pre259, $pre2510, $pre2511, $pre26, $porque26, $pre27, $porque27, $pre28;
 
     public $successMessage = '', $mailMessage='';
   
@@ -764,9 +763,9 @@ class Wizard extends Component
         ],[
             'Cantidad22.required' => 'Por favor ingrese el número de capacitaciones recibidas.',
             'Cantidad22.numeric' => 'Por favor ingrese el número de capacitaciones recibidas.',
-            'Temas22.required' => 'Por favor mencione el tema de las capacitaciones.',
-            'Impartido22.required' => 'Por favor mencione quien impartio la capacitación.',
-            'Area22.required' => 'Por favor mencione que área recibió la capacitación.',
+            'Temas22.required' => 'Este campo es obligatorio',
+            'Impartido22.required' => 'Este campo es obligatorio',
+            'Area22.required' => 'Este campo es obligatorio',
         ]);
 
         $this->currentStep = 31;
@@ -1038,6 +1037,267 @@ class Wizard extends Component
         }
     }
 
+    public function statCap(){
+        $this -> mailMessage = '';
+        if(empty($this->Cantidad22) && $this->Cantidad22==''){
+            //nada
+        }else{
+            if($this->Cantidad22==0){
+                $this->Cantidad22=0;
+                $this->Temas22='';
+                $this->Impartido22='';
+                $this->Area22='';
+                $this->currentStep=31;
+            }else{
+                
+            }
+        }
+    }
+//Validaciones de porcentajes
+//Pregunta 9
+    public function updatedRegCont9(){
+        if($this->RegCont9 >= 0 && $this->RegCont9 < 101){
+        }else{
+            $this->RegCont9 = '';
+        }
+    }
+
+    public function updatedRegPre9(){
+        if($this->RegPre9 >= 0 && $this->RegPre9 < 101){
+        }else{
+            $this->RegPre9 = '';
+        }
+    }
+
+    public function updatedRegAdm9(){
+        if($this->RegAdm9 >= 0 && $this->RegAdm9 < 101){
+        }else{
+            $this->RegAdm9 = '';
+        }
+    }
+
+    public function updatedRegTra9(){
+        if($this->RegTra9 >= 0 && $this->RegTra9 < 101){
+        }else{
+            $this->RegTra9 = '';
+        }
+    }
+
+    public function updatedRegCP9(){
+        if($this->RegCP9 >= 0 && $this->RegCP9 < 101){
+        }else{
+            $this->RegCP9 = '';
+        }
+    }
+
+//Pregunta 10
+    public function updatedInstC10(){
+        if($this->InstC10 >= 0 && $this->InstC10 < 101){
+        }else{
+            $this->InstC10 = '';
+        }
+    }
+
+    public function updatedRegCont10(){
+        if($this->RegCont10 >= 0 && $this->RegCont10 < 101){
+        }else{
+            $this->RegCont10 = '';
+        }
+    }
+
+    public function updatedRepCont10(){
+        if($this->RepCont10 >= 0 && $this->RepCont10 < 101){
+        }else{
+            $this->RepCont10 = '';
+        }
+    }
+
+//Pregunta 11
+    public function updatedClasP11(){
+        if($this->ClasP11 >= 0 && $this->ClasP11 < 101){
+        }else{
+            $this->ClasP11 = '';
+        }
+    }
+
+    public function updatedRegPre11(){
+        if($this->RegPre11 >= 0 && $this->RegPre11 < 101){
+        }else{
+            $this->RegPre11 = '';
+        }
+    }
+
+    public function updatedRepPre11(){
+        if($this->RepPre11 >= 0 && $this->RepPre11 < 101){
+        }else{
+            $this->RepPre11 = '';
+        }
+    }
+    
+    public function updatedPrePro11(){
+        if($this->PrePro11 >= 0 && $this->PrePro11 < 101){
+        }else{
+            $this->PrePro11 = '';
+        }
+    } 
+
+//Pregunta 12
+    public function updatedContBie12(){
+        if($this->ContBie12 >= 0 && $this->ContBie12 < 101){
+        }else{
+            $this->ContBie12 = '';
+        }
+    }
+    
+    public function updatedRecFed12(){
+        if($this->RecFed12 >= 0 && $this->RecFed12 < 101){
+        }else{
+            $this->RecFed12 = '';
+        }
+    }
+
+//Pregunta 13
+    public function updatedContCont13(){
+        if($this->ContCont13 >= 0 && $this->ContCont13 < 101){
+        }else{
+            $this->ContCont13 = '';
+        }
+    }
+    
+    public function updatedContPre13(){
+        if($this->ContPre13 >= 0 && $this->ContPre13 < 101){
+        }else{
+            $this->ContPre13 = '';
+        }
+    }
+
+    public function updatedContProg13(){
+        if($this->ContProg13 >= 0 && $this->ContProg13 < 101){
+        }else{
+            $this->ContProg13 = '';
+        }
+    }
+
+//Pregunta 14
+    public function updatedTVAn14(){
+        if($this->TVAn14 >= 0 && $this->TVAn14 < 101){
+        }else{
+            $this->TVAn14 = '';
+        }
+    }
+    
+    public function updatedTVTri14(){
+        if($this->TVTri14 >= 0 && $this->TVTri14 < 101){
+        }else{
+            $this->TVTri14 = '';
+        }
+    }
+
+    public function updatedOtrAn14(){
+        if($this->OtrAn14 >= 0 && $this->OtrAn14 < 101){
+        }else{
+            $this->OtrAn14 = '';
+        }
+    }
+
+    public function updatedOtrTri14(){
+        if($this->OtrTri14 >= 0 && $this->OtrTri14 < 101){
+        }else{
+            $this->OtrTri14 = '';
+        }
+    }
+
+//Pregunta 15
+    public function updatedResGenCon15(){
+        if($this->ResGenCon15 >= 0 && $this->ResGenCon15 < 101){
+        }else{
+            $this->ResGenCon15 = '';
+        }
+    }
+
+    public function updatedTomoPE15(){
+        if($this->TomoPE15 >= 0 && $this->TomoPE15 < 101){
+        }else{
+            $this->TomoPE15 = '';
+        }
+    }
+
+    public function updatedTomoPL15(){
+        if($this->TomoPL15 >= 0 && $this->TomoPL15 < 101){
+        }else{
+            $this->TomoPL15 = '';
+        }
+    }
+
+    public function updatedTomoPJ15(){
+        if($this->TomoPJ15 >= 0 && $this->TomoPJ15 < 101){
+        }else{
+            $this->TomoPJ15 = '';
+        }
+    }
+
+    public function updatedTomoOA15(){
+        if($this->TomoOA15 >= 0 && $this->TomoOA15 < 101){
+        }else{
+            $this->TomoOA15 = '';
+        }
+    }
+
+    public function updatedInfFin15(){
+        if($this->InfFin15 >= 0 && $this->InfFin15 < 101){
+        }else{
+            $this->InfFin15 = '';
+        }
+    }
+
+    public function updatedTomoSP15(){
+        if($this->TomoSP15 >= 0 && $this->TomoSP15 < 101){
+        }else{
+            $this->TomoSP15 = '';
+        }
+    }
+
+//Pregunta 16
+
+    public function updatedResGenCon16(){
+        if($this->ResGenCon16 >= 0 && $this->ResGenCon16 < 101){
+        }else{
+            $this->ResGenCon16 = '';
+        }
+    }
+
+    public function updatedInfFinMun16(){
+        if($this->InfFinMun16 >= 0 && $this->InfFinMun16 < 101){
+        }else{
+            $this->InfFinMun16 = '';
+        }
+    }
+
+    public function updatedTomoSP16(){
+        if($this->TomoSP16 >= 0 && $this->TomoSP16 < 101){
+        }else{
+            $this->TomoSP16 = '';
+        }
+    }
+
+    public function updatedInfFin16(){
+        if($this->InfFin16 >= 0 && $this->InfFin16 < 101){
+        }else{
+            $this->InfFin16 = '';
+        }
+    }
+
+
+    public function updatedCantidad22(){
+        if($this->Cantidad22 != 0){
+        }else{
+            $this->Cantidad22='0';
+                $this->Temas22='';
+                $this->Impartido22='';
+                $this->Area22='';
+                $this->currentStep=31;
+        }
+    }
 
 
     /**

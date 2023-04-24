@@ -22,7 +22,7 @@
             <center><h5>Cuestionario para el Diagnóstico de los elementos del SEvAC de aplicación de los Entes Públicos del Estado de Michoacán.</h5></center>
             </div>
             <div class="card-body">
-                <livewire:wizard />
+                <livewire:vistacompleta />
             </div>
         </div>
     </div>
