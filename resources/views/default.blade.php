@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html>
-    <div><center>
-        <div class="row">
-            <div class="col">
-            <img src="{{ asset('images/coeac.png') }}"  width="300" height="100">
-            </div>
-            <div class="col">
-                <h6><br><br>Comisión Instrumentos para la Mejora de la <br>Armonización Contable (CIMAC)</h6>
+<html>   
+    <center>
+        <div class="row">           
+            <div class="col-12"><img src="{{ asset('images/coeac.png') }}"  width="600" height="150">
+                <h6><br><center>Comisión Instrumentos para la Mejora de la <br>Armonización Contable (CIMAC)<center></h6>
             </div>
         </div>
     </div></center><br>
+            
 <head>
     <title>Cuestionario para el Diagnóstico de los elementos del SEvAC de aplicación de los Entes Públicos del Estado de Michoacán</title>
     @livewireStyles

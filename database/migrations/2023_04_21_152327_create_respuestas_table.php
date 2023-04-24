@@ -100,6 +100,15 @@ return new class extends Migration
             $table -> boolean('teamviwer')->nullable();
             $table -> string('otrasHerramientas')->nullable();
 
+
+
+            $table -> boolean('pre22')->default(0);
+            $table -> string('link')->nullable();
+            $table -> string('linklgcg')->nullable();
+            $table -> string('motivo')->nullable();
+
+
+
             $table -> integer('Cantidad22')->default(0);
             $table -> string('Temas22')->nullable();
             $table -> string('Impartido22')->nullable();

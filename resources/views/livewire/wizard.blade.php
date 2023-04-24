@@ -51,7 +51,6 @@
         <div class="row setup-content {{ $currentStep != 0 ? 'displayNone' : '' }}" id="step-0">
                 <div class="col-xs-12">
                 <div class="col-md-12">
-                        <h3> Bienvenido</h3><br>
                         <div class="form-group">
 
                             <h3>Objetivo.</h3>
@@ -94,7 +93,7 @@
                             <p></p><input type="text" wire:model="cargo" class="form-control" id="rescargo" placeholder="Jefe de Dpto." wire:click = "checkMail">
                             @error('cargo') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <br><label for="title">3.- Ingresa tu área de Adscripción:</label>
+                            <br><label for="title">3.- Ingresa tu Área de Adscripción:</label>
                             <input type="text" wire:model="area" class="form-control" id="resarea" placeholder="Rec. Financieros" wire:click = "checkMail">
                             @error('area') <span style="color:red">{{ $message }}<br></span> @enderror
 
@@ -117,7 +116,8 @@
                     <div class="col-md-12">
                     <br><br><br><h3><center> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
-                                <label for="title">5.- ¿Cuenta actualmente con un Sistema que le ayude a realizar el proceso de la Contabilidad Gubernamental?</label><br>
+                                <label for="title">5.- ¿Cuenta actualmente con un Sistema Informático que le ayude a realizar los registros contables y presupuestales 
+                                    del proceso de la Contabilidad Gubernamental?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre5" checked value="1" {{ $pre5 = '1' ? "checked" : "" }}> Si</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre5" value="0" {{ $pre5 = '0' ? "checked" : "" }}> No</label>
                                 <br>@error('pre5') <span style="color:red">{{ $message }}<br></span> @enderror
@@ -140,7 +140,7 @@
                                 <input type="text" wire:model="nameSys" class="form-control" id="resnameSys" placeholder="Nombre del Sistema">
                                 @error('nameSys') <span style="color:red">{{ $message }}<br></span> @enderror<br>
 
-                                <label for="title">Su sistema es:</label><br>
+                                <label for="title">Su Sistema es:</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="cadp" value="Comprado" {{ $cadp = 'Comprado' ? "checked" : "" }}> Comprado</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="cadp" value="Arrendado" {{ $cadp = 'Arrendado' ? "checked" : "" }}> Arrendado</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="cadp" value="Propio" {{ $cadp = 'Propio' ? "checked" : "" }}> Desarrollo Propio</label><br>
@@ -160,11 +160,11 @@
                             <?php $fcha = date("Y-m-d");?>
 
                             <div class="form-group">
-                                <label for="title">¿Desde cuando usa este sistema?</label><br>
+                                <label for="title">¿Desde cuando usa este Sistema?</label><br>
                                 <input type="date" class="form-control col-3" id="fstartSys" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="startSys" max="<?php echo $fcha;?>""><br>
                                 @error('startSys') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                                <br><label for="title">¿Cuándo fue la última vez que se realizaron acualizaciones al sistema apegadas a las normas emitidas por el LGCG?</label><br>
+                                <br><label for="title">¿Cuándo fue la última vez que se realizaron acualizaciones al Sistema apegadas a las normas emitidas por el LGCG?</label><br>
                                 <input type="date" id="fupdSys" class="form-control col-3" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="updSys"><br>
                                 @error('updSys') <span style="color:red">{{ $message }}<br></span> @enderror
 
@@ -306,7 +306,7 @@
                     <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
 
-                                <label for="title">7.- ¿Realiza los respaldos en medios externos al sistema? (USB, Otro equipo, Nube, CD/DVD)?</label><br>
+                                <label for="title">7.- ¿Realiza los respaldos en medios externos al Sistema? (USB, Otro equipo, Nube, CD/DVD)?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre7" value="1" {{ $pre7 = '1' ? "checked" : "" }}> Si</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre7" value="0" {{ $pre7 = '0' ? "checked" : "" }}> No</label>
                                 <br>@error('pre7') <span style="color:red">{{ $message }}</span> @enderror
@@ -343,7 +343,8 @@
                     <div class="col-md-12">
                     <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
-                            <label for="title">8.- ¿El Sistema contable que utiliza genera la información de conformidad a los Manuales de Evaluaciones de la Armonización Contable?</label><br>
+                            <label for="title">8.- ¿El Sistema contable que utiliza genera la información de conformidad a la normativa de la LGCG y disposiciones
+                                normativas del CONAC?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre8" value="1" {{ $pre8 = '1' ? "checked" : "" }}> Si</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre8" value="0" {{ $pre8 = '0' ? "checked" : "" }}> No</label>
                                 <br>@error('pre8') <span style="color:red">{{ $message }}</span> @enderror    
@@ -362,7 +363,7 @@
                     <div class="col-md-12">
                     <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
-                            <label for="title">9.- ¿El Sistema de contabilidad que genera la infomación le permite atender los apartados del SEvAC?</label><br>
+                            <label for="title">9.- ¿El Sistema de Contabilidad Gubernamental que genera la información le permite atender los apartados del SEvAC?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre9" value="1" {{ $pre9 = '1' ? "checked" : "" }}> Si</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre9" value="0" {{ $pre9 = '0' ? "checked" : "" }}> No</label>
                                 <br>@error('pre9') <span style="color:red">{{ $message }}</span> @enderror    
@@ -517,7 +518,7 @@
                             <label for="title">14.- Para el caso de los registros de Transparencia del Título Quinto y Otras Obligaciones de la LGCG, de la totalidad 
                                 de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento?</label><br>
 
-                            <h2>Publicar Título V</h2>
+                            <h3 style="color:blue">Publicar Título V</h3>
 
                             <label>Anuales:<input type="number" wire:model="TVAn14" class="form-control" id="resTVAn14" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('TVAn14') <span style="color:red">{{ $message }}<br></span> @enderror
@@ -525,7 +526,7 @@
                             <label>Trimestrales:<input type="number" wire:model="TVTri14" class="form-control" id="resTVTri14" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('TVTri14') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <h2>Publicar Otras Obligaciones</h2>
+                            <h3 style="color:blue">Publicar Otras Obligaciones</h3>
 
                             <label>Anuales:<input type="number" wire:model="OtrAn14" class="form-control" id="resOtrAn14" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('OtrAn14') <span style="color:red">{{ $message }}<br></span> @enderror
@@ -548,7 +549,8 @@
                     <br><br><br><h3><center>I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
                             <div class="form-group">
                             <label for="title">15.- Para el caso de los registros de Cuenta Pública Estatal, de la totalidad 
-                                de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento? (De aplicación exclusiva al Ejecutivo del Estado).</label><br>
+                                de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento? <br>(De aplicación exclusiva al Ejecutivo del Estado).<br>Si no aplica
+                            llenar los campos con 0.</label><br>
 
                             <label>Resultados Generales y Consolidados:<input type="number" wire:model="ResGenCon15" class="form-control" id="resResGenCon15" placeholder = "1-100"></label><label>&nbsp%</label><br>
                             @error('ResGenCon15') <span style="color:red">{{ $message }}<br></span> @enderror
@@ -749,9 +751,65 @@
         <div class="row setup-content {{ $currentStep != 27 ? 'displayNone' : '' }}" id="step-27">
                 <div class="col-xs-12">
                     <div class="col-md-12">
+                    <br><br><br><h3><center> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
+                            <div class="form-group">
+                                <label for="title">22.- ¿Cuenta con una página web oficial del Ente Público?</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre22" checked value="1" {{ $pre22 = '1' ? "checked" : "" }}> Si</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre22" value="0" {{ $pre22 = '0' ? "checked" : "" }}> No</label>
+                                <br>@error('pre22') <span style="color:red">{{ $message }}<br></span> @enderror
+                            </div>
+                            
+                            <button class="btn btn-secondary" type="button" wire:click="back(26)">Atras</button>
+                            <button class="btn btn-primary" wire:click="twentyseventhStepSubmit" type="button" >Siguiente</button>
+                    </div>
+                </div>
+            </div>
+
+        <!-- ************** STEP 28 **************** -->
+        <div class="row setup-content {{ $currentStep != 28 ? 'displayNone' : '' }}" id="step-28">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                    <br><br><br><h3><center> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
+                            <div class="form-group">
+                                <label for="title">¿Cuál es el link?</label><br>
+                                <input type="text" wire:model="link" class="form-control" id="reslink" placeholder = "http://www.ejemplo.com"></label><label><br>
+                                @error('link') <span style="color:red">{{ $message }}<br></span> @enderror
+
+                                <label for="title">¿Cuál es el link donde publica el apartado de transparencia conforme a la LGCG?</label><br>
+                                <input type="text" wire:model="linklgcg" class="form-control" id="reslinklgcg" placeholder = "http://www.ejemplo.com">
+                                <br>@error('linklgcg') <span style="color:red">{{ $message }}<br></span> @enderror
+                            </div>
+                            
+                            <button class="btn btn-secondary" type="button" wire:click="back(27)">Atras</button>
+                            <button class="btn btn-primary" wire:click="twentyeigthStepSubmit" type="button" >Siguiente</button>
+                    </div>
+                </div>
+            </div> 
+
+        <!-- ************** STEP 29 **************** -->
+        <div class="row setup-content {{ $currentStep != 29 ? 'displayNone' : '' }}" id="step-29">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                    <br><br><br><h3><center> I. SISTEMA Y CONTENIDOS DE LA EVALUACIÓN DE LA CONTABILIDAD GUBERNAMENTAL.</center></h3><br><br><br>
+                            <div class="form-group">
+                                <label for="title">¿Por qué motivo?</label><br>
+                                <textarea type="text" wire:model="motivo" class="form-control" id="resmotivo" placeholder="Ingrese el motivo por el cual no cuenta con un sitio."> </textarea><br>
+                                @error('motivo') <span style="color:red">{{ $message }}<br></span> @enderror
+                            </div>
+                            
+                            <button class="btn btn-secondary" type="button" wire:click="back(27)">Atras</button>
+                            <button class="btn btn-primary" wire:click="twentyninethStepSubmit" type="button" >Siguiente</button>
+                    </div>
+                </div>
+            </div>
+
+        <!-- ************** STEP 30 **************** -->
+        <div class="row setup-content {{ $currentStep != 30 ? 'displayNone' : '' }}" id="step-30">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
                     <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
                             <div class="form-group">
-                                <label for="title">22.- En materia de contabilidad Gubernamental, del periodo de Octubre del 2021 a la fecha, ¿Cuantas capacitaciones ha recibido el ente público?</label><br>
+                                <label for="title">23.- En materia de contabilidad Gubernamental, del periodo de Octubre del 2021 a la fecha, ¿Cuántas capacitaciones ha recibido el ente público?</label><br>
                                 
                                 <label for="title">Cantidad: </label><br>
                                 <input type="number" wire:model="Cantidad22" class="form-control" id="resCantidad22" placeholder="Número de capacitaciones recibidas">
@@ -770,78 +828,8 @@
                                 @error('Area22') <span style="color:red">{{ $message }}<br></span> @enderror<br>
                             </div>
                             
-                            <button class="btn btn-secondary" type="button" wire:click="back(26)">Atras</button>
-                            <button class="btn btn-primary" wire:click="twentyseventhStepSubmit" type="button" >Siguiente</button>
-                    </div>
-                </div>
-            </div>
-
-        <!-- ************** STEP 28 **************** -->
-        <div class="row setup-content {{ $currentStep != 28 ? 'displayNone' : '' }}" id="step-28">
-                <div class="col-xs-12">
-                    <div class="col-md-12">
-                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
-                            <div class="form-group">
-                                <label for="title">23.- ¿Quién es el personal encargado de dar atención y cumplimiento a la plataforma del SEvAC?</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre23" value="interno" {{ $pre23 = 'interno' ? "checked" : "" }}> Interno</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre23" value="externo" {{ $pre23 = 'externo' ? "checked" : "" }}> Externo</label><br>
-                                @error('pre23') <span style="color:red">{{ $message }}</span> @enderror
-
-                                <br><label for="title">Para cualquier respuesta mencionar de que área del ente público o empresa. </label><br>
-                                <input type="text" wire:model="area23" class="form-control" id="resarea23" placeholder="Recursos Financieros">
-                                @error('area23') <span style="color:red">{{ $message }}<br></span> @enderror<br>
-                            </div>
-                            
                             <button class="btn btn-secondary" type="button" wire:click="back(27)">Atras</button>
-                            <button class="btn btn-primary" wire:click="twentyeightStepSubmit" type="button" >Siguiente</button>
-                    </div>
-                </div>
-            </div>
-
-        <!-- ************** STEP 29 **************** -->
-        <div class="row setup-content {{ $currentStep != 29 ? 'displayNone' : '' }}" id="step-29">
-                <div class="col-xs-12">
-                    <div class="col-md-12">
-                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
-                            <div class="form-group">
-
-                                <label for="title">24.- ¿Consideras necesario reforzar la capacitación en el uso de la plataforma SEvAC, para la mejora de la evaluación?</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre24" value="1" {{ $pre24 = '1' ? "checked" : "" }}> Si</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre24" value="0" {{ $pre24 = '0' ? "checked" : "" }}> No</label><br>
-                                @error('pre24') <span style="color:red">{{ $message }}</span> @enderror
-
-                            </div>
-                            
-                            <button class="btn btn-secondary" type="button" wire:click="back(28)">Atras</button>
-                            <button class="btn btn-primary" wire:click="twentyninethStepSubmit" type="button" >Siguiente</button>
-                    </div>
-                </div>
-            </div>
-
-        <!-- ************** STEP 30 **************** -->
-        <div class="row setup-content {{ $currentStep != 30 ? 'displayNone' : '' }}" id="step-30">
-                <div class="col-xs-12">
-                    <div class="col-md-12">
-                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
-                            <div class="form-group">
-
-                            <label for="title">25.- ¿Sobre qué temas de capacitación que se enlistan a continuación consideras que pudieran apoyarte para la mejora de la evaluación contable?</label><br>
-                            <input type="checkbox" value="1" wire:model="pre251" name="zoomCheck" {{ $pre251 = '1' ? "checked" : ""  }}>&nbsp 1. Curso-Taller: Manual de Contabilidad Gubernamental, Inducción para su elaboración.<br>
-                            <input type="checkbox" value="1" wire:model="pre252" name="zoomCheck" {{ $pre252 = '1' ? "checked" : ""  }}>&nbsp 2. Clasificadores Presupuestarios y su Vinculación con el Plan de Cuentas.<br>
-                            <input type="checkbox" value="1" wire:model="pre253" name="zoomCheck" {{ $pre253 = '1' ? "checked" : ""  }}>&nbsp 3. Registro Presupuestario y Patrimonial del Ingreso Público.<br>
-                            <input type="checkbox" value="1" wire:model="pre254" name="zoomCheck" {{ $pre254 = '1' ? "checked" : ""  }}>&nbsp 4. Registro Presupuestario y Patrimonial del Gasto Público.<br>
-                            <input type="checkbox" value="1" wire:model="pre255" name="zoomCheck" {{ $pre255 = '1' ? "checked" : ""  }}>&nbsp 5. Administración y Registro de Bienes Patrimoniales.<br>
-                            <input type="checkbox" value="1" wire:model="pre256" name="zoomCheck" {{ $pre256 = '1' ? "checked" : ""  }}>&nbsp 6. Integración de Estados e Informes Financieros.<br>
-                            <input type="checkbox" value="1" wire:model="pre257" name="zoomCheck" {{ $pre257 = '1' ? "checked" : ""  }}>&nbsp 7. Notas a los Estados Financieros.<br>
-                            <input type="checkbox" value="1" wire:model="pre258" name="zoomCheck" {{ $pre258 = '1' ? "checked" : ""  }}>&nbsp 8. Integración y Rendición de la Cuenta Pública Armonizada.<br>
-                            <input type="checkbox" value="1" wire:model="pre259" name="zoomCheck" {{ $pre259 = '1' ? "checked" : ""  }}>&nbsp 9. Transparencia de la Información Financiera (Título V LGCG).<br>
-                            <input type="checkbox" value="1" wire:model="pre2510" name="zoomCheck" {{ $pre2510 = '1' ? "checked" : ""  }}>&nbsp 10. Entrega-Recepción de la Hacienda Municipal.<br>
-                            <input type="checkbox" value="1" wire:model="pre2511" name="zoomCheck" {{ $pre2511 = '1' ? "checked" : ""  }}>&nbsp 11. Mejora de los Resultados de la Evaluación de la Armonización Contable (SEvAC).<br>
-
-                            </div>
-                            
-                            <button class="btn btn-secondary" type="button" wire:click="back(29)">Atras</button>
-                            <button class="btn btn-primary" wire:click="thirtiethStepSubmit" type="button" >Siguiente</button>
+                            <button class="btn btn-primary" wire:click="thirtiesthStepSubmit" type="button" >Siguiente</button>
                     </div>
                 </div>
             </div>
@@ -852,16 +840,14 @@
                     <div class="col-md-12">
                     <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
                             <div class="form-group">
+                                <label for="title">24.- ¿Quién es el personal encargado de dar atención y cumplimiento a la plataforma del SEvAC?</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre23" value="interno" {{ $pre23 = 'interno' ? "checked" : "" }}> Interno</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre23" value="externo" {{ $pre23 = 'externo' ? "checked" : "" }}> Externo</label><br>
+                                @error('pre23') <span style="color:red">{{ $message }}</span> @enderror
 
-                                <label for="title">26.- ¿Es atendido oportunamente por el Ente Fiscalizador Local (ASM), para disipar sus dudas respecto a las observaciones de los reactivos evaluados?</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre26" value="1" {{ $pre26 = '1' ? "checked" : "" }}> Si</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre26" value="0" {{ $pre26 = '0' ? "checked" : "" }}> No</label><br>
-                                @error('pre26') <span style="color:red">{{ $message }}</span> @enderror
-
-                                <br><label for="title">¿Por qué?</label><br>
-                                <input type="text" wire:model="porque26" class="form-control" id="resporque26" placeholder="¿Por qué?">
-                                @error('porque26') <span style="color:red">{{ $message }}<br></span> @enderror<br>
-
+                                <br><label for="title">Para cualquier respuesta mencionar de que área del ente público o empresa. </label><br>
+                                <input type="text" wire:model="area23" class="form-control" id="resarea23" placeholder="Recursos Financieros">
+                                @error('area23') <span style="color:red">{{ $message }}<br></span> @enderror<br>
                             </div>
                             
                             <button class="btn btn-secondary" type="button" wire:click="back(30)">Atras</button>
@@ -877,14 +863,10 @@
                     <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
                             <div class="form-group">
 
-                                <label for="title">27.- ¿Es atendido oportuna y satisfactoriamente en el tiempo de solventación en cuanto a las dudas de los reactivos observados por el Ente Fiscalizador Local (ASM)?</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre27" value="1" {{ $pre27 = '1' ? "checked" : "" }}> Si</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre27" value="0" {{ $pre27 = '0' ? "checked" : "" }}> No</label><br>
-                                @error('pre27') <span style="color:red">{{ $message }}</span> @enderror
-
-                                <br><label for="title">¿Por qué?</label><br>
-                                <input type="text" wire:model="porque27" class="form-control" id="resporque27" placeholder="¿Por qué?">
-                                @error('porque27') <span style="color:red">{{ $message }}<br></span> @enderror<br>
+                                <label for="title">25.- ¿Consideras necesario reforzar la capacitación en el uso de la plataforma SEvAC, para la mejora de la evaluación?</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre24" value="1" {{ $pre24 = '1' ? "checked" : "" }}> Si</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre24" value="0" {{ $pre24 = '0' ? "checked" : "" }}> No</label><br>
+                                @error('pre24') <span style="color:red">{{ $message }}</span> @enderror
 
                             </div>
                             
@@ -901,38 +883,116 @@
                     <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
                             <div class="form-group">
 
-                                <label for="title">28.- ¿Describa lo que sugiere que debería implementar el Ente Fiscalizador Local (ASM), para su mejor atención en cuanto a las evaluaciones relacionadas con el SEvAC?</label><br>
+                            <label for="title">26.- ¿Sobre qué temas de capacitación que se enlistan a continuación consideras que pudieran apoyarte para la mejora de la evaluación contable?</label><br>
+                            <input type="checkbox" value="1" wire:model="pre251" name="zoomCheck" {{ $pre251 = '1' ? "checked" : ""  }}>&nbsp 1. Curso-Taller: Manual de Contabilidad Gubernamental, Inducción para su elaboración.<br>
+                            <input type="checkbox" value="1" wire:model="pre252" name="zoomCheck" {{ $pre252 = '1' ? "checked" : ""  }}>&nbsp 2. Clasificadores Presupuestarios y su Vinculación con el Plan de Cuentas.<br>
+                            <input type="checkbox" value="1" wire:model="pre253" name="zoomCheck" {{ $pre253 = '1' ? "checked" : ""  }}>&nbsp 3. Registro Presupuestario y Patrimonial del Ingreso Público.<br>
+                            <input type="checkbox" value="1" wire:model="pre254" name="zoomCheck" {{ $pre254 = '1' ? "checked" : ""  }}>&nbsp 4. Registro Presupuestario y Patrimonial del Gasto Público.<br>
+                            <input type="checkbox" value="1" wire:model="pre255" name="zoomCheck" {{ $pre255 = '1' ? "checked" : ""  }}>&nbsp 5. Administración y Registro de Bienes Patrimoniales.<br>
+                            <input type="checkbox" value="1" wire:model="pre256" name="zoomCheck" {{ $pre256 = '1' ? "checked" : ""  }}>&nbsp 6. Integración de Estados e Informes Financieros.<br>
+                            <input type="checkbox" value="1" wire:model="pre257" name="zoomCheck" {{ $pre257 = '1' ? "checked" : ""  }}>&nbsp 7. Notas a los Estados Financieros.<br>
+                            <input type="checkbox" value="1" wire:model="pre258" name="zoomCheck" {{ $pre258 = '1' ? "checked" : ""  }}>&nbsp 8. Integración y Rendición de la Cuenta Pública Armonizada.<br>
+                            <input type="checkbox" value="1" wire:model="pre259" name="zoomCheck" {{ $pre259 = '1' ? "checked" : ""  }}>&nbsp 9. Transparencia de la Información Financiera (Título V LGCG).<br>
+                            <input type="checkbox" value="1" wire:model="pre2510" name="zoomCheck" {{ $pre2510 = '1' ? "checked" : ""  }}>&nbsp 10. Entrega-Recepción de la Hacienda Municipal.<br>
+                            <input type="checkbox" value="1" wire:model="pre2511" name="zoomCheck" {{ $pre2511 = '1' ? "checked" : ""  }}>&nbsp 11. Mejora de los Resultados de la Evaluación de la Armonización Contable (SEvAC).<br>
+
+                            </div>
+                            
+                            <button class="btn btn-secondary" type="button" wire:click="back(33)">Atras</button>
+                            <button class="btn btn-primary" wire:click="thirtythirdStepSubmit" type="button" >Siguiente</button>
+                    </div>
+                </div>
+            </div>
+
+        <!-- ************** STEP 34 **************** -->
+        <div class="row setup-content {{ $currentStep != 34 ? 'displayNone' : '' }}" id="step-34">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
+                            <div class="form-group">
+
+                                <label for="title">27.- ¿Es atendido oportunamente por el Ente Fiscalizador Local (ASM), para disipar sus dudas respecto a las observaciones de los reactivos evaluados?</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre26" value="1" {{ $pre26 = '1' ? "checked" : "" }}> Si</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre26" value="0" {{ $pre26 = '0' ? "checked" : "" }}> No</label><br>
+                                @error('pre26') <span style="color:red">{{ $message }}</span> @enderror
+
+                                <br><label for="title">¿Por qué?</label><br>
+                                <input type="text" wire:model="porque26" class="form-control" id="resporque26" placeholder="¿Por qué?">
+                                @error('porque26') <span style="color:red">{{ $message }}<br></span> @enderror<br>
+
+                            </div>
+                            
+                            <button class="btn btn-secondary" type="button" wire:click="back(34)">Atras</button>
+                            <button class="btn btn-primary" wire:click="thirtyfourthStepSubmit" type="button" >Siguiente</button>
+                    </div>
+                </div>
+            </div>
+
+        <!-- ************** STEP 35 **************** -->
+        <div class="row setup-content {{ $currentStep != 35 ? 'displayNone' : '' }}" id="step-35">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
+                            <div class="form-group">
+
+                                <label for="title">28.- ¿Es atendido oportuna y satisfactoriamente en el tiempo de solventación en cuanto a las dudas de los reactivos observados por el Ente Fiscalizador Local (ASM)?</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre27" value="1" {{ $pre27 = '1' ? "checked" : "" }}> Si</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="pre27" value="0" {{ $pre27 = '0' ? "checked" : "" }}> No</label><br>
+                                @error('pre27') <span style="color:red">{{ $message }}</span> @enderror
+
+                                <br><label for="title">¿Por qué?</label><br>
+                                <input type="text" wire:model="porque27" class="form-control" id="resporque27" placeholder="¿Por qué?">
+                                @error('porque27') <span style="color:red">{{ $message }}<br></span> @enderror<br>
+
+                            </div>
+                            
+                            <button class="btn btn-secondary" type="button" wire:click="back(34)">Atras</button>
+                            <button class="btn btn-primary" wire:click="thirtyfifthStepSubmit" type="button" >Siguiente</button>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- ************** STEP 36 **************** -->
+                    <div class="row setup-content {{ $currentStep != 36 ? 'displayNone' : '' }}" id="step-36">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
+                            <div class="form-group">
+
+                                <label for="title">29.- ¿Describa lo que sugiere que debería implementar el Ente Fiscalizador Local (ASM), para su mejor atención en cuanto a las evaluaciones relacionadas con el SEvAC?</label><br>
                                 <textarea type="text" wire:model="pre28" class="form-control" id="resnoSys" placeholder="Sugerencias"> </textarea><br>
                                 @error('pre28') <span style="color:red">{{ $message }}</span> @enderror
 
 
                             </div>
                             
-                            <button class="btn btn-secondary" type="button" wire:click="back(32)">Atras</button>
-                            <button class="btn btn-primary" wire:click="thirtythirdStepSubmit" type="button" >Siguiente</button>
+                            <button class="btn btn-secondary" type="button" wire:click="back(35)">Atras</button>
+                            <button class="btn btn-primary" wire:click="thirtysixthStepSubmit" type="button" >Siguiente</button>
                     </div>
                 </div>
             </div>
 
-                    <!-- ************** STEP 34 **************** -->
-                    <center><div class="row setup-content {{ $currentStep != 34 ? 'displayNone' : '' }}" id="step-34">
-        <div class="col-xs-12">
+                    <!-- ************** STEP 37 **************** -->
+                    <div class="row setup-content {{ $currentStep != 37 ? 'displayNone' : '' }}" id="step-37">
+                <div class="col-xs-12">
                     <div class="col-md-12">
-                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br><br><br>
-                            <div class="form-group">
-                                <h4>Presione el botón de Enviar para terminar o revise de nuevo las preguntas.<h4><br>
+                    <br><br><br><h3><center> II. CAPACITACIÓN Y EVALUACIÓN.</center></h3><br>
 
 
-                            </div>
-                            <button class="btn btn-secondary" type="button" wire:click="back(33)">Atras</button>
-                            <button class="btn btn-success" wire:click="submitForm" type="button">Enviar</button>
+                            <h5><center>Presione el botón de enviar para registrar sus respuestas al cuestionario, o regrese para revisar las respuestas.</center></h5><br>
+                                
+                                
+
                             
+                            <br><button class="btn btn-secondary" type="button" wire:click="back(36)">Atras</button>
+                            <button class="btn btn-success" wire:click="submitForm" type="button" >Enviar</button>
                     </div>
                 </div>
-            </div></center>
+            </div>
 
-                    <!-- ************** STEP 35 **************** -->
-                    <div class="row setup-content {{ $currentStep != 35 ? 'displayNone' : '' }}" id="step-35">
+            
+                    <!-- ************** STEP 38 **************** -->
+                    <div class="row setup-content {{ $currentStep != 38 ? 'displayNone' : '' }}" id="step-38">
                 <div class="col-xs-12">
                     <div class="col-md-12">
                             <center><h3>{{$email}} Ha respondido la encuesta, gracias por participar.</h3><br>
@@ -940,7 +1000,6 @@
                     </div>
                 </div>
             </div>
-
 
 
 

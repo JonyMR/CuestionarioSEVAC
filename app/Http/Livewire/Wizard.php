@@ -17,7 +17,7 @@ class Wizard extends Component
     $InstC10, $RegCont10, $RepCont10, $ClasP11, $RegPre11, $RepPre11, $PrePro11, $ContBie12, $RecFed12, $ContCont13, $ContPre13, 
     $ContProg13, $TVAn14, $TVTri14, $OtrAn14, $OtrTri14, $ResGenCon15, $TomoPE15, $TomoPL15, $TomoPJ15, $TomoOA15, $InfFin15, $TomoSP15,   
     $ResGenCon16, $InfFinMun16, $TomoSP16, $InfFin16, $pre17, $pre18, $pre19, $pre20, $zoom, $meet, $skype, $teams, $nitropdf, $adobe, $anydesk, $teamviwer,
-    $otrasHerramientas, $Cantidad22, $Temas22, $Impartido22, $Area22, $pre23, $area23, $pre24, $pre251, $pre252, $pre253, $pre254, $pre255, $pre256,
+    $otrasHerramientas, $pre22, $link, $linklgcg, $motivo, $Cantidad22, $Temas22, $Impartido22, $Area22, $pre23, $area23, $pre24, $pre251, $pre252, $pre253, $pre254, $pre255, $pre256,
     $pre257, $pre258, $pre259, $pre2510, $pre2511, $pre26, $porque26, 
     $pre27, $porque27, $pre28;
 
@@ -687,14 +687,74 @@ class Wizard extends Component
         ],['otrasHerramientas.required' => 'Por favor seleccione una opción.']);
 
         $this->currentStep = 27;
-    } 
-
+    }
+    
      /********************************************************************************************************
      * Step 27 Pregunta 22
      *
      * @return response()
      */
     public function twentyseventhStepSubmit()
+    {
+        $validatedData = $this->validate([
+
+            'pre22' => 'required',
+
+        ],['pre22.required' => 'Por favor seleccione una opción.']);
+
+        if ($this->pre22) {
+            
+            $this->currentStep = 28;
+        }else {
+            
+            $this->currentStep = 29;
+        }
+    }
+
+     /********************************************************************************************************
+     * Step 28 si en pregunta 22 dijo que si
+     *
+     * @return response()
+     */
+    public function twentyeigthStepSubmit()
+    {
+        $validatedData = $this->validate([
+
+            'link' => 'required|url',
+            'linklgcg' => 'required|url',
+            
+
+        ],[
+        'link.required' => 'Este campo es obligatorio.',
+        'link.url' => 'Por favor ingrese un link válido.',
+        'linklgcg.required' => 'Este campo es obligatorio.',
+        'link.linklgcg' => 'Por favor ingrese un link válido.'
+    ]);
+
+        $this->currentStep = 30;
+    }
+         /********************************************************************************************************
+     * Step 29 si en pregunta 22 dijo que no
+     *
+     * @return response()
+     */
+    public function twentyninethStepSubmit()
+    {
+        $validatedData = $this->validate([
+
+            'motivo' => 'required',
+
+        ],['motivo.required' => 'Por favor ingresa el motivo.']);
+
+        $this->currentStep = 30;
+    }  
+
+     /********************************************************************************************************
+     * Step 30 Pregunta 22
+     *
+     * @return response()
+     */
+    public function thirtiesthStepSubmit()
     {
         $validatedData = $this->validate([
             'Cantidad22' => 'required|numeric',
@@ -709,15 +769,15 @@ class Wizard extends Component
             'Area22.required' => 'Por favor mencione que área recibió la capacitación.',
         ]);
 
-        $this->currentStep = 28;
+        $this->currentStep = 31;
     }
 
      /********************************************************************************************************
-     * Step 28 Pregunta 23
+     * Step 31 Pregunta 23
      *
      * @return response()
      */
-    public function twentyeightStepSubmit()
+    public function thirtyfirstStepSubmit()
     {
         $validatedData = $this->validate([
             'pre23' => 'required',
@@ -727,15 +787,15 @@ class Wizard extends Component
             'area23.required' => 'Este campo es obligatorio.',
         ]);
 
-        $this->currentStep = 29;
+        $this->currentStep = 32;
     }
 
      /********************************************************************************************************
-     * Step 29 Pregunta 24
+     * Step 32 Pregunta 24
      *
      * @return response()
      */
-    public function twentyninethStepSubmit()
+    public function thirtysecondStepSubmit()
     {
         $validatedData = $this->validate([
             'pre24' => 'required',
@@ -743,15 +803,15 @@ class Wizard extends Component
             'pre24.required' => 'Por favor selecciona una opción.'
         ]);
 
-        $this->currentStep = 30;
+        $this->currentStep = 33;
     }
 
      /********************************************************************************************************
-     * Step 30 Pregunta 25
+     * Step 33 Pregunta 25
      *
      * @return response()
      */
-    public function thirtiethStepSubmit()
+    public function thirtythirdStepSubmit()
     {
         $validatedData = $this->validate([
 
@@ -769,15 +829,15 @@ class Wizard extends Component
 
         ]);
 
-        $this->currentStep = 31;
+        $this->currentStep = 34;
     }
 
      /********************************************************************************************************
-     * Step 31 Pregunta 26
+     * Step 34 Pregunta 26
      *
      * @return response()
      */
-    public function thirtyfirstStepSubmit()
+    public function thirtyfourthStepSubmit()
     {
         $validatedData = $this->validate([
             'pre26' => 'required',
@@ -787,15 +847,15 @@ class Wizard extends Component
             'porque26.required' => 'Este campo es obligatorio.'
         ]);
 
-        $this->currentStep = 32;
+        $this->currentStep = 35;
     }
 
      /********************************************************************************************************
-     * Step 32 Pregunta 27
+     * Step 35 Pregunta 27
      *
      * @return response()
      */
-    public function thirtysecondStepSubmit()
+    public function thirtyfifthStepSubmit()
     {
         $validatedData = $this->validate([
             'pre27' => 'required',
@@ -805,15 +865,15 @@ class Wizard extends Component
             'porque27.required' => 'Este campo es obligatorio.'
         ]);
 
-        $this->currentStep = 33;
+        $this->currentStep = 36;
     }
 
      /********************************************************************************************************
-     * Step 33 Pregunta 28
+     * Step 36 Pregunta 28
      *
      * @return response()
      */
-    public function thirtythirdStepSubmit()
+    public function thirtysixthStepSubmit()
     {
         $validatedData = $this->validate([
             'pre28' => 'required',
@@ -821,16 +881,16 @@ class Wizard extends Component
             'pre28.required' => 'Este campo es obligatorio.'
         ]);
 
-        $this->currentStep = 34;
+        $this->currentStep = 37;
     }
 
 
         /**********************************************************************************************************
-     * Step 35
+     * Step 37
      *
      * @return response()
      */
-    public function thirtyfifthStepSubmit()
+    public function thirtyseventhStepSubmit()
     {
 
         $this->currentStep = 0;
@@ -924,6 +984,10 @@ class Wizard extends Component
                     'anydesk' => $this->anydesk,
                     'teamviwer' => $this->teamviwer,
                     'otrasHerramientas' => $this->otrasHerramientas,
+                    'pre22' => $this->pre22,
+                    'link' => $this->link,
+                    'linklgcg' => $this->linklgcg,
+                    'motivo' => $this ->motivo,
                     'Cantidad22' => $this->Cantidad22,
                     'Temas22' => $this->Temas22,
                     'Impartido22' => $this->Impartido22,
@@ -954,7 +1018,7 @@ class Wizard extends Component
   
         $this->clearForm();
   
-        $this->currentStep = 35;
+        $this->currentStep = 38;
     }
   
     /**
@@ -970,7 +1034,7 @@ class Wizard extends Component
     public function checkMail(){
         if(DB::table('respuestas')->where('email', $this->email)->exists()){
             $this -> mailMessage = 'Este correo ya respondio la encuesta';
-            $this->currentStep = 35;
+            $this->currentStep = 38;
         }
     }
 
@@ -1048,6 +1112,10 @@ class Wizard extends Component
         $this->anydesk = '';
         $this->teamviwer = '';
         $this->otrasHerramientas = '';
+        $this->pre22 = '';
+        $this->link = '';
+        $this->linklgcg = '';
+        $this->motivo = '';
         $this->Cantidad22 = '';
         $this->Temas22 = '';
         $this->Impartido22 = '';
@@ -1071,6 +1139,7 @@ class Wizard extends Component
         $this->pre27 = '';
         $this->porque27 = '';
         $this->pre28 = '';
+        $this->successMessage = '';
     }
 
 }
