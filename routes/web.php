@@ -25,3 +25,4 @@ Route::get('completo', function () {
 Route::get('consultar', function () {
     return view('consultar');
 });
+

@@ -8,8 +8,8 @@ class Tablarespuestas extends Component
 {
     public function render()
     {
-        
-        return view('livewire.tablarespuestas');
+        $query = \DB::table('respuestas')->get();
+        return view('livewire.tablarespuestas')->with('respuestas', $query);
     }
 
 }

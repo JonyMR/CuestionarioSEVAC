@@ -11,6 +11,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
+        "maatwebsite/excel": "^3.1.48",
         "rappasoft/laravel-livewire-tables": "^2.12"
     },
     "require-dev": {
