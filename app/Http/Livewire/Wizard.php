@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Respuesta;
 use Illuminate\Support\Facades\DB;
+use App\Models\Entes;
   
 class Wizard extends Component
 {
@@ -1942,5 +1943,41 @@ class Wizard extends Component
         $this->pre28 = '';
         $this->successMessage = '';
     }
+
+    public $showdiv = false;
+    public $search = "";
+    public $records;
+    public $empDetails;
+
+    // Fetch records
+    public function searchResult(){
+
+        if(!empty($this->search)){
+
+            $this->records = Entes::select('*')
+                      ->where('ente','like','%'.$this->search.'%')
+                      ->limit(5)
+                      ->get();
+
+            $this->showdiv = true;
+        }else{
+            $this->showdiv = false;
+        }
+    }
+
+    // Fetch record by ID
+    public function fetchEntesDetail($id = 0){
+
+        $record = Entes::select('ente')
+                    ->where('id',$id)
+                    ->first();
+
+        $this->search = $record->ente;
+        $this->ente = $record->ente;
+
+        $this->showdiv = false;
+    }
+
+    
 
 }

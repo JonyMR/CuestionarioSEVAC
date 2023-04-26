@@ -95,8 +95,25 @@
                             <input type="text" wire:model="area" class="form-control" id="resarea" placeholder="Rec. Financieros" wire:click = "checkMail">
                             @error('area') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <br><label for="title">4.- Ingresa el Ente Público al que perteneces:</label>
-                            <input type="text" wire:model="ente" class="form-control" id="resente" placeholder="Secretaría de Finanzas" wire:click = "checkMail">
+                            <br><label for="title">4.- Ingresa el Ente Público al que perteneces: {{$ente}}</label>
+
+
+                            <div class="form-group">
+                                <input type='text' wire:model="search" wire:keyup="searchResult" class="form-control" placeholder="Secretaría de Finanzas" wire:click = "checkMail">
+
+                                <!-- Search result list -->
+                                @if($showdiv)
+                                    <ul class="list-group">
+                                        @if(!empty($records))
+                                            @foreach($records as $record)
+                                                <button  class="list-group-item list-group-item-action" wire:click="fetchEntesDetail({{ $record->id }})">{{ $record->ente}}</li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                @endif
+                                <div class="clear"></div>
+                            </div>
+                            <!--<input type="text" wire:model="search" class="form-control" id="resente" placeholder="Secretaría de Finanzas" wire:click = "checkMail">-->
                             @error('ente') <span style="color:red">{{ $message }}<br></span> @enderror
 
                             

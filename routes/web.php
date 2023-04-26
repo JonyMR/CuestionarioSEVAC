@@ -26,3 +26,9 @@ Route::get('consultar', function () {
     return view('consultar');
 });
 
+
+Route::get('ooo', function () {
+    return view('search');
+});
+
+
