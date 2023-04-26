@@ -38,52 +38,128 @@ return new class extends Migration
             $table -> date('lastRes')->nullable();
 
             $table -> boolean('pre7')->default(0);
+            $table -> boolean('usb')->default(0);
+            $table -> boolean('ddext')->default(0);
+            $table -> boolean('cddvd')->default(0);
+            $table -> boolean('nube')->default(0);
+            $table -> boolean('otroequipo')->default(0);
             //Preguntas si en la 7 responde que no:
             $table -> longText('noRes')->nullable();
 
             $table -> boolean('pre8')->default(0);
 
             $table -> boolean('pre9')->default(0);
+
+
             //Campos a llenar si en la 9 responde que si:
+            $table -> integer('SRegCont9')->nullable();
             $table -> integer('RegCont9')->nullable();
+
+            $table -> integer('SRegPre9')->nullable();
             $table -> integer('RegPre9')->nullable();
+
+            $table -> integer('SRegAdm9')->nullable();
             $table -> integer('RegAdm9')->nullable();
+
+            $table -> integer('SRegTra9')->nullable();
             $table -> integer('RegTra9')->nullable();
+
+            $table -> integer('SRegCP9')->nullable();
             $table -> integer('RegCP9')->nullable();
 
+            //Pregunta 10
+            $table -> integer('SInstC10')->default(0);
             $table -> integer('InstC10')->default(0);
+
+            $table -> integer('SRegCont10')->default(0);
             $table -> integer('RegCont10')->default(0);
+
+            $table -> integer('SRepCont10')->default(0);
             $table -> integer('RepCont10')->default(0);
 
+            //Pregunta 11
+            $table -> integer('SClasP11')->default(0);
             $table -> integer('ClasP11')->default(0);
+            
+            $table -> integer('SRegPre11')->default(0);
             $table -> integer('RegPre11')->default(0);
+
+            $table -> integer('SRepPre11')->default(0);
             $table -> integer('RepPre11')->default(0);
+
+            $table -> integer('SPrePro11')->default(0);
             $table -> integer('PrePro11')->default(0);
 
+            //Pregunta 12
+            $table -> integer('SContBie12')->default(0);
             $table -> integer('ContBie12')->default(0);
+            
+            $table -> integer('SRecFed12')->default(0);
             $table -> integer('RecFed12')->default(0);
 
+            //Pregunta 13
+            $table -> integer('SContCont13')->default(0);
             $table -> integer('ContCont13')->default(0);
+
+            $table -> integer('SContPre13')->default(0);
             $table -> integer('ContPre13')->default(0);
+
+            $table -> integer('SContProg13')->default(0);
             $table -> integer('ContProg13')->default(0);
 
+            //Pregunta 14
+            $table -> integer('STVAn14')->default(0);
             $table -> integer('TVAn14')->default(0);
+
+            $table -> integer('STVTri14')->default(0);
             $table -> integer('TVTri14')->default(0);
+
+            $table -> integer('SOtrAn14')->default(0);
             $table -> integer('OtrAn14')->default(0);
+
+            $table -> integer('SOtrTri14')->default(0);
             $table -> integer('OtrTri14')->default(0);
 
+            //Pregunta 15
+
+            $table -> integer('SResGenCon15')->default(0);
             $table -> integer('ResGenCon15')->default(0);
+
+            $table -> integer('STomoPE15')->default(0);           
             $table -> integer('TomoPE15')->default(0);
+
+            $table -> integer('STomoPL15')->default(0);
             $table -> integer('TomoPL15')->default(0);
+
+            $table -> integer('STomoPJ15')->default(0);
             $table -> integer('TomoPJ15')->default(0);
+
+            $table -> integer('STomoOA15')->default(0);
             $table -> integer('TomoOA15')->default(0);
+
+            $table -> integer('SInfFin15')->default(0);
             $table -> integer('InfFin15')->default(0);
+
+            $table -> integer('STomoSP15')->default(0);
             $table -> integer('TomoSP15')->default(0);
 
+            //Pregunta 16
+
+            $table -> integer('SResGenCon16')->default(0);
             $table -> integer('ResGenCon16')->default(0);
+
+            $table -> integer('SInfFinMun16')->default(0);
             $table -> integer('InfFinMun16')->default(0);
+
+            $table -> integer('STomoSP16')->default(0);
             $table -> integer('TomoSP16')->default(0);
+
+            $table -> integer('SInfFin16')->default(0);
             $table -> integer('InfFin16')->default(0);
+            
+
+
+
 
             $table -> string('pre17')->nullable();
             $table -> string('pre18')->nullable();
@@ -152,6 +228,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('responses');
+        Schema::dropIfExists('respuestas');
     }
 };

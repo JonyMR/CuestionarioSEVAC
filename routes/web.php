@@ -20,3 +20,8 @@ Route::get('/', function () {
 Route::get('completo', function () {
     return view('completo');
 });
+
+
+Route::get('consultar', function () {
+    return view('consultar');
+});
