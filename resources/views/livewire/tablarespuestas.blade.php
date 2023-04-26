@@ -1,23 +1,34 @@
 
-
 <style>
       th, td {
     border: 1px solid blue;
-    width: 300px;
+    width: 260px;
     word-wrap: break-word;
 }
+
 table{
     table-layout: fixed;
-    width: 100px;
-    font-size: 12px;
+    font-size: 10px;
 }
+
+div { 
+  margin-left:18px;
+    }
+.headcol {
+  position:absolute;
+    width:130px;
+    left:1px;
+    background:#F4F4F4;
+
+    }
 </style>
 
 <div class="table-responsive">
-<table class="table table-sm table-hover table-bordered">
+
+<table class="table table-sm table-bordered sticky" id="data">
   <thead class = "table-dark">
     <tr align="center">
-      <th scope="col">Email</th>
+      <th class="headcol" scope="col" style="color:black">Email</th>
       <th scope="col">Nombre</th>
       <th scope="col">Cargo</th>
       <th scope="col">Area</th>
@@ -160,14 +171,14 @@ table{
       <th scope="col">Pregunta 28</th>
       <th scope="col">28 Motivo</th>
       <th scope="col">Pregunta 29</th>
-      <th scope="col">Fecha y Hore de Registro</th>
+      <th scope="col">Fecha y Hora de Registro</th>
       
     </tr>
   </thead>
   <tbody>
   @foreach($respuestas as $respuesta)
     <tr align="center">
-            <td>{{$respuesta->email}}</td>
+            <td class="headcol">{{$respuesta->email}}</td>
             <td>{{$respuesta->nombre}}</td>
             <td>{{$respuesta->cargo}}</td>
             <td>{{$respuesta->area}}</td>
@@ -297,4 +308,6 @@ table{
     @endforeach
   </tbody>
 </table>
+
 </div>
+
