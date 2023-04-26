@@ -95,7 +95,7 @@
                             <input type="text" wire:model="area" class="form-control" id="resarea" placeholder="Rec. Financieros" wire:click = "checkMail">
                             @error('area') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <br><label for="title">4.- Ingresa el Ente Público al que perteneces: {{$ente}}</label>
+                            <br><label for="title">4.- Ingresa el Ente Público al que perteneces:</label>
 
 
                             <div class="form-group">
