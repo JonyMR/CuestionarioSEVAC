@@ -1,627 +1,794 @@
-<div>
-        @if(!empty($successMessage))
-        <div class="alert alert-success">
-        {{ $successMessage }}
-        </div>
-        @endif
-    <div class="form-group">
-        
-    <h3>Objetivo.</h3>
-    <p>Identificar la situación que guardan en materia de evaluación, los elementos que conforman los resultados del SEvAC, de cada uno de los entes Públicos
-    del Estado para estar en condiciiones de sugerir alternativas de solución en sus procesos de armonización contable.</p>
+<div class="form-group">
 
-    <h3>Importancia.</h3>
-    <p>Para el llenado del presente cuestionario, se requiere que el personal sea el responsable de las áreas de los entes públicos que guarden relación con 
+<h3>Objetivo.</h3>
+<p>Identificar la situación que guardan en materia de evaluación, los elementos que conforman los resultados del SEvAC de cada uno de los entes Públicos
+    del Estado para estar en condiciones de sugerir alternativas de solución en sus procesos de armonización contable.</p>
+
+<h3>Importancia.</h3>
+<p>Para el llenado del presente cuestionario, se requiere que el personal sea el responsable de las áreas de los entes públicos que guarden relación con 
     los temas contables, presupuestarios, administrativos, transparencia y de informática.</p>
 
-    <p>Deberá contar con la información soporte a nivel detalle(reactivos, secciones y apartados) de las últimas evaluaciones SEvAC de su respectivo Ente 
+<p>El personal deberá contar con la información soporte a nivel detalle (reactivos, secciones y apartados) de las últimas evaluaciones SEvAC de su respectivo Ente 
     Público.</p>
 
-    <p>El área informática deberá tener claridad sobre los elementos que dan soporte a los procesos contemplados en el SEvAC, en tiempo real 
-    y de otra temporalidad.</p>
-
+<p>Para el caso del área informática deberá tener claridad sobre los elementos que dan soporte a los procesos contemplados en el SEvAC, en tiempo real 
+    y de otra temporalidad.
+</p>
+</div>
+<p>--------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
 <br><h4>DATOS DEL ENTE PÚBLICO.</h4>
-                            <label for="title">1.- Ingresa tu correo electrónico:</label>
-                            <input type="text" wire:model="email" class="form-control" id="correo" placeholder="usuario@ejemplo.com" name = "correo" wire:keydown.tab="checkMail">
+<label for="title">1.- Ingresa el correo electrónico oficial:</label>
+<input type="text" wire:model="email" class="form-control" id="correo" placeholder="usuario@ejemplo.com" name = "correo" wire:keydown.tab="checkMail">
+@error('email') <span style="color:red">{{ $message }}<br></span> @enderror
+<br><label for="title">2.- Ingresa el nombre completo y cargo de quién realiza la captura:</label>
+<input type="text" wire:model="nombre" class="form-control" id="resnombre" placeholder="Jhon Doe" wire:click = "checkMail">
+@error('nombre') <span style="color:red">{{ $message }}<br></span> @enderror
                             
-                            @error('email') <span style="color:red">{{ $message }}<br></span> @enderror
+<p></p><input type="text" wire:model="cargo" class="form-control" id="rescargo" placeholder="Jefe de Dpto." wire:click = "checkMail">
+@error('cargo') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                            <br><label for="title">2.- Ingresa tu nombre completo y cargo:</label>
-                            <input type="text" wire:model="nombre" class="form-control" id="resnombre" placeholder="Jhon Doe" wire:click = "checkMail">
-                            @error('nombre') <span style="color:red">{{ $message }}<br></span> @enderror
+<br><label for="title">3.- Ingresa el área de quién realiza la captura:</label>
+<input type="text" wire:model="area" class="form-control" id="resarea" placeholder="Rec. Financieros" wire:click = "checkMail">
+@error('area') <span style="color:red">{{ $message }}<br></span> @enderror
+
+<br><label for="title">4.- Ingresa el nombre del Ente Público:</label>
+
+<div class="form-group">
+<input type='text' wire:model="search" wire:keyup="searchResult" class="form-control" placeholder="Secretaría de Finanzas" wire:click = "checkMail">
+
+                                <div class="clear"></div>
+                            </div>
+                            <!--<input type="text" wire:model="search" class="form-control" id="resente" placeholder="Secretaría de Finanzas" wire:click = "checkMail">-->
                             
-                            <p></p><input type="text" wire:model="cargo" class="form-control" id="rescargo" placeholder="Jefe de Dpto." wire:click = "checkMail">
-                            @error('cargo') <span style="color:red">{{ $message }}<br></span> @enderror
-
-                            <br><label for="title">3.- Ingresa tu Área de Adscripción:</label>
-                            <input type="text" wire:model="area" class="form-control" id="resarea" placeholder="Rec. Financieros" wire:click = "checkMail">
-                            @error('area') <span style="color:red">{{ $message }}<br></span> @enderror
-
-                            <br><label for="title">4.- Ingresa el Ente Público al que perteneces:</label>
-                            <input type="text" wire:model="ente" class="form-control" id="resente" placeholder="Secretaría de Finanzas" wire:click = "checkMail">
                             @error('ente') <span style="color:red">{{ $message }}<br></span> @enderror
-                    
-                            <label for="title">5.- ¿Cuenta actualmente con un Sistema Informático que le ayude a realizar los registros contables y presupuestales 
+                        </div>
+<p>----------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+                            <div class="form-group">
+                                <label for="title">5.- ¿Cuenta actualmente con un Sistema Informático que le ayude a realizar los registros contables y presupuestales 
                                     del proceso de la Contabilidad Gubernamental?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre5" checked value="1" {{ $pre5 = '1' ? "checked" : "" }}> Si</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre5" value="0" {{ $pre5 = '0' ? "checked" : "" }}> No</label>
-                                <br>@error('pre5') <span style="color:red">{{ $message }}<br></span> @enderror
+                                <div class="form-group">
 
-                                <label for="title">¿Cuál es el nombre del Sistema que utiliza?</label><br>
+                                <label for="title">¿Cuál es el nombre del Sistema informático de contabilidad gubernamiental que utiliza?</label><br>
                                 <input type="text" wire:model="nameSys" class="form-control" id="resnameSys" placeholder="Nombre del Sistema">
                                 @error('nameSys') <span style="color:red">{{ $message }}<br></span> @enderror<br>
 
                                 <label for="title">Su Sistema es:</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="cadp" value="Comprado" {{ $cadp = 'Comprado' ? "checked" : "" }}> Comprado</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="cadp" value="Arrendado" {{ $cadp = 'Arrendado' ? "checked" : "" }}> Arrendado</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="cadp" value="Propio" {{ $cadp = 'Propio' ? "checked" : "" }}> Desarrollo Propio</label><br>
-                                @error('cadp') <span style="color:red">{{ $message }}<br></span> @enderror
-
-                                <label for="title">¿Con qué documentación cuenta?</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="docsSys" value="manual" {{ $docsSys = 'manual' ? "checked" : "" }}> Manual de Usuario</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="docsSys" value="procesos" {{ $docsSys = 'procesos' ? "checked" : "" }}> Documentación de Procesos</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="docsSys" value="manual y procesos" {{ $docsSys = 'ambos' ? "checked" : "" }}> Ambos</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="docsSys" value="ninguno" {{ $docsSys = 'ninguno' ? "checked" : "" }}> Ninguno</label><br>
-                                @error('docsSys') <span style="color:red">{{ $message }}<br></span> @enderror   
-
-                                <label for="title">¿Desde cuando usa este Sistema?</label><br>
-                                <input type="date" class="form-control col-3" id="fstartSys" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="startSys"><br>
-                                @error('startSys') <span style="color:red">{{ $message }}<br></span> @enderror
-
-                                <br><label for="title">¿Cuándo fue la última vez que se realizaron acualizaciones al Sistema apegadas a las normas emitidas por el LGCG?</label><br>
-                                <input type="date" id="fupdSys" class="form-control col-3" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="updSys"><br>
-                                @error('updSys') <span style="color:red">{{ $message }}<br></span> @enderror
-
-                                <label for="title">¿Por qué?</label><br>
-                                <textarea type="text" wire:model="noSys" class="form-control" id="resnoSys" placeholder="Motivo por el que no cuenta con un Sistema"> </textarea><br>
-                                @error('noSys') <span style="color:red">{{ $message }}<br></span> @enderror
-
+                                <div class="form-group">
                                 <label for="title">Ingresa la empresa a la que le compraste el Sistema:</label><br>
                                 <input type="text" wire:model="infSys" class="form-control" id="resinfSys" placeholder="Nombre de la Empresa"><br>
                                 @error('infSys') <span style="color:red">{{ $message }}<br></span> @enderror
 
+                            </div>
+                                <label class="radio-inline"><input type="radio" wire:model="cadp" value="Arrendado" {{ $cadp = 'Arrendado' ? "checked" : "" }}> Arrendado</label><br>
+                                <div class="form-group">
                                 <label for="title">Ingresa la empresa a la que le arrendas el Sistema:</label><br>
                                 <input type="text" wire:model="infSys" class="form-control" id="resinfSys" placeholder="Nombre de la Empresa"><br>
                                 @error('infSys') <span style="color:red">{{ $message }}<br></span> @enderror
 
+                            </div>
+                                <label class="radio-inline"><input type="radio" wire:model="cadp" value="Propio" {{ $cadp = 'Propio' ? "checked" : "" }}> Desarrollo Propio</label><br>
+                                <div class="form-group">
                                 <label for="title">¿Con que documentación de tu Sistema Propio cuentas?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="infSys" value="registro" {{ $infSys = 'registro' ? "checked" : "" }}> Registro</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="infSys" value="patente" {{ $infSys = 'patente' ? "checked" : "" }}> Patente</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="infSys" value="ambos" {{ $infSys = 'ambos' ? "checked" : "" }}> Ambos</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="infSys" value="ninguno" {{ $infSys = 'ninguno' ? "checked" : "" }}> Ninguno</label>
                                 <br>@error('infSys') <span style="color:red">{{ $message }}<br></span> @enderror   
+                            </div>
+                                @error('cadp') <span style="color:red">{{ $message }}<br></span> @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="title">¿Con qué documentación cuenta?</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="docsSys" value="manual" {{ $docsSys = 'manual' ? "checked" : "" }}> Manual de Usuario</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="docsSys" value="procesos" {{ $docsSys = 'procesos' ? "checked" : "" }}> Documentación de Procesos</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="docsSys" value="manual y procesos" {{ $docsSys = 'ambos' ? "checked" : "" }}> Ambos</label><br>
+                                <label class="radio-inline"><input type="radio" wire:model="docsSys" value="ninguno" {{ $docsSys = 'ninguno' ? "checked" : "" }}> Ninguno</label><br>
+                                @error('docsSys') <span style="color:red">{{ $message }}<br></span> @enderror   
+                            </div>
+
+
+                            <?php $fcha = date("Y-m-d");?>
+
+                            <div class="form-group">
+                                <label for="title">¿Desde cuándo usa este Sistema informático?</label><br>
+                                <input type="date" class="form-control col-3" id="fstartSys" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="startSys" max="<?php echo $fcha;?>""><br>
+                                @error('startSys') <span style="color:red">{{ $message }}<br></span> @enderror
+
+                                <br><label for="title">¿Cuándo fue la última vez que se realizaron actualizaciones al Sistema apegadas a las normas emitidas por el LGCG?</label><br>
+                                <input type="date" id="fupdSys" class="form-control col-3" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="updSys"><br>
+                                @error('updSys') <span style="color:red">{{ $message }}<br></span> @enderror
+
+                            </div>
+                                <label class="radio-inline"><input type="radio" wire:model="pre5" value="0" {{ $pre5 = '0' ? "checked" : "" }}> No</label>
+                                <br>@error('pre5') <span style="color:red">{{ $message }}<br></span> @enderror
+                                <label for="title">¿Por qué?</label><br>
+                                <textarea type="text" wire:model="noSys" class="form-control" id="resnoSys" placeholder="Motivo por el que no cuenta con un Sistema"> </textarea><br>
+                                @error('noSys') <span style="color:red">{{ $message }}<br></span> @enderror
+
+                            </div>
+                            </div>
+
+                                
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
 
                                 <label for="title">6.- ¿Cuenta con respaldos de la información generada por el Sistema?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre6" value="1" {{ $pre6 = '1' ? "checked" : "" }}> Si</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre6" value="0" {{ $pre6 = '0' ? "checked" : "" }}> No</label>
-                                <br>@error('pre6') <span style="color:red">{{ $message }}</span> @enderror
+                                <div class="form-group">
 
-                                <label for="title">¿Con que periodicidad realizan los respaldos?</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="perioRes" value="diario" {{ $perioRes = 'diario' ? "checked" : "" }}> Diario</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="perioRes" value="semanal" {{ $perioRes = 'semanal' ? "checked" : "" }}> Semanal</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="perioRes" value="mensual" {{ $perioRes = 'mensual' ? "checked" : "" }}> Mensual</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="perioRes" value="anual" {{ $perioRes = 'anual' ? "checked" : "" }}> Anual</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="perioRes" value="evento" {{ $perioRes = 'evento' ? "checked" : "" }}> Por Evento</label>
-                                <br>@error('perioRes') <span style="color:red">{{ $message }}<br></span> @enderror 
+<label for="title">¿Con que periodicidad realizan los respaldos?</label><br>
+<label class="radio-inline"><input type="radio" wire:model="perioRes" value="diario" {{ $perioRes = 'diario' ? "checked" : "" }}> Diario</label><br>
+<label class="radio-inline"><input type="radio" wire:model="perioRes" value="semanal" {{ $perioRes = 'semanal' ? "checked" : "" }}> Semanal</label><br>
+<label class="radio-inline"><input type="radio" wire:model="perioRes" value="mensual" {{ $perioRes = 'mensual' ? "checked" : "" }}> Mensual</label><br>
+<label class="radio-inline"><input type="radio" wire:model="perioRes" value="semestral" {{ $perioRes = 'semestral' ? "checked" : "" }}> Semestral</label><br>
+<label class="radio-inline"><input type="radio" wire:model="perioRes" value="anual" {{ $perioRes = 'anual' ? "checked" : "" }}> Anual</label><br>
+<label class="radio-inline"><input type="radio" wire:model="perioRes" value="evento" {{ $perioRes = 'evento' ? "checked" : "" }}> Por Evento</label>
+<br>@error('perioRes') <span style="color:red">{{ $message }}<br></span> @enderror 
 
-                                <br><label for="title">¿Cuándo fue la última vez que se realizó?</label><br>
-                                <input type="date" class="form-control col-3" id="flastRes" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="lastRes">
-                                <br>@error('lastRes') <span style="color:red">{{ $message }}<br></span> @enderror
+<br><label for="title">¿Cuándo fue la última vez que se realizó?</label><br>
+<input type="date" class="form-control col-3" id="flastRes" name="trip-start" value="2018-07-22" min="2018-01-01" max="2023-12-31" wire:model="lastRes">
+<br>@error('lastRes') <span style="color:red">{{ $message }}<br></span> @enderror
+</div>
+                                <label class="radio-inline"><input type="radio" wire:model="pre6" value="0" {{ $pre6 = '0' ? "checked" : "" }}> No</label><br>
+                                @error('pre6') <span style="color:red">{{ $message }}</span> @enderror<br>
+                                <label >Si su respuesta es no, ¿Por qué?</label><br>
+                                <input type ="text" class="form-control" wire:model = "NoResSys" placeholder ="Explique por que no cuenta con respaldo">
+                                <br>@error('NoResSys') <span style="color:red">{{ $message }}</span> @enderror
+
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
 
                                 <label for="title">7.- ¿Realiza los respaldos en medios externos al Sistema? (USB, Otro equipo, Nube, CD/DVD)?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre7" value="1" {{ $pre7 = '1' ? "checked" : "" }}> Si</label><br>
 
-                                <input type="checkbox" value="1" wire:model="usb">&nbsp Memoria USB<br>
-                                <input type="checkbox" value="1" wire:model="ddext">&nbsp Disco Duro Externo<br>
-                                <input type="checkbox" value="1" wire:model="cddvd">&nbsp CD/DVD<br>
-                                <input type="checkbox" value="1" wire:model="nube">&nbsp Nube<br>
-                                <input type="checkbox" value="1" wire:model="otroequipo">&nbsp Otro Equipo<br><br>
+                                <input type="checkbox" value="1" name="extCheck" wire:model="usb">&nbsp Memoria USB<br>
+                                <input type="checkbox" value="1" name="extCheck" wire:model="ddext">&nbsp Disco Duro Externo<br>
+                                <input type="checkbox" value="1" name="extCheck" wire:model="cddvd">&nbsp CD/DVD<br>
+                                <input type="checkbox" value="1" name="extCheck" wire:model="nube">&nbsp Nube<br>
+                                <input type="checkbox" value="1" name="extCheck" wire:model="otroequipo">&nbsp Otro Equipo<br><br>
                                 
 
                                 <label class="radio-inline"><input type="radio" wire:model="pre7" value="0" {{ $pre7 = '0' ? "checked" : "" }}> No</label>
-                                <br>@error('pre7') <span style="color:red">{{ $message }}</span> @enderror 
+                                <div class="form-group">
+                            <label for="title">¿Por qué?</label><br>
+                                <textarea type="text" wire:model="noRes" class="form-control" id="resnoRes" placeholder="Motivo por el que no realiza respaldos en medios externos."> </textarea><br>
+                                @error('noRes') <span style="color:red">{{ $message }}<br></span> @enderror                                
 
-                                <label for="title">8.- ¿El Sistema contable que utiliza genera la información de conformidad a la normativa de la LGCG y disposiciones
-                                normativas del CONAC?</label><br>
+
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+                            <label for="title">8.- ¿El Sistema contable que utiliza genera la información de conformidad a los manuales de Evaluaciones de la Armonización Contable?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre8" value="1" {{ $pre8 = '1' ? "checked" : "" }}> Si</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre8" value="0" {{ $pre8 = '0' ? "checked" : "" }}> No</label>
-                                <br>@error('pre8') <span style="color:red">{{ $message }}</span> @enderror
+                                <br>@error('pre8') <span style="color:red">{{ $message }}</span> @enderror    
 
-                                <label for="title">9.- ¿El Sistema de Contabilidad Gubernamental que genera la información le permite atender los apartados del SEvAC?</label><br>
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+                            <label for="title">9.- ¿El Sistema de Contabilidad Gubernamental que genera la información le permite atender los apartados del SEvAC?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre9" value="1" {{ $pre9 = '1' ? "checked" : "" }}> Si</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre9" value="0" {{ $pre9 = '0' ? "checked" : "" }}> No</label>
-                                <br>@error('pre9') <span style="color:red">{{ $message }}</span> @enderror
-
-                                <label for="title">Ingresa cuál de los apartados y en qué porcentaje:</label><br>
+                                <div class="form-group">
+                            <label for="title">Ingresa cuál de los apartados y en qué porcentaje:</label><br><br>
                             <center>
                             <form class = "form">
                                         <p></p>
-                                        <p align="center">SEvAC<br>P-1-2022</p>
-                                        <p align="center">Criterio<br>Ente Público</p>
+                                        <p align="center"></p>
+                                        <p></p>
+                                        <p align="center"></p>
+                                        <p></p>
 
                                         <p align="right">Registros Contables:</p>
-                                        <p align ="center">
-                                            <input type="number" wire:model="SRegCont9" class="form-control" id="resSRegCont9" 
-                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('SRegCont9') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
                                         <p align ="center">
                                             <input type="number" wire:model="RegCont9" class="form-control" id="resRegCont9" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                             @error('RegCont9') <span style = "color:red" >{{ $message }}<br></span> @enderror
                                         </p>
+                                        <p>%</p>
+                                        <p align ="center">
+                                        </p><p></p>
                                         
                                         <p align="right">Registros Presupuestales:</p>
-                                        <p align ="center">
-                                            <input type="number"wire:model="SRegPre9" class="form-control" id="resSRegPre9" 
-                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('SRegPre9') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
                                         <p align ="center">
                                             <input type="number"wire:model="RegPre9" class="form-control" id="resRegPre9" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                             @error('RegPre9') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                        </p><p></p>
                                         
                                         <p align="right">Registros Administrativos:</p>
-                                        <p align ="center">
-                                            <input type="number"wire:model="SRegAdm9" class="form-control" id="resSRegAdm9" 
-                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('SRegAdm9') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
                                         <p align ="center">
                                             <input type="number"wire:model="RegAdm9" class="form-control" id="resRegAdm9" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                             @error('RegAdm9') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                        </p><p></p>
                                         
                                         <p align="right">Registros Transparencia:</p>
-                                        <p align ="center">
-                                            <input type="number"wire:model="SRegTra9" class="form-control" id="resSRegTra9" 
-                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('SRegTra9') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
                                         <p align ="center">
                                             <input type="number"wire:model="RegTra9" class="form-control" id="resRegTra9" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                             @error('RegTra9') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                        </p><p></p>
                                         
                                         <p align="right">Registros Cuenta Pública:</p>
                                         <p align ="center">
-                                            <input type="number" wire:model="SRegCP9" class="form-control" id="resSRegCP9" 
+                                            <input type="number" wire:model="RegCP9" class="form-control" id="resRegCP9" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('SRegCP9') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('RegCP9') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="RegCP9" class="form-control" id="resRegCP9" 
-                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('SRegCP9') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                        </p><p></p>
                                     </form></center>
+                            </div>
+                                <label class="radio-inline"><input type="radio" wire:model="pre9" value="0" {{ $pre9 = '0' ? "checked" : "" }}> No</label>
+                                <br>@error('pre9') <span style="color:red">{{ $message }}</span> @enderror    
 
-                                    <label for="title">10.- Para el caso de los registros contables, de la totalidad de sus reactivos señale de sus secciones ¿Cuál es su nivel de cumplimiento?</label><br>
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+                            <label for="title">10.- Para el caso de los registros contables, de la totalidad de sus reactivos señale de sus secciones ¿Cuál es su nivel de cumplimiento?</label><br>
 
-<form class = "form">
-
-            <p></p>
-            <p align="center">SEvAC<br>P-1-2022</p>
-            <p align="center">Criterio<br>Ente Público</p>
-
-            <p align="right">Instrumentos Contables:</p>
-            <p align ="center">
-                <input type="number"wire:model="SInstC10" class="form-control" id="resSInstC10" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('SInstC10') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            <p align ="center">
-                <input type="number"wire:model="InstC10" class="form-control" id="resInstC10" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('InstC10') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            
-            <p align="right">Registros Contables:</p>
-            <p align ="center">
-                <input type="number"wire:model="SRegCont10" class="form-control" id="resSRegCont10" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('SRegCont10') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            <p align ="center">
-                <input type="number"wire:model="RegCont10" class="form-control" id="resRegCont10" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('RegCont10') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            
-            <p align="right">Reportes Contables:</p>
-            <p align ="center">
-                <input type="number"wire:model="SRepCont10" class="form-control" id="resSRepCont10" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('SRepCont10') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            <p align ="center">
-                <input type="number"wire:model="RepCont10" class="form-control" id="resRepCont10" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('RepCont10') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-        </form>
-
-        <label for="title">11.- Para el caso de los registros Presupuestales, de la totalidad de sus reactivos señale de sus secciones ¿Cuál es su nivel de cumplimiento?</label><br>
-
-<form class = "form">
-
-            <p></p>
-            <p align="center">SEvAC<br>P-1-2022</p>
-            <p align="center">Criterio<br>Ente Público</p>
-
-            <p align="right">Clasificadores Presupuestales:</p>
-            <p align ="center">
-                <input type="number"wire:model="SClasP11" class="form-control" id="resSClasP11" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('SClasP11') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            <p align ="center">
-                <input type="number"wire:model="ClasP11" class="form-control" id="resClasP11" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('ClasP11') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            
-            <p align="right">Registros Presupuestarios:</p>
-            <p align ="center">
-                <input type="number"wire:model="SRegPre11" class="form-control" id="resSRegPre11" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('SRegPre11') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            <p align ="center">
-                <input type="number"wire:model="RegPre11" class="form-control" id="resRegPre11" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('RegPre11') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            
-            <p align="right">Reportes Presupuestarios:</p>
-            <p align ="center">
-                <input type="number"wire:model="SRepPre11" class="form-control" id="resSRepPre11" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('SRepPre11') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            <p align ="center">
-                <input type="number"wire:model="RepPre11" class="form-control" id="resRepPre11" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('RepPre11') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-
-            <p align="right">Reportes Programáticos:</p>
-            <p align ="center">
-                <input type="number"wire:model="SPrePro11" class="form-control" id="resSPrePro11" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('SPrePro11') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            <p align ="center">
-                <input type="number"wire:model="PrePro11" class="form-control" id="resPrePro11" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('SPrePro11') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-
-        </form>
-
-        <label for="title">12.- Para el caso de los registros Administrativos, de la totalidad de sus reactivos señale de sus secciones ¿Cuál es su nivel de cumplimiento?</label><br>
-
-<form class = "form">
-
-            <p></p>
-            <p align="center">SEvAC<br>P-1-2022</p>
-            <p align="center">Criterio<br>Ente Público</p>
-
-            <p align="right">Control de Bienes y Documentos Soporte:</p>
-            <p align ="center">
-                <input type="number"wire:model="SContBie12" class="form-control" id="resSContBie12" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('SContBie12') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            <p align ="center">
-                <input type="number"wire:model="ContBie12" class="form-control" id="resContBie12" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('ContBie12') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            
-            <p align="right">Recursos Federales y Pagos Electrónicos:</p>
-            <p align ="center">
-                <input type="number"wire:model="SRecFed12" class="form-control" id="resSRecFed12" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('SRecFed12') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-            <p align ="center">
-                <input type="number"wire:model="RecFed12" class="form-control" id="resRecFed12" 
-                placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                @error('RecFed12') <span style = "color:red" >{{ $message }}<br></span> @enderror
-            </p>
-        
-        </form>
-
-        <label for="title">13.- Para el caso de los registros de Transparencia y Difusión de la información Financiera derivada del Título Quinto de la LGCG, de la totalidad 
-                                de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento?</label><br>
-
-                                <form class = "form">
+                            <form class = "form">
 
                                         <p></p>
                                         <p align="center">SEvAC<br>P-1-2022</p>
+                                        <p></p>
                                         <p align="center">Criterio<br>Ente Público</p>
+                                        <p></p>
+
+                                        <p align="right">Instrumentos Contables:</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="SInstC10" class="form-control" id="resSInstC10" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('SInstC10') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p>
+                                        <p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="InstC10" class="form-control" id="resInstC10" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('InstC10') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p>
+                                        <p>%</p>
+                                        
+                                        <p align="right">Registros Contables:</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="SRegCont10" class="form-control" id="resSRegCont10" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('SRegCont10') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p>
+                                        <p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="RegCont10" class="form-control" id="resRegCont10" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('RegCont10') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        
+                                        <p align="right">Reportes Contables:</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="SRepCont10" class="form-control" id="resSRepCont10" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('SRepCont10') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p>
+                                        <p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="RepCont10" class="form-control" id="resRepCont10" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('RepCont10') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p>
+                                        <p>%</p>
+                                    </form>
+
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+                            <label for="title">11.- Para el caso de los registros Presupuestales, de la totalidad de sus reactivos señale de sus secciones ¿Cuál es su nivel de cumplimiento?</label><br>
+
+                            <form class = "form">
+
+                                        <p></p>
+                                        <p align="center">SEvAC<br>P-1-2022</p>
+                                        <p></p>
+                                        <p align="center">Criterio<br>Ente Público</p>
+                                        <p></p>
+
+                                        <p align="right">Clasificadores Presupuestales:</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="SClasP11" class="form-control" id="resSClasP11" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('SClasP11') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="ClasP11" class="form-control" id="resClasP11" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('ClasP11') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        
+                                        <p align="right">Registros Presupuestarios:</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="SRegPre11" class="form-control" id="resSRegPre11" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('SRegPre11') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="RegPre11" class="form-control" id="resRegPre11" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('RegPre11') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        
+                                        <p align="right">Reportes Presupuestarios:</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="SRepPre11" class="form-control" id="resSRepPre11" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('SRepPre11') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="RepPre11" class="form-control" id="resRepPre11" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('RepPre11') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+
+                                        <p align="right">Reportes Programáticos:</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="SPrePro11" class="form-control" id="resSPrePro11" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('SPrePro11') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="PrePro11" class="form-control" id="resPrePro11" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('PrePro11') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+
+                                    </form>
+
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+                            <label for="title">12.- Para el caso de los registros Administrativos, de la totalidad de sus reactivos señale de sus secciones ¿Cuál es su nivel de cumplimiento?</label><br>
+
+                            <form class = "form">
+
+                                        <p></p>
+                                        <p align="center">SEvAC<br>P-1-2022</p>
+                                        <p></p>
+                                        <p align="center">Criterio<br>Ente Público</p>
+                                        <p></p>
+
+                                        <p align="right">Control de Bienes y Documentos Soporte:</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="SContBie12" class="form-control" id="resSContBie12" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('SContBie12') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="ContBie12" class="form-control" id="resContBie12" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('ContBie12') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        
+                                        <p align="right">Recursos Federales y Pagos Electrónicos:</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="SRecFed12" class="form-control" id="resSRecFed12" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('SRecFed12') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="RecFed12" class="form-control" id="resRecFed12" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('RecFed12') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                    
+                                    </form>
+
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+                            <label for="title">13.- Para el caso de los registros de Transparencia y Difusión de la información Financiera derivada del Título Quinto de la LGCG, de la totalidad 
+                                de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento?</label><br>
+
+                                <form class = "formplus">
+
+                                        <p></p>
+                                        <p align="center">SEvAC<br>P-1-2022</p>
+                                        <p></p>
+                                        <p align="center">Criterio P1<br>Ente Público</p>
+                                        <p></p>
+                                        <p align="center">SEvAC<br>P-2-2022</p>
+                                        <p></p>
+                                        <p align="center">Criterio P2<br>Ente Público</p>
+                                        <p></p>
 
                                         <p align="right">Publicar Contenido Contable:</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="SContCont13" class="form-control" id="resSContCont13" 
+                                            <input type="number"wire:model="ContSP113" class="form-control" id="resContSP113" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('SContCont13') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('ContSP113') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="ContCont13" class="form-control" id="resContCont13" 
+                                            <input type="number"wire:model="ContEP113" class="form-control" id="resContEP113" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('ContCont13') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('ContEP113') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="ContSP213" class="form-control" id="resContSP213" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('ContSP213') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="ContEP213" class="form-control" id="resContEP213" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('ContEP213') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
                                         
                                         <p align="right">Publicar Contenido Presupuestario:</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="SContPre13" class="form-control" id="resSContPre13" 
+                                            <input type="number"wire:model="PresSP113" class="form-control" id="resPresSP113" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('SContPre13') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('PresSP113') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="ContPre13" class="form-control" id="resContPre13" 
+                                            <input type="number"wire:model="PresEP113" class="form-control" id="RESPresEP113" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('ContPre13') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('PresEP113') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="PresSP213" class="form-control" id="RESPresSP213" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('PresSP213') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="PresEP213" class="form-control" id="resPresEP213" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('PresEP213') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
 
                                         <p align="right">Publicar Contenido Programático:</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="SContProg13" class="form-control" id="resSContProg13" 
+                                            <input type="number"wire:model="ProgSP113" class="form-control" id="resProgSP113" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('SContProg13') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('ProgSP113') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="ContProg13" class="form-control" id="resContProg13" 
+                                            <input type="number"wire:model="ProgEP113" class="form-control" id="resProgEP113" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('ContProg13') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('ProgEP113') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="ProgSP213" class="form-control" id="resProgSP213" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('ProgSP213') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="ProgEP213" class="form-control" id="resProgEP213" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('ProgEP213') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
                                     
                                 </form>
 
-                                <label for="title">14.- Para el caso de los registros de Transparencia del Título Quinto y Otras Obligaciones de la LGCG, de la totalidad 
-                                de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento?</label><br>
+                            </div>                            
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+                            <label for="title">14.- Para el caso de los registros de Transparencia del Título Quinto y Otras Obligaciones de la LGCG, de la totalidad 
+                                de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento?</label><br><br><br>
                             
 
-                            <h4>Publicar Título V</h4><br>
-                                <form class = "form">                                
+                            <p>Título V:</p>
+                                <form class = "formplus">                                
                                         <p></p>
                                         <p align="center">SEvAC<br>P-1-2022</p>
-                                        <p align="center">Criterio<br>Ente Público</p>
+                                        <p></p>
+                                        <p align="center">Criterio P1<br>Ente Público</p>
+                                        <p></p>
+                                        <p align="center">SEvAC<br>P-2-2022</p>
+                                        <p></p>
+                                        <p align="center">Criterio P2<br>Ente Público</p>
+                                        <p></p>
 
                                         <p align="right">Anuales:</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="STVAn14" class="form-control" id="resSTVAn14" 
+                                            <input type="number"wire:model="TVASP114" class="form-control" id="resTVASP114" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('STVAn14') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('TVASP114') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="TVAn14" class="form-control" id="resTVAn14" 
+                                            <input type="number"wire:model="TVACP114" class="form-control" id="resTVACP114" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('TVAn14') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('TVACP114') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="TVASP214" class="form-control" id="resTVASP214" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('TVASP214') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="TVACP214" class="form-control" id="resTVACP214" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('TVACP214') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
                                         
                                         <p align="right">Trimestrales:</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="STVTri14" class="form-control" id="resSTVTri14" 
+                                            <input type="number"wire:model="TVTSP114" class="form-control" id="resTVTSP114" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('STVTri14') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('TVTSP114') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="TVTri14" class="form-control" id="resTVTri14" 
+                                            <input type="number"wire:model="TVTCP114" class="form-control" id="resTVTCP114" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('TVTri14') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('TVTCP114') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="TVTSP214" class="form-control" id="resTVTSP214" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('TVTSP214') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="TVTCP214" class="form-control" id="resTVTSP214" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('TVTSP214') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
                                 </form>
-                                <h4>Publicar Otras Obligaciones</h4><br>
-                                <form class = "form">
-                                
+
+                                <p>Otras Obligaciones:</p>
+                                <form class = "formplus">
                                         <p></p>
                                         <p align="center">SEvAC<br>P-1-2022</p>
-                                        <p align="center">Criterio<br>Ente Público</p>
+                                        <p></p>
+                                        <p align="center">Criterio P1<br>Ente Público</p>
+                                        <p></p>
+                                        <p align="center">SEvAC<br>P-2-2022</p>
+                                        <p></p>
+                                        <p align="center">Criterio P2<br>Ente Público</p>
+                                        <p></p>
 
                                         <p align="right">Anuales:</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="SOtrAn14" class="form-control" id="resSOtrAn14" 
+                                            <input type="number"wire:model="OASP114" class="form-control" id="resOASP114" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('SOtrAn14') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('OASP114') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="OtrAn14" class="form-control" id="resOtrAn14" 
+                                            <input type="number"wire:model="OACP114" class="form-control" id="resOACP114" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('OtrAn14') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('OACP114') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="OASP214" class="form-control" id="resOASP214" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('OASP214') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="OACP214" class="form-control" id="resOACP214" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('OACP214') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
                                         
                                         <p align="right">Trimestrales:</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="SOtrTri14" class="form-control" id="resSOtrTri14" 
+                                            <input type="number"wire:model="OTSP114" class="form-control" id="resOTSP114" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('SOtrTri14') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('OTSP114') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
                                         <p align ="center">
-                                            <input type="number"wire:model="OtrTri14" class="form-control" id="resOtrTri14" 
+                                            <input type="number"wire:model="OTCP114" class="form-control" id="resOTCP114" 
                                             placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
-                                            @error('OtrTri14') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                        </p>
+                                            @error('OTCP114') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="OTSP214" class="form-control" id="resOTSP214" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('OTSP214') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        <p align ="center">
+                                            <input type="number"wire:model="OTCP214" class="form-control" id="resOTCP214" 
+                                            placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
+                                            @error('OTCP214') <span style = "color:red" >{{ $message }}<br></span> @enderror
+                                        </p><p>%</p>
+                                        
                                     </form>
 
-                                    <label for="title">15.- Para el caso de los registros de Cuenta Pública Estatal, de la totalidad 
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+                                <label for="title">15.- Para el caso de los registros de Cuenta Pública Estatal, de la totalidad 
                                 de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento? <br>NOTA: Solo aplica al Poder Ejecutivo del Estado, en su defecto llenar con 0.</label><br>
                             <form class = "form">
                                 
                                 <p></p>
-                                <p align="center">SEvAC<br>P-1-2022</p>
+                                <p align="center">SEvAC<br>P-2-2022</p>
+                                <p></p>
                                 <p align="center">Criterio<br>Ente Público</p>
+                                <p></p>
 
                                 <p align="right">Resultados Generales y Consolidados:</p>
                                 <p align ="center">
                                     <input type="number"wire:model="SResGenCon15" class="form-control" id="resSResGenCon15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('SResGenCon15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                                 <p align ="center">
                                     <input type="number"wire:model="ResGenCon15" class="form-control" id="resResGenCon15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('ResGenCon15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                                 
                                 <p align="right">Tomo del Poder Ejecutivo:</p>
                                 <p align ="center">
                                     <input type="number"wire:model="STomoPE15" class="form-control" id="resSTomoPE15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('STomoPE15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                                 <p align ="center">
                                     <input type="number"wire:model="TomoPE15" class="form-control" id="resTomoPE15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('TomoPE15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
 
                                 <p align="right">Tomo del Poder Legislativo:</p>
                                 <p align ="center">
                                     <input type="number"wire:model="STomoPL15" class="form-control" id="resSTomoPL15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('STomoPL15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                                 <p align ="center">
                                     <input type="number"wire:model="TomoPL15" class="form-control" id="resTomoPL15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('TomoPL15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
 
                                 <p align="right">Tomo del Poder Judicial:</p>
                                 <p align ="center">
                                     <input type="number"wire:model="STomoPJ15" class="form-control" id="resSTomoPJ15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('STomoPJ15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                                 <p align ="center">
                                     <input type="number"wire:model="TomoPJ15" class="form-control" id="resTomoPJ15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('TomoPJ15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
 
                                 <p align="right">Tomo del Órganos Autónomos:</p>
                                 <p align ="center">
                                     <input type="number"wire:model="STomoOA15" class="form-control" id="resSTomoOA15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('STomoOA15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                                 <p align ="center">
                                     <input type="number"wire:model="TomoOA15" class="form-control" id="resTomoOA15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('TomoOA15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
 
                                 <p align="right">Información Financiera Consolidada del Sector Paraestatal:</p>
                                 <p align ="center">
                                     <input type="number"wire:model="SInfFin15" class="form-control" id="resSInfFin15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('SInfFin15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                                 <p align ="center">
                                     <input type="number"wire:model="InfFin15" class="form-control" id="resInfFin15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('InfFin15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
 
                                 <p align="right">Tomo del Sector Paraestatal:</p>
                                 <p align ="center">
                                     <input type="number"wire:model="STomoSP15" class="form-control" id="resSTomoSP15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('STomoSP15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                                 <p align ="center">
                                     <input type="number"wire:model="TomoSP15" class="form-control" id="resTomoSP15" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('TomoSP15') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                             </form>
 
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
                             <label for="title">16.- Para el caso de los registros de Cuenta Pública Municipal, de la totalidad 
                                 de sus reactivos señale de sus secciones, ¿Cuál es su nivel de cumplimiento?</label><br>
 
                                 <form class = "form">
                                 
                                 <p></p>
-                                <p align="center">SEvAC<br>P-1-2022</p>
+                                <p align="center">SEvAC<br>P-2-2022</p>
+                                <p></p>
                                 <p align="center">Criterio<br>Ente Público</p>
+                                <p></p>
 
                                 <p align="right">Resultados Generales y Consolidados:</p>
                                 <p align ="center">
                                     <input type="number"wire:model="SResGenCon16" class="form-control" id="resSResGenCon16" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('SResGenCon16') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                                 <p align ="center">
                                     <input type="number"wire:model="ResGenCon16" class="form-control" id="resResGenCon16" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('ResGenCon16') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                                 
                                 <p align="right">Información Financiera del Municipio:</p>
                                 <p align ="center">
                                     <input type="number"wire:model="SInfFinMun16" class="form-control" id="resSInfFinMun16" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('SInfFinMun16') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                                 <p align ="center">
                                     <input type="number"wire:model="InfFinMun16" class="form-control" id="resInfFinMun16" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('InfFinMun16') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
 
                                 <p align="right">Tomo del Sector Paramunicipal:</p>
                                 <p align ="center">
                                     <input type="number"wire:model="STomoSP16" class="form-control" id="resSTomoSP16" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('STomoSP16') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                                 <p align ="center">
                                     <input type="number"wire:model="TomoSP16" class="form-control" id="resTomoSP16" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('TomoSP16') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
 
                                 <p align="right">Información Financiera Consolidada del sector Paramunicipal:</p>
                                 <p align ="center">
                                     <input type="number"wire:model="SInfFin16" class="form-control" id="resSInfFin16" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('SInfFin16') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
                                 <p align ="center">
                                     <input type="number"wire:model="InfFin16" class="form-control" id="resInfFin16" 
                                     placeholder = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp%">
                                     @error('InfFin16') <span style = "color:red" >{{ $message }}<br></span> @enderror
-                                </p>
+                                </p><p>%</p>
 
                                 
                             </form>
 
-                            <label for="title">17.- En cuestión de conectividad ¿Su ente público cuenta con conexión a Internet?</label><br>
+
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+
+                                <label for="title">17.- En cuestión de conectividad ¿Su ente público cuenta con conexión a Internet?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre17" value="1" {{ $pre17 = '1' ? "checked" : "" }}> Si</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre17" value="0" {{ $pre17 = '0' ? "checked" : "" }}> No</label>
                                 <br>@error('pre17') <span style="color:red">{{ $message }}</span> @enderror
 
-                                <label for="title">18.- ¿Cuenta con personas especializadas en TIC'S?</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre18" value="0" {{ $pre18 = '0' ? "checked" : "" }}> 0</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre18" value="1" {{ $pre18 = '1' ? "checked" : "" }}> 1</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre18" value="2-5" {{ $pre18 = '2-5' ? "checked" : "" }}> 2-5</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre18" value="6-10" {{ $pre18 = '6-10' ? "checked" : "" }}> 6-10</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre18" value="Más de 10" {{ $pre18 = 'Más de 10' ? "checked" : "" }}> Más de 10</label>
-                                
-                                <br>@error('pre18') <span style="color:red">{{ $message }}</span> @enderror
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
 
-                                <label for="title">19.- ¿Cómo considera la calidad de la conexión a Internet? Siendo 1 muy malo y 10 excelente.</label><br>
-                                <br><label>Muy malo <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-angry" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-  <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zm6.991-8.38a.5.5 0 1 1 .448.894l-1.009.504c.176.27.285.64.285 1.049 0 .828-.448 1.5-1 1.5s-1-.672-1-1.5c0-.247.04-.48.11-.686a.502.502 0 0 1 .166-.761l2-1zm-6.552 0a.5.5 0 0 0-.448.894l1.009.504A1.94 1.94 0 0 0 5 6.5C5 7.328 5.448 8 6 8s1-.672 1-1.5c0-.247-.04-.48-.11-.686a.502.502 0 0 0-.166-.761l-2-1z"/>
-</svg></label><br><br>
+<label for="title">18.- ¿Con cuántas personas especializadas en TIC'S dispone?</label><br>
+<label class="radio-inline"><input type="radio" wire:model="pre18" value="0" {{ $pre18 = '0' ? "checked" : "" }}> 0</label><br>
+<label class="radio-inline"><input type="radio" wire:model="pre18" value="1" {{ $pre18 = '1' ? "checked" : "" }}> 1</label><br>
+<label class="radio-inline"><input type="radio" wire:model="pre18" value="2-5" {{ $pre18 = '2-5' ? "checked" : "" }}> 2-5</label><br>
+<label class="radio-inline"><input type="radio" wire:model="pre18" value="6-10" {{ $pre18 = '6-10' ? "checked" : "" }}> 6-10</label><br>
+<label class="radio-inline"><input type="radio" wire:model="pre18" value="Más de 10" {{ $pre18 = 'Más de 10' ? "checked" : "" }}> Más de 10</label>
+
+<br>@error('pre18') <span style="color:red">{{ $message }}</span> @enderror
+
+</div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+
+                                <label for="title">19.- ¿Cómo considera la calidad de la conexión a Internet?</label><br>
+                                
                                 <label class="radio-inline"><input type="radio" wire:model="pre19" value="1" {{ $pre19 = '1' ? "checked" : "" }}> 1</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre19" value="2" {{ $pre19 = '2' ? "checked" : "" }}> 2</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre19" value="3" {{ $pre19 = '3' ? "checked" : "" }}> 3</label><br>
@@ -632,20 +799,24 @@
                                 <label class="radio-inline"><input type="radio" wire:model="pre19" value="8" {{ $pre19 = '8' ? "checked" : "" }}> 8</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre19" value="9" {{ $pre19 = '9' ? "checked" : "" }}> 9</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre19" value="10" {{ $pre19 = '10' ? "checked" : "" }}> 10 </label>
-                                <br><br><label>Excelente <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-laughing" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-  <path d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z"/>
-</svg></label>
+                                
 
                                 
                                 <br>@error('pre19') <span style="color:red">{{ $message }}</span> @enderror
 
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
 
-                                <label for="title">20.- ¿Cuáles son las fallas mas frecuentes?</label><br>
+                                <label for="title">20.- ¿Cuáles son las fallas más frecuentes?</label><br>
                                 <textarea type="text" wire:model="pre20" class="form-control" id="respre20" placeholder="Escriba aquí las fallas mas frecuentes en su red de Internet."> </textarea><br>
                                 @error('pre20') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                                <label for="title">21.- ¿Utilizan herramientas informáticas adicionales?</label><br>
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+
+                            <label for="title">21.- ¿Utilizan herramientas informáticas adicionales?</label><br>
                                 <label for="title">Plataformas de video:</label><br>
                                 <input type="checkbox" value="1" wire:model="zoom" name="zoomCheck" {{ $zoom = '1' ? "checked" : ""  }}>&nbsp Zoom<br>
                                 <input type="checkbox" value="1" wire:model="meet" {{ $meet = '1' ? "checked" : "" }}>&nbsp Meet<br>
@@ -664,57 +835,73 @@
                                 
                                 <label class="radio-inline"><input type="radio" wire:model="otrasHerramientas" value="No usa" {{ $otrasHerramientas = '0' ? "checked" : "" }}> No</label>
                                 <br>@error('otrasHerramientas') <span style="color:red">{{$message}}<br></span> @enderror
-
+                                
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
                                 <label for="title">22.- ¿Cuenta con una página web oficial del Ente Público?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre22" checked value="1" {{ $pre22 = '1' ? "checked" : "" }}> Si</label><br>
-                                <label class="radio-inline"><input type="radio" wire:model="pre22" value="0" {{ $pre22 = '0' ? "checked" : "" }}> No</label>
-                                <br>@error('pre22') <span style="color:red">{{ $message }}<br></span> @enderror
-
+                                <div class="form-group">
                                 <label for="title">¿Cuál es el link?</label><br>
                                 <input type="text" wire:model="link" class="form-control" id="reslink" placeholder = "http://www.ejemplo.com"></label><label><br>
                                 @error('link') <span style="color:red">{{ $message }}<br></span> @enderror
 
-                                <label for="title">¿Cuál es el link donde publica el apartado de transparencia conforme a la LGCG?</label><br>
+                                <label for="title">¿Cuál es el link dónde publica el apartado de transparencia conforme a la LGCG?</label><br>
                                 <input type="text" wire:model="linklgcg" class="form-control" id="reslinklgcg" placeholder = "http://www.ejemplo.com">
                                 <br>@error('linklgcg') <span style="color:red">{{ $message }}<br></span> @enderror
-
+                            </div>
+                                <label class="radio-inline"><input type="radio" wire:model="pre22" value="0" {{ $pre22 = '0' ? "checked" : "" }}> No</label>
+                                <br>@error('pre22') <span style="color:red">{{ $message }}<br></span> @enderror
+                                <div class="form-group">
                                 <label for="title">¿Por qué motivo?</label><br>
                                 <textarea type="text" wire:model="motivo" class="form-control" id="resmotivo" placeholder="Ingrese el motivo por el cual no cuenta con un sitio."> </textarea><br>
                                 @error('motivo') <span style="color:red">{{ $message }}<br></span> @enderror
-
-                                <label for="title">23.- En materia de contabilidad Gubernamental, del periodo de Octubre del 2021 a la fecha, ¿Cuántas capacitaciones ha recibido el ente público?</label><br>
+                            </div>
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+                                <label for="title">23.- En materia de contabilidad gubernamental, del periodo de Octubre del 2021 a la fecha, ¿Cuántas capacitaciones ha recibido el ente público?</label><br>
                                 
-                                <label for="title">Cantidad: </label><br>
-                                <input type="number" wire:model="Cantidad22" class="form-control" id="resCantidad22" placeholder="Número de capacitaciones recibidas">
+                                <label for="title">Cantidad:</label><br>
+                                <input type="number" wire:model="Cantidad22" class="form-control" id="resCantidad22"  placeholder="Número de capacitaciones recibidas" >
                                 @error('Cantidad22') <span style="color:red">{{ $message }}<br></span> @enderror<br>    
 
                                 <label for="title">Temas: </label><br>
-                                <input type="text" wire:model="Temas22" class="form-control" id="resTemas22" placeholder="SEvAC, LGCG, etc">
+                                <input type="text" wire:model="Temas22" wire:click="statCap" class="form-control" id="resTemas22" placeholder="SEvAC, LGCG, etc" >
                                 @error('Temas22') <span style="color:red">{{ $message }}<br></span> @enderror<br>
 
                                 <label for="title">Impartidos por: </label><br>
-                                <input type="text" wire:model="Impartido22" class="form-control" id="resImpartido22" placeholder="Empresa que impartió la capacitación">
+                                <input type="text" wire:model="Impartido22" wire:click="statCap"  class="form-control" id="resImpartido22" placeholder="Empresa que impartió la capacitación" >
                                 @error('Impartido22') <span style="color:red">{{ $message }}<br></span> @enderror<br>
 
                                 <label for="title">Área capacitada: </label><br>
-                                <input type="text" wire:model="Area22" class="form-control" id="resArea22" placeholder="Recursos Financieros">
+                                <input type="text" wire:model="Area22" wire:click="statCap"  class="form-control" id="resArea22" placeholder="Recursos Financieros">
                                 @error('Area22') <span style="color:red">{{ $message }}<br></span> @enderror<br>
-
-                                <label for="title">24.- ¿Quién es el personal encargado de dar atención y cumplimiento a la plataforma del SEvAC?</label><br>
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+                                <label for="title">24.- ¿El personal encargado de dar atención y cumplimiento a la plataforma del SEvAC es?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre23" value="interno" {{ $pre23 = 'interno' ? "checked" : "" }}> Interno</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre23" value="externo" {{ $pre23 = 'externo' ? "checked" : "" }}> Externo</label><br>
                                 @error('pre23') <span style="color:red">{{ $message }}</span> @enderror
 
-                                <br><label for="title">Para cualquier respuesta mencionar de que área del ente público o empresa. </label><br>
+                                <br><label for="title">Para cualquier respuesta mencionar el área del ente público o empresa a que corresponde. </label><br>
                                 <input type="text" wire:model="area23" class="form-control" id="resarea23" placeholder="Recursos Financieros">
                                 @error('area23') <span style="color:red">{{ $message }}<br></span> @enderror<br>
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
 
                                 <label for="title">25.- ¿Consideras necesario reforzar la capacitación en el uso de la plataforma SEvAC, para la mejora de la evaluación?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre24" value="1" {{ $pre24 = '1' ? "checked" : "" }}> Si</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre24" value="0" {{ $pre24 = '0' ? "checked" : "" }}> No</label><br>
                                 @error('pre24') <span style="color:red">{{ $message }}</span> @enderror
 
-                                <label for="title">26.- ¿Sobre qué temas de capacitación que se enlistan a continuación consideras que pudieran apoyarte para la mejora de la evaluación contable?</label><br>
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+
+                            <label for="title">26.- ¿Sobre qué temas de capacitación que se enlistan a continuación requiere para la mejora de la evaluación contable?</label><br>
                             <input type="checkbox" value="1" wire:model="pre251" name="zoomCheck" {{ $pre251 = '1' ? "checked" : ""  }}>&nbsp 1. Curso-Taller: Manual de Contabilidad Gubernamental, Inducción para su elaboración.<br>
                             <input type="checkbox" value="1" wire:model="pre252" name="zoomCheck" {{ $pre252 = '1' ? "checked" : ""  }}>&nbsp 2. Clasificadores Presupuestarios y su Vinculación con el Plan de Cuentas.<br>
                             <input type="checkbox" value="1" wire:model="pre253" name="zoomCheck" {{ $pre253 = '1' ? "checked" : ""  }}>&nbsp 3. Registro Presupuestario y Patrimonial del Ingreso Público.<br>
@@ -727,7 +914,11 @@
                             <input type="checkbox" value="1" wire:model="pre2510" name="zoomCheck" {{ $pre2510 = '1' ? "checked" : ""  }}>&nbsp 10. Entrega-Recepción de la Hacienda Municipal.<br>
                             <input type="checkbox" value="1" wire:model="pre2511" name="zoomCheck" {{ $pre2511 = '1' ? "checked" : ""  }}>&nbsp 11. Mejora de los Resultados de la Evaluación de la Armonización Contable (SEvAC).<br>
 
-                            <label for="title">27.- ¿Es atendido oportunamente por el Ente Fiscalizador Local (ASM), para disipar sus dudas respecto a las observaciones de los reactivos evaluados?</label><br>
+                            </div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+
+                                <label for="title">27.- ¿Es atendido oportunamente por el Ente Fiscalizador Local (ASM), para disipar sus dudas respecto a las observaciones de los reactivos evaluados?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre26" value="1" {{ $pre26 = '1' ? "checked" : "" }}> Si</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre26" value="0" {{ $pre26 = '0' ? "checked" : "" }}> No</label><br>
                                 @error('pre26') <span style="color:red">{{ $message }}</span> @enderror
@@ -735,6 +926,10 @@
                                 <br><label for="title">¿Por qué?</label><br>
                                 <input type="text" wire:model="porque26" class="form-control" id="resporque26" placeholder="¿Por qué?">
                                 @error('porque26') <span style="color:red">{{ $message }}<br></span> @enderror<br>
+
+                            </div>
+<p>--------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
 
                                 <label for="title">28.- ¿Es atendido oportuna y satisfactoriamente en el tiempo de solventación en cuanto a las dudas de los reactivos observados por el Ente Fiscalizador Local (ASM)?</label><br>
                                 <label class="radio-inline"><input type="radio" wire:model="pre27" value="1" {{ $pre27 = '1' ? "checked" : "" }}> Si</label><br>
@@ -745,10 +940,14 @@
                                 <input type="text" wire:model="porque27" class="form-control" id="resporque27" placeholder="¿Por qué?">
                                 @error('porque27') <span style="color:red">{{ $message }}<br></span> @enderror<br>
 
+                            </div>
+<p>----------------------------------------------------------------------------------------------------------------------------------------------</p>
+<div class="form-group">
+
                                 <label for="title">29.- ¿Describa lo que sugiere que debería implementar el Ente Fiscalizador Local (ASM), para su mejor atención en cuanto a las evaluaciones relacionadas con el SEvAC?</label><br>
                                 <textarea type="text" wire:model="pre28" class="form-control" id="resnoSys" placeholder="Sugerencias"> </textarea><br>
                                 @error('pre28') <span style="color:red">{{ $message }}</span> @enderror
 
 
-    </div>
-</div>
+                            </div>
+<p>---------------------------------------------------------------------------------------------------------------------------------------------------</p>
