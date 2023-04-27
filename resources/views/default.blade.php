@@ -15,11 +15,12 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <link href="{{ asset('css/wizard.css') }}" rel="stylesheet" id="bootstrap-css">
 </head>
+
 <body>
     <div class="container">        
         <div class="card">
             <div class="card-header">
-            <center><h5>Cuestionario para el Diagnóstico de los elementos del SEvAC de aplicación de los Entes Públicos del Estado de Michoacán.</h5></center>
+            <center><h5 style="font-size:14pt">Cuestionario para el Diagnóstico de los elementos del SEvAC de aplicación de los Entes Públicos del Estado de Michoacán.</h5></center>
             </div>
             <div class="card-body">
                 <livewire:wizard />

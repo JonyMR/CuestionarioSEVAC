@@ -14,10 +14,15 @@ class Wizard extends Component
 
 
     public $email, $nombre, $cargo, $area, $ente, $pre5, $nameSys, $cadp, $docsSys, $startSys, $updSys, $infSys, $noSys,
-    $pre6, $perioRes, $lastRes, $pre7, $noRes, $pre8, $pre9, $SRegCont9, $RegCont9,  $SRegPre9, $RegPre9, $SRegAdm9,  $RegAdm9,  $SRegTra9, $RegTra9, 
-    $SRegCP9, $RegCP9,  $SInstC10, $InstC10,  $SRegCont10, $RegCont10,  $SRepCont10, $RepCont10, $SClasP11,  $ClasP11,  $SRegPre11, $RegPre11,  $SRepPre11, $RepPre11,  $SPrePro11, $PrePro11,
-    $SContBie12, $ContBie12, $SRecFed12, $RecFed12, $SContCont13, $ContCont13, $SContPre13, $ContPre13, $SContProg13, $ContProg13, $STVAn14, $TVAn14, $STVTri14, $TVTri14, 
-    $SOtrAn14, $OtrAn14, $SOtrTri14, $OtrTri14, $SResGenCon15, $ResGenCon15, $STomoPE15, $TomoPE15, $STomoPL15, $TomoPL15, $STomoPJ15, $TomoPJ15, $STomoOA15, $TomoOA15, 
+    $pre6, $perioRes, $lastRes, $NoResSys, $pre7, $noRes, $pre8, $pre9, $RegCont9, $RegPre9, $RegAdm9, $RegTra9, $RegCP9,  $SInstC10, $InstC10,  $SRegCont10, $RegCont10,  $SRepCont10, 
+    $RepCont10, $SClasP11,  $ClasP11,  $SRegPre11, $RegPre11,  $SRepPre11, $RepPre11,  $SPrePro11, $PrePro11,
+    $SContBie12, $ContBie12, $SRecFed12, $RecFed12,
+    
+    $ContSP113, $ContEP113, $ContSP213,$ContEP213, $PresSP113, $PresEP113,$PresSP213, $PresEP213,$ProgSP113, $ProgEP113, $ProgSP213, $ProgEP213,
+       $TVASP114, $TVACP114, $TVASP214, $TVACP214, $TVTSP114, $TVTCP114, $TVTSP214, $TVTCP214, $OASP114, $OACP114, $OASP214, $OACP214, $OTSP114, $OTCP114,
+       $OTSP214, $OTCP214,
+    
+    $SResGenCon15, $ResGenCon15, $STomoPE15, $TomoPE15, $STomoPL15, $TomoPL15, $STomoPJ15, $TomoPJ15, $STomoOA15, $TomoOA15, 
     $SInfFin15, $InfFin15, $STomoSP15, $TomoSP15, $SResGenCon16, $ResGenCon16, $SInfFinMun16, $InfFinMun16, $STomoSP16, $TomoSP16, $SInfFin16, $InfFin16, 
     $pre17, $pre18, $pre19, $pre20, $zoom, $meet, $skype, $teams, $nitropdf, $adobe, $anydesk, $teamviwer,
     $otrasHerramientas, $pre22, $link, $linklgcg, $motivo, $Cantidad22, $Temas22, $Impartido22, $Area22, $pre23, $area23, $pre24, $pre251, 
@@ -59,7 +64,7 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
 
-            'email'  => 'required|email|unique:respuestas',            //Pregunta 1 de forms
+            'email'  => 'required|email|unique:respuestas',     //Pregunta 1 de forms
             'nombre' => 'required',                             //Pregunta 2 de forms
             'cargo' => 'required',                              //Pregunta 2 de forms
             'area' => 'required',                               //Pregunta 3 de forms
@@ -70,7 +75,7 @@ class Wizard extends Component
         'nombre.required' => 'Su nombre completo es requerido.',
         'cargo.required' => 'Su cargo es requerido.',
         'area.required' => 'Su área de adscripción es requerida.',
-        'ente.required' => 'Su ente es requerido.',
+        'ente.required' => 'Seleccione un ente de la lista.',
     ]);  
             
             $this->currentStep = 2;
@@ -89,10 +94,18 @@ class Wizard extends Component
             'pre5.required' => 'Por favor elige una de las opciones']);
         
         if ($this->pre5) {
-            
+
+            $this->noSys = '';
             $this->currentStep = 3;
-        }else {
             
+        }else {
+
+            $this->nameSys = '';
+            $this->cadp = '';
+            $this->docsSys = '';
+            $this->startSys = '';
+            $this->updSys = '';
+            $this->infSys = '';
             $this->currentStep = 4;
         }
         
@@ -203,13 +216,20 @@ class Wizard extends Component
     public function eigthStepSubmit()
     {
         $validatedData = $this->validate([
-            'pre6' => 'required',                               
+            'pre6' => 'required',
+            'NoResSys' => 'required',                                
         ], [//*********Validaciones*****************
-            'pre6.required' => 'Por favor selecciona una opción',]);
+            'pre6.required' => 'Por favor selecciona una opción',
+            'NoResSys.required' => 'Este campo es obligatorio',
+        ]);
 
         if ($this->pre6) {
+            
             $this->currentStep = 9;
         }else {
+            $this->perioRes = '';
+            $this->lastRes = '';
+            $this->NoResSys = '';
             $this->currentStep = 10;
         }
         
@@ -251,6 +271,7 @@ class Wizard extends Component
             'pre7.required' => 'Por favor selecciona una opción',]);
 
         if ($this->pre7) {
+            $this->noRes='';
             if($this->usb != 0 || $this->ddext != 0 || $this->cddvd != 0 || $this->nube != 0 || $this->otroequipo != 0){
                 $this->currentStep = 12;
             }else{
@@ -326,12 +347,6 @@ class Wizard extends Component
             'RegAdm9' => 'required|numeric|min:0|max:100|integer',
             'RegTra9' => 'required|numeric|min:0|max:100|integer',
             'RegCP9' => 'required|numeric|min:0|max:100|integer',
-
-            'SRegCont9' => 'required|numeric|min:0|max:100|integer',
-            'SRegPre9' => 'required|numeric|min:0|max:100|integer',
-            'SRegAdm9' => 'required|numeric|min:0|max:100|integer',
-            'SRegTra9' => 'required|numeric|min:0|max:100|integer',
-            'SRegCP9' => 'required|numeric|min:0|max:100|integer'
         ],[//*********Validaciones*****************
             'RegCont9.required' => 'Este campo es obligatorio.',
             'RegCont9.numeric' => 'Ingresa un valor numérico.',
@@ -358,32 +373,6 @@ class Wizard extends Component
             'RegCP9.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'RegCP9.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'RegCP9.integer' => 'Ingresa un número entero, sin decimales.',
-        
-            'SRegCont9.required' => 'Este campo es obligatorio.',
-            'SRegCont9.numeric' => 'Ingresa un valor numérico.',
-            'SRegCont9.min' => 'Ingresa un número del 0 al 100 según te haya evaluado el SEvAC',
-            'SRegCont9.max' => 'Ingresa un número del 0 al 100 según te haya evaluado el SEvAC',
-            'SRegCont9.integer' => 'Ingresa un número entero, sin decimales.',
-
-            'SRegPre9.required' => 'Este campo es obligatorio.',
-            'SRegPre9.min' => 'Ingresa un número del 0 al 100 según te haya evaluado el SEvAC',
-            'SRegPre9.max' => 'Ingresa un número del 0 al 100 según te haya evaluado el SEvAC',
-            'SRegPre9.integer' => 'Ingresa un número entero, sin decimales.',
-
-            'SRegAdm9.required' => 'Este campo es obligatorio',
-            'SRegAdm9.min' => 'Ingresa un número del 0 al 100 según te haya evaluado el SEvAC',
-            'SRegAdm9.max' => 'Ingresa un número del 0 al 100 según te haya evaluado el SEvAC',
-            'SRegAdm9.integer' => 'Ingresa un número entero, sin decimales.',
-
-            'SRegTra9.required' => 'Este campo es obligatorio.',
-            'SRegTra9.min' => 'Ingresa un número del 0 al 100 según te haya evaluado el SEvAC',
-            'SRegTra9.max' => 'Ingresa un número del 0 al 100 según te haya evaluado el SEvAC',
-            'SRegTra9.integer' => 'Ingresa un número entero, sin decimales.',
-
-            'SRegCP9.required' => 'Este campo es obligatorio.',
-            'SRegCP9.min' => 'Ingresa un número del 0 al 100 según te haya evaluado el SEvAC',
-            'SRegCP9.max' => 'Ingresa un número del 0 al 100 según te haya evaluado el SEvAC',
-            'SRegCP9.integer' => 'Ingresa un número entero, sin decimales.',
         ]);
 
         $this->currentStep = 15;
@@ -548,42 +537,88 @@ class Wizard extends Component
     public function eigteenthStepSubmit()
     {
         $validatedData = $this->validate([
-            'ContCont13' => 'required|numeric|min:0|max:100|integer',
-            'ContPre13' => 'required|numeric|min:0|max:100|integer',
-            'ContProg13' => 'required|numeric|min:0|max:100|integer',
-            'SContCont13' => 'required|numeric|min:0|max:100|integer',
-            'SContPre13' => 'required|numeric|min:0|max:100|integer',
-            'SContProg13' => 'required|numeric|min:0|max:100|integer',
+            'ContSP113' => 'required|numeric|min:0|max:100|integer',
+            'ContEP113' => 'required|numeric|min:0|max:100|integer',
+            'ContSP213' => 'required|numeric|min:0|max:100|integer',
+            'ContEP213' => 'required|numeric|min:0|max:100|integer',
+
+            'PresSP113' => 'required|numeric|min:0|max:100|integer',
+            'PresEP113' => 'required|numeric|min:0|max:100|integer',
+            'PresSP213' => 'required|numeric|min:0|max:100|integer',
+            'PresEP213' => 'required|numeric|min:0|max:100|integer',
+
+            'ProgSP113' => 'required|numeric|min:0|max:100|integer',
+            'ProgEP113' => 'required|numeric|min:0|max:100|integer',
+            'ProgSP213' => 'required|numeric|min:0|max:100|integer',
+            'ProgEP213' => 'required|numeric|min:0|max:100|integer',
+        
         ],[
-            'ContCont13.required' => 'Este campo es obligatorio',
-            'ContCont13.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ContCont13.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ContCont13.integer' => 'Ingresa un número entero, sin decimales.',
+            'ContSP113.required' => 'Este campo es obligatorio',
+            'ContSP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContSP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContSP113.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'ContEP113.required' => 'Este campo es obligatorio',
+            'ContEP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContEP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContEP113.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'ContSP213.required' => 'Este campo es obligatorio',
+            'ContSP213.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContSP213.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContSP213.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'ContEP213.required' => 'Este campo es obligatorio',
+            'ContEP213.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContEP213.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContEP213.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'PresSP113.required' => 'Este campo es obligatorio',
+            'PresSP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'PresSP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'PresSP113.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'PresEP113.required' => 'Este campo es obligatorio',
+            'PresEP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'PresEP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'PresEP113.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'PresSP213.required' => 'Este campo es obligatorio',
+            'PresSP213.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'PresSP213.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'PresSP213.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'PresEP213.required' => 'Este campo es obligatorio',
+            'PresEP213.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'PresEP213.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'PresEP213.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'ProgSP113.required' => 'Este campo es obligatorio',
+            'ProgSP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ProgSP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ProgSP113.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'ProgEP113.required' => 'Este campo es obligatorio',
+            'ProgEP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ProgEP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ProgEP113.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'ContSP113.required' => 'Este campo es obligatorio',
+            'ContSP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContSP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ContSP113.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'ProgSP213.required' => 'Este campo es obligatorio',
+            'ProgSP213.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ProgSP213.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ProgSP213.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'ProgEP213.required' => 'Este campo es obligatorio',
+            'ProgEP213.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ProgEP213.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'ProgEP213.integer' => 'Ingresa un número entero, sin decimales.',
             
-            'ContPre13.required' => 'Este campo es obligatorio',
-            'ContPre13.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ContPre13.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ContPre13.integer' => 'Ingresa un número entero, sin decimales.',
 
-            'ContProg13.required' => 'Este campo es obligatorio',
-            'ContProg13.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ContProg13.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ContProg13.integer' => 'Ingresa un número entero, sin decimales.',
-
-            'SContCont13.required' => 'Este campo es obligatorio',
-            'SContCont13.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'SContCont13.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'SContCont13.integer' => 'Ingresa un número entero, sin decimales.',
-            
-            'SContPre13.required' => 'Este campo es obligatorio',
-            'SContPre13.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'SContPre13.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'SContPre13.integer' => 'Ingresa un número entero, sin decimales.',
-
-            'SContProg13.required' => 'Este campo es obligatorio',
-            'SContProg13.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'SContProg13.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'SContProg13.integer' => 'Ingresa un número entero, sin decimales.',
         ]);
 
         $this->currentStep = 19;
@@ -597,54 +632,107 @@ class Wizard extends Component
     public function nineteenthStepSubmit()
     {
         $validatedData = $this->validate([
-            'TVAn14' => 'required|numeric|min:0|max:100|integer',
-            'TVTri14' => 'required|numeric|min:0|max:100|integer',
-            'OtrAn14' => 'required|numeric|min:0|max:100|integer',
-            'OtrTri14' => 'required|numeric|min:0|max:100|integer',
-            'STVAn14' => 'required|numeric|min:0|max:100|integer',
-            'STVTri14' => 'required|numeric|min:0|max:100|integer',
-            'SOtrAn14' => 'required|numeric|min:0|max:100|integer',
-            'SOtrTri14' => 'required|numeric|min:0|max:100|integer',
+            'TVASP114'=> 'required|numeric|min:0|max:100|integer',
+            'TVACP114'=> 'required|numeric|min:0|max:100|integer',
+            'TVASP214'=> 'required|numeric|min:0|max:100|integer',
+            'TVACP214'=> 'required|numeric|min:0|max:100|integer',
+
+            'TVTSP114'=> 'required|numeric|min:0|max:100|integer',
+            'TVTCP114'=> 'required|numeric|min:0|max:100|integer',
+            'TVTSP214'=> 'required|numeric|min:0|max:100|integer',
+            'TVTCP214'=> 'required|numeric|min:0|max:100|integer',
+            
+            'OASP114'=> 'required|numeric|min:0|max:100|integer',
+            'OACP114'=> 'required|numeric|min:0|max:100|integer',
+            'OASP214'=> 'required|numeric|min:0|max:100|integer',
+            'OACP214'=> 'required|numeric|min:0|max:100|integer',
+            
+            'OTSP114'=> 'required|numeric|min:0|max:100|integer',
+            'OTCP114'=> 'required|numeric|min:0|max:100|integer',
+            'OTSP214'=> 'required|numeric|min:0|max:100|integer',
+            'OTCP214'=> 'required|numeric|min:0|max:100|integer',
+
         ],[
-            'TVAn14.required' => 'Este campo es obligatorio',
-            'TVAn14.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'TVAn14.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'TVAn14.integer' => 'Ingresa un número entero, sin decimales.',
+            'TVASP114.required' => 'Este campo es obligatorio',
+            'TVASP114.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVASP114.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVASP114.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'TVACP114.required' => 'Este campo es obligatorio',
+            'TVACP114.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVACP114.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVACP114.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'TVASP214.required' => 'Este campo es obligatorio',
+            'TVASP214.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVASP214.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVASP214.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'TVACP214.required' => 'Este campo es obligatorio',
+            'TVACP214.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVACP214.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVACP214.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'TVTSP114.required' => 'Este campo es obligatorio',
+            'TVTSP114.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVTSP114.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVTSP114.integer' => 'Ingresa un número entero, sin decimales.',
             
-            'TVTri14.required' => 'Este campo es obligatorio',
-            'TVTri14.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'TVTri14.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'TVTri14.integer' => 'Ingresa un número entero, sin decimales.',
+            'TVTCP114.required' => 'Este campo es obligatorio',
+            'TVTCP114.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVTCP114.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVTCP114.integer' => 'Ingresa un número entero, sin decimales.',
 
-            'OtrAn14.required' => 'Este campo es obligatorio',
-            'OtrAn14.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'OtrAn14.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'OtrAn14.integer' => 'Ingresa un número entero, sin decimales.',
+            'TVTSP214.required' => 'Este campo es obligatorio',
+            'TVTSP214.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVTSP214.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVTSP214.integer' => 'Ingresa un número entero, sin decimales.',
 
-            'OtrTri14.required' => 'Este campo es obligatorio',
-            'OtrTri14.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'OtrTri14.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'OtrTri14.integer' => 'Ingresa un número entero, sin decimales.',
+            'TVTCP214.required' => 'Este campo es obligatorio',
+            'TVTCP214.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVTCP214.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'TVTCP214.integer' => 'Ingresa un número entero, sin decimales.',
 
-            'STVAn14.required' => 'Este campo es obligatorio',
-            'STVAn14.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'STVAn14.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'STVAn14.integer' => 'Ingresa un número entero, sin decimales.',
+            'OASP114.required' => 'Este campo es obligatorio',
+            'OASP114.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OASP114.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OASP114.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'OACP114.required' => 'Este campo es obligatorio',
+            'OACP114.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OACP114.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OACP114.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'OASP214.required' => 'Este campo es obligatorio',
+            'OASP214.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OASP214.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OASP214.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'OACP214.required' => 'Este campo es obligatorio',
+            'OACP214.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OACP214.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OACP214.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'OTSP114.required' => 'Este campo es obligatorio',
+            'OTSP114.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OTSP114.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OTSP114.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'OTCP114.required' => 'Este campo es obligatorio',
+            'OTCP114.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OTCP114.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OTCP114.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'OTSP214.required' => 'Este campo es obligatorio',
+            'OTSP214.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OTSP214.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OTSP214.integer' => 'Ingresa un número entero, sin decimales.',
+
+            'OTCP214.required' => 'Este campo es obligatorio',
+            'OTCP214.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OTCP214.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
+            'OTCP214.integer' => 'Ingresa un número entero, sin decimales.',
             
-            'STVTri14.required' => 'Este campo es obligatorio',
-            'STVTri14.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'STVTri14.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'STVTri14.integer' => 'Ingresa un número entero, sin decimales.',
-
-            'SOtrAn14.required' => 'Este campo es obligatorio',
-            'SOtrAn14.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'SOtrAn14.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'SOtrAn14.integer' => 'Ingresa un número entero, sin decimales.',
-
-            'SOtrTri14.required' => 'Este campo es obligatorio',
-            'SOtrTri14.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'SOtrTri14.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'SOtrTri14.integer' => 'Ingresa un número entero, sin decimales.',
         ]);
 
         $this->currentStep = 20;
@@ -1145,19 +1233,15 @@ class Wizard extends Component
                     'pre6' => $this->pre6,
                     'perioRes' => $this->perioRes,
                     'lastRes' => $this->lastRes,
+                    'NoResSys' => $this->NoResSys,
                     'pre7' => $this->pre7,
                     'noRes' => $this->noRes,
                     'pre8' => $this->pre8,
                     'pre9' => $this->pre9,
-                    'SRegCont9' => $this->SRegCont9,
                     'RegCont9' => $this->RegCont9,
-                    'SRegPre9' => $this->SRegPre9,
                     'RegPre9' => $this->RegPre9,
-                    'SRegAdm9' => $this->SRegAdm9,
                     'RegAdm9' => $this->RegAdm9,
-                    'SRegTra9' => $this->SRegTra9,
                     'RegTra9' => $this->RegTra9,
-                    'SRegCP9' => $this->SRegCP9,
                     'RegCP9' => $this->RegCP9,
                     'SInstC10' => $this->SInstC10,
                     'InstC10' => $this->InstC10,
@@ -1176,21 +1260,35 @@ class Wizard extends Component
                     'SContBie12' => $this->SContBie12,
                     'ContBie12' => $this->ContBie12,
                     'SRecFed12' => $this->SRecFed12,
-                    'RecFed12' => $this->RecFed12,
-                    'SContCont13' => $this->SContCont13,
-                    'ContCont13' => $this->ContCont13,
-                    'SContPre13' => $this->SContPre13,
-                    'ContPre13' => $this->ContPre13,
-                    'SContProg13' => $this->SContProg13,
-                    'ContProg13' => $this->ContProg13,
-                    'STVAn14' => $this->STVAn14,
-                    'TVAn14' => $this->TVAn14,
-                    'STVTri14' => $this->STVTri14,
-                    'TVTri14' => $this->TVTri14,
-                    'SOtrAn14' => $this->SOtrAn14,
-                    'OtrAn14' => $this->OtrAn14,
-                    'SOtrTri14' => $this->SOtrTri14,
-                    'OtrTri14' => $this->OtrTri14,
+                    'RecFed12' => $this->RecFed12,               
+                    'ContSP113' => $this->ContSP113,
+                    'ContEP113' => $this->ContEP113,
+                    'ContSP213' => $this->ContSP213,
+                    'ContEP213' => $this->ContEP213,        
+                    'PresSP113' => $this->PresSP113,
+                    'PresEP113' => $this->PresEP113,
+                    'PresSP213' => $this->PresSP213,
+                    'PresEP213' => $this->PresEP213,       
+                    'ProgSP113' => $this->ProgSP113,
+                    'ProgEP113' => $this->ProgEP113,
+                    'ProgSP213' => $this->ProgSP213,
+                    'ProgEP213' => $this->ProgEP213,                   
+                    'TVASP114' => $this->TVASP114,
+                    'TVACP114' => $this->TVACP114,
+                    'TVASP214' => $this->TVASP214,
+                    'TVACP214' => $this->TVACP214,        
+                    'TVTSP114' => $this->TVTSP114,
+                    'TVTCP114' => $this->TVTCP114,
+                    'TVTSP214' => $this->TVTSP214,
+                    'TVTCP214' => $this->TVTCP214,                   
+                    'OASP114' => $this->OASP114,
+                    'OACP114' => $this->OACP114,
+                    'OASP214' => $this->OASP214,
+                    'OACP214' => $this->OACP214,
+                    'OTSP114' => $this->OTSP114,
+                    'OTCP114' => $this->OTCP114,
+                    'OTSP214' => $this->OTSP214,
+                    'OTCP214' => $this->OTCP214,
                      'SResGenCon15' => $this->SResGenCon15,
                     'ResGenCon15' => $this->ResGenCon15,
                     'STomoPE15' => $this->STomoPE15,
@@ -1291,17 +1389,38 @@ class Wizard extends Component
         }else{
             if($this->Cantidad22==0){
                 $this->Cantidad22=0;
-                $this->Temas22='';
-                $this->Impartido22='';
-                $this->Area22='';
+                $this->Temas22='-';
+                $this->Impartido22='-';
+                $this->Area22='-';
                 $this->currentStep=31;
             }else{
                 
             }
         }
     }
-//Validaciones de porcentajes
+
+
+//UPDATED de variables
+
 //Pregunta 9
+
+public function updatedpre9(){
+    if($this->pre9 != 0){
+
+    }else{
+        $this->SRegCont9 = '';
+        $this->RegCont9 = '';
+        $this->SRegPre9 = '';
+        $this->RegPre9 = '';
+        $this->SRegAdm9 = '';
+        $this->RegAdm9 = '';
+        $this->SRegTra9 = '';
+        $this->RegTra9 = '';
+        $this->SRegCP9 = '';
+        $this->RegCP9 = '';
+    }
+}
+
     public function updatedRegCont9(){
         if($this->RegCont9 >= 0 && $this->RegCont9 < 101){
         }else{
@@ -1334,41 +1453,6 @@ class Wizard extends Component
         if($this->RegCP9 >= 0 && $this->RegCP9 < 101){
         }else{
             $this->RegCP9 = '';
-        }
-    }
-
-    public function updatedSRegCont9(){
-        if($this->SRegCont9 >= 0 && $this->SRegCont9 < 101){
-        }else{
-            $this->SRegCont9 = '';
-        }
-    }
-
-    public function updatedSRegPre9(){
-        if($this->SRegPre9 >= 0 && $this->SRegPre9 < 101){
-        }else{
-            $this->SRegPre9 = '';
-        }
-    }
-
-    public function updatedSRegAdm9(){
-        if($this->SRegAdm9 >= 0 && $this->SRegAdm9 < 101){
-        }else{
-            $this->SRegAdm9 = '';
-        }
-    }
-
-    public function updatedSRegTra9(){
-        if($this->SRegTra9 >= 0 && $this->SRegTra9 < 101){
-        }else{
-            $this->SRegTra9 = '';
-        }
-    }
-
-    public function updatedSRegCP9(){
-        if($this->SRegCP9 >= 0 && $this->SRegCP9 < 101){
-        }else{
-            $this->SRegCP9 = '';
         }
     }
 
@@ -1501,104 +1585,6 @@ class Wizard extends Component
         }
     }
 
-//Pregunta 13
-    public function updatedContCont13(){
-        if($this->ContCont13 >= 0 && $this->ContCont13 < 101){
-        }else{
-            $this->ContCont13 = '';
-        }
-    }
-    
-    public function updatedContPre13(){
-        if($this->ContPre13 >= 0 && $this->ContPre13 < 101){
-        }else{
-            $this->ContPre13 = '';
-        }
-    }
-
-    public function updatedContProg13(){
-        if($this->ContProg13 >= 0 && $this->ContProg13 < 101){
-        }else{
-            $this->ContProg13 = '';
-        }
-    }
-
-    public function updatedSContCont13(){
-        if($this->SContCont13 >= 0 && $this->SContCont13 < 101){
-        }else{
-            $this->SContCont13 = '';
-        }
-    }
-    
-    public function updatedSContPre13(){
-        if($this->SContPre13 >= 0 && $this->SContPre13 < 101){
-        }else{
-            $this->SContPre13 = '';
-        }
-    }
-
-    public function updatedSContProg13(){
-        if($this->SContProg13 >= 0 && $this->SContProg13 < 101){
-        }else{
-            $this->SContProg13 = '';
-        }
-    }
-//Pregunta 14
-    public function updatedTVAn14(){
-        if($this->TVAn14 >= 0 && $this->TVAn14 < 101){
-        }else{
-            $this->TVAn14 = '';
-        }
-    }
-    
-    public function updatedTVTri14(){
-        if($this->TVTri14 >= 0 && $this->TVTri14 < 101){
-        }else{
-            $this->TVTri14 = '';
-        }
-    }
-
-    public function updatedOtrAn14(){
-        if($this->OtrAn14 >= 0 && $this->OtrAn14 < 101){
-        }else{
-            $this->OtrAn14 = '';
-        }
-    }
-
-    public function updatedOtrTri14(){
-        if($this->OtrTri14 >= 0 && $this->OtrTri14 < 101){
-        }else{
-            $this->OtrTri14 = '';
-        }
-    }
-
-    public function updatedSTVAn14(){
-        if($this->STVAn14 >= 0 && $this->STVAn14 < 101){
-        }else{
-            $this->STVAn14 = '';
-        }
-    }
-    
-    public function updatedSTVTri14(){
-        if($this->STVTri14 >= 0 && $this->STVTri14 < 101){
-        }else{
-            $this->STVTri14 = '';
-        }
-    }
-
-    public function updatedSOtrAn14(){
-        if($this->SOtrAn14 >= 0 && $this->SOtrAn14 < 101){
-        }else{
-            $this->SOtrAn14 = '';
-        }
-    }
-
-    public function updatedSOtrTri14(){
-        if($this->SOtrTri14 >= 0 && $this->SOtrTri14 < 101){
-        }else{
-            $this->SOtrTri14 = '';
-        }
-    }
 
 //Pregunta 15
     public function updatedResGenCon15(){
@@ -1771,6 +1757,12 @@ class Wizard extends Component
 
     public function updatedpre7(){
         if($this->pre7 != 0){
+                $this->noRes='';
+                $this->usb=0;
+                $this->ddext=0;
+                $this->cddvd=0;
+                $this->nube=0;
+                $this->otroequipo=0;
         }else{
                 $this->usb=0;
                 $this->ddext=0;
@@ -1782,31 +1774,312 @@ class Wizard extends Component
 
     public function updatedusb(){
         if($this->usb != 0){
-            $this->pre7 = 1;
-        }
-        if($this->ddext = 0 && $this->cddvd = 0 && $this->nube = 0 &&  $this->otroequipo = 0){
-            $this->pre7 = 0;
+            $this->usb = 1;
+            $this->pre7=1;
+        }else{
+            $this->usb = 0;
         }
     }
     public function updatedddext(){
         if($this->ddext != 0){
-            $this->pre7 = 1;
+            $this->ddext = 1;
+            $this->pre7=1;
+        }else{
+            $this->ddext = 0;
         }
+        
     }
     public function updatedcddvd(){
         if($this->cddvd != 0){
-            $this->pre7 = 1;
+            $this->cddvd = 1;
+            $this->pre7=1;
+        }else{
+            $this->cddvd = 0;
         }
+        
     }
     public function updatednube(){
         if($this->nube != 0){
-            $this->pre7 = 1;
+            $this->nube = 1;
+            $this->pre7=1;
+        }else{
+            $this->nube = 0;
         }
+        
     }
     public function updatedotroequipo(){
         if($this->otroequipo != 0){
-            $this->pre7 = 1;
+            $this->otroequipo = 1;
+            $this->pre7=1;
+        }else{
+            $this->otroequipo = 0;
         }
+        
+    }
+
+    public function updatedpre22(){
+        if($this->pre22 != 0){
+            $this->motivo='';
+        }else{
+            $this->link = '';
+            $this->linklglcg = '';
+        }     
+    }
+
+    public function updatedImpartido22(){
+        if($this->Cantidad22 != 0){
+        }else{
+            $this->Cantidad22='';
+                $this->Temas22='';
+                $this->Impartido22='';
+                $this->Area22='';
+                $this->currentStep=31;
+        }
+    }
+
+    public function updatedArea22(){
+        if($this->Cantidad22 != 0){
+        }else{
+            $this->Cantidad22='';
+                $this->Temas22='';
+                $this->Impartido22='';
+                $this->Area22='';
+                $this->currentStep=31;
+        }
+    }
+
+    public function updatedTemas22(){
+        if($this->Cantidad22 != 0){
+        }else{
+            $this->Cantidad22='';
+                $this->Temas22='';
+                $this->Impartido22='';
+                $this->Area22='';
+                $this->currentStep=31;
+        }
+    }
+
+    public function updatedsearch(){
+        if(DB::table('entes')->where('ente', $this->search)->exists()){
+            $this->ente=$this->search;           
+        }else{
+            
+            $this->ente='';
+        $this->currentStep=1;
+        $this -> mailMessage = 'Selecciona un ente de la lista';
+        }
+
+        if(empty($this->search)){
+            $this->ente='';
+        }
+    }
+
+    public function updatedContSP113(){
+        if($this->ContSP113 >= 0 && $this->ContSP113 < 101){
+        }else{
+            $this->ContSP113 = '';
+        }
+    }
+
+    public function updatedContEP113(){
+        if($this->ContEP113 >= 0 && $this->ContEP113 < 101){
+        }else{
+            $this->ContEP113 = '';
+        }
+    }
+
+    public function updatedContSP213(){
+        if($this->ContSP213 >= 0 && $this->ContSP213 < 101){
+        }else{
+            $this->ContSP213 = '';
+        }
+    }
+
+    public function updatedContEP213(){
+        if($this->ContEP213 >= 0 && $this->ContEP213 < 101){
+        }else{
+            $this->ContEP213 = '';
+        }
+    }
+
+    public function updatedPresSP113(){
+        if($this->PresSP113 >= 0 && $this->PresSP113 < 101){
+        }else{
+            $this->PresSP113 = '';
+        }
+    }
+
+    public function updatedPresEP113(){
+        if($this->PresEP113 >= 0 && $this->PresEP113 < 101){
+        }else{
+            $this->PresEP113 = '';
+        }
+    }
+
+    public function updatedPresSP213(){
+        if($this->PresSP213 >= 0 && $this->PresSP213 < 101){
+        }else{
+            $this->PresSP213 = '';
+        }
+    }
+
+    public function updatedPresEP213(){
+        if($this->PresEP213 >= 0 && $this->PresEP213 < 101){
+        }else{
+            $this->PresEP213 = '';
+        }
+    }
+
+    public function updatedProgSP113(){
+        if($this->ProgSP113 >= 0 && $this->ProgSP113 < 101){
+        }else{
+            $this->ProgSP113 = '';
+        }
+    }
+
+    public function updatedProgEP113(){
+        if($this->ProgEP113 >= 0 && $this->ProgEP113 < 101){
+        }else{
+            $this->ProgEP113 = '';
+        }
+    }
+
+    public function updatedProgSP213(){
+        if($this->ProgSP213 >= 0 && $this->ProgSP213 < 101){
+        }else{
+            $this->ProgSP213 = '';
+        }
+    }
+
+    public function updatedProgEP213(){
+        if($this->ProgEP213 >= 0 && $this->ProgEP213 < 101){
+        }else{
+            $this->ProgEP213 = '';
+        }
+    }
+
+    public function updatedTVASP114(){
+        if($this->TVASP114 >= 0 && $this->TVASP114 < 101){
+        }else{
+            $this->TVASP114 = '';
+        }
+    }
+
+    public function updatedTVACP114(){
+        if($this->TVACP114 >= 0 && $this->TVACP114 < 101){
+        }else{
+            $this->TVACP114 = '';
+        }
+    }
+
+    public function updatedTVASP214(){
+        if($this->TVASP214 >= 0 && $this->TVASP214 < 101){
+        }else{
+            $this->TVASP214 = '';
+        }
+    }
+
+    public function updatedTVACP214(){
+        if($this->TVACP214 >= 0 && $this->TVACP214 < 101){
+        }else{
+            $this->TVACP214 = '';
+        }
+    }
+
+    public function updatedTVTSP114(){
+        if($this->TVTSP114 >= 0 && $this->TVTSP114 < 101){
+        }else{
+            $this->TVTSP114 = '';
+        }
+    }
+
+    public function updatedTVTCP114(){
+        if($this->TVTCP114 >= 0 && $this->TVTCP114 < 101){
+        }else{
+            $this->TVTCP114 = '';
+        }
+    }
+
+    public function updatedTVTSP214(){
+        if($this->TVTSP214 >= 0 && $this->TVTSP214 < 101){
+        }else{
+            $this->TVTSP214 = '';
+        }
+    }
+
+    public function updatedTVTCP214(){
+        if($this->TVTCP214 >= 0 && $this->TVTCP214 < 101){
+        }else{
+            $this->TVTCP214 = '';
+        }
+    }
+
+    public function updatedOASP114(){
+        if($this->OASP114 >= 0 && $this->OASP114 < 101){
+        }else{
+            $this->OASP114 = '';
+        }
+    }
+
+    public function updatedOACP114(){
+        if($this->OACP114 >= 0 && $this->OACP114 < 101){
+        }else{
+            $this->OACP114 = '';
+        }
+    }
+
+    public function updatedOASP214(){
+        if($this->OASP214 >= 0 && $this->OASP214 < 101){
+        }else{
+            $this->OASP214 = '';
+        }
+    }
+
+    public function updatedOACP214(){
+        if($this->OACP214 >= 0 && $this->OACP214 < 101){
+        }else{
+            $this->OACP214 = '';
+        }
+    }
+
+    public function updatedOTSP114(){
+        if($this->OTSP114 >= 0 && $this->OTSP114 < 101){
+        }else{
+            $this->OTSP114 = '';
+        }
+    }
+
+    public function updatedOTCP114(){
+        if($this->OTCP114 >= 0 && $this->OTCP114 < 101){
+        }else{
+            $this->OTCP114 = '';
+        }
+    }
+
+    public function updatedOTSP214(){
+        if($this->OTSP214 >= 0 && $this->OTSP214 < 101){
+        }else{
+            $this->OTSP214 = '';
+        }
+    }
+
+    public function updatedOTCP214(){
+        if($this->OTCP214 >= 0 && $this->OTCP214 < 101){
+        }else{
+            $this->OTCP214 = '';
+        }
+    }
+
+    public function updatedpre6(){
+        if($this->pre6 == 0){
+            $this->NoResSys = '';
+        }else{
+            $this->NoResSys = '-';
+        }
+    }
+
+    public function updatedNoResSys(){
+        $this->pre6=0;
     }
 
 
@@ -1842,11 +2115,6 @@ class Wizard extends Component
         $this->RegAdm9 = '';
         $this->RegTra9 = '';
         $this->RegCP9 = '';
-        $this->SRegCont9 = '';
-        $this->SRegPre9 = '';
-        $this->SRegAdm9 = '';
-        $this->SRegTra9 = '';
-        $this->SRegCP9 = '';
         $this->InstC10 = '';
         $this->RegCont10 = '';
         $this->RepCont10 = '';
@@ -1865,20 +2133,34 @@ class Wizard extends Component
         $this->RecFed12 = '';
         $this->SContBie12 = '';
         $this->SRecFed12 = '';
-        $this->ContCont13 = '';
-        $this->ContPre13 = '';
-        $this->ContProg13 = '';
-        $this->SContCont13 = '';
-        $this->SContPre13 = '';
-        $this->SContProg13 = '';
-        $this->TVAn14 = '';
-        $this->TVTri14 = '';
-        $this->OtrAn14 = '';
-        $this->OtrTri14 = '';
-        $this->STVAn14 = '';
-        $this->STVTri14 = '';
-        $this->SOtrAn14 = '';
-        $this->SOtrTri14 = '';
+        $this->ContSP113 = '';
+        $this->ContEP113 = '';
+        $this->ContSP213 = '';
+        $this->ContEP213 = '';        
+        $this->PresSP113 = '';
+        $this->PresEP113 = '';
+        $this->PresSP213 = '';
+        $this->PresEP213 = '';       
+        $this->ProgSP113 = '';
+        $this->ProgEP113 = '';
+        $this->ProgSP213 = '';
+        $this->ProgEP213 = '';                   
+        $this->TVASP114 = '';
+        $this->TVACP114 = '';
+        $this->TVASP214 = '';
+        $this->TVACP214 = '';        
+        $this->TVTSP114 = '';
+        $this->TVTCP114 = '';
+        $this->TVTSP214 = '';
+        $this->TVTCP214 = '';                   
+        $this->OASP114 = '';
+        $this->OACP114 = '';
+        $this->OASP214 = '';
+        $this->OACP214 = '';
+        $this->OTSP114 = '';
+        $this->OTCP114 = '';
+        $this->OTSP214 = '';
+        $this->OTCP214 = '';
         $this->ResGenCon15 = '';
         $this->TomoPE15 = '';
         $this->TomoPL15 = '';

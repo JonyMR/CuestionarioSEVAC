@@ -65,7 +65,7 @@ body{
 
 form {
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: 300px 200px 10px 200px 10px ;
     grid-gap:5px;
   }
 
@@ -77,9 +77,23 @@ form {
     margin: 1px;
   }
 
+  .formplus {
+    display: grid;
+    grid-template-columns: 300px 150px 15px 150px 15px 150px 15px 150px 10px;
+    grid-gap:1px;
+  }
+
+
+  .formplus label {
+    display: block;
+  }
+  .formplus p {
+    margin: 1px;
+  }
+
   .table-form {
     display: 100%;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap:1px;
   }
 
@@ -122,3 +136,6 @@ form {
   width: 250px;
   letter-spacing: 1px;
 }
+
+
+

@@ -36,13 +36,14 @@ return new class extends Migration
             //Preguntas si en la 6 responde que si:
             $table -> string('perioRes')->nullable();
             $table -> date('lastRes')->nullable();
+            $table -> date('NoResSys')->nullable();
 
             $table -> boolean('pre7')->default(0);
-            $table -> boolean('usb')->default(0);
-            $table -> boolean('ddext')->default(0);
-            $table -> boolean('cddvd')->default(0);
-            $table -> boolean('nube')->default(0);
-            $table -> boolean('otroequipo')->default(0);
+            $table -> boolean('usb')->nullable();
+            $table -> boolean('ddext')->nullable();
+            $table -> boolean('cddvd')->nullable();
+            $table -> boolean('nube')->nullable();
+            $table -> boolean('otroequipo')->nullable();
             //Preguntas si en la 7 responde que no:
             $table -> longText('noRes')->nullable();
 
@@ -52,19 +53,10 @@ return new class extends Migration
 
 
             //Campos a llenar si en la 9 responde que si:
-            $table -> integer('SRegCont9')->nullable();
             $table -> integer('RegCont9')->nullable();
-
-            $table -> integer('SRegPre9')->nullable();
             $table -> integer('RegPre9')->nullable();
-
-            $table -> integer('SRegAdm9')->nullable();
             $table -> integer('RegAdm9')->nullable();
-
-            $table -> integer('SRegTra9')->nullable();
             $table -> integer('RegTra9')->nullable();
-
-            $table -> integer('SRegCP9')->nullable();
             $table -> integer('RegCP9')->nullable();
 
             //Pregunta 10
@@ -98,27 +90,41 @@ return new class extends Migration
             $table -> integer('RecFed12')->default(0);
 
             //Pregunta 13
-            $table -> integer('SContCont13')->default(0);
-            $table -> integer('ContCont13')->default(0);
+            $table -> integer('ContSP113')->default(0);
+            $table -> integer('ContEP113')->default(0);
+            $table -> integer('ContSP213')->default(0);
+            $table -> integer('ContEP213')->default(0);
 
-            $table -> integer('SContPre13')->default(0);
-            $table -> integer('ContPre13')->default(0);
+            $table -> integer('PresSP113')->default(0);
+            $table -> integer('PresEP113')->default(0);
+            $table -> integer('PresSP213')->default(0);
+            $table -> integer('PresEP213')->default(0);
 
-            $table -> integer('SContProg13')->default(0);
-            $table -> integer('ContProg13')->default(0);
-
+            $table -> integer('ProgSP113')->default(0);
+            $table -> integer('ProgEP113')->default(0);
+            $table -> integer('ProgSP213')->default(0);
+            $table -> integer('ProgEP213')->default(0);
+            
             //Pregunta 14
-            $table -> integer('STVAn14')->default(0);
-            $table -> integer('TVAn14')->default(0);
+            $table -> integer('TVASP114')->default(0);
+            $table -> integer('TVACP114')->default(0);
+            $table -> integer('TVASP214')->default(0);
+            $table -> integer('TVACP214')->default(0);
 
-            $table -> integer('STVTri14')->default(0);
-            $table -> integer('TVTri14')->default(0);
-
-            $table -> integer('SOtrAn14')->default(0);
-            $table -> integer('OtrAn14')->default(0);
-
-            $table -> integer('SOtrTri14')->default(0);
-            $table -> integer('OtrTri14')->default(0);
+            $table -> integer('TVTSP114')->default(0);
+            $table -> integer('TVTCP114')->default(0);
+            $table -> integer('TVTSP214')->default(0);
+            $table -> integer('TVTCP214')->default(0);
+            
+            $table -> integer('OASP114')->default(0);
+            $table -> integer('OACP114')->default(0);
+            $table -> integer('OASP214')->default(0);
+            $table -> integer('OACP214')->default(0);
+            
+            $table -> integer('OTSP114')->default(0);
+            $table -> integer('OTCP114')->default(0);
+            $table -> integer('OTSP214')->default(0);
+            $table -> integer('OTCP214')->default(0);
 
             //Pregunta 15
 

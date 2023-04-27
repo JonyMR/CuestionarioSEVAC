@@ -2,8 +2,14 @@
 <style>
       th, td {
     border: 1px solid blue;
-    width: 260px;
+    width: 220px;
     word-wrap: break-word;
+}
+body{ 
+    margin-top:10px; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 table{
