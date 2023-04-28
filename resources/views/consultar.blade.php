@@ -17,54 +17,17 @@
 </head>
 <body>
     <div class="container">        
-        <div class="card">
-            <div class="card-header">
+
+
             <center><h5>Cuestionario para el Diagnóstico de los elementos del SEvAC de aplicación de los Entes Públicos del Estado de Michoacán.</h5></center>
             </div>
-            <div class="card-body">
-                <livewire:tablarespuestas />
-            </div>
-            <button onclick="exportTableToExcel('data', 'respuestas')" class="btn btn-success">Descargar Excel</button>
-        </div>
-        
-    </div>
-    
-@livewireScripts
+            <livewire:power-table/>
 
+
+
+@livewireScripts
 </body>
 </html>
 
 
 
-
-<script>
-    function exportTableToExcel(tableID, filename = ''){
-    var downloadLink;
-    var dataType = 'application/vnd.ms-excel';
-    var tableSelect = document.getElementById(tableID);
-    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-    
-    // Specify file name
-    filename = filename?filename+'.xls':'excel_data.xls';
-    
-    // Create download link element
-    downloadLink = document.createElement("a");
-    
-    document.body.appendChild(downloadLink);
-    
-    if(navigator.msSaveOrOpenBlob){
-        var blob = new Blob(['ufeff', tableHTML], {
-            type: dataType
-        });
-        navigator.msSaveOrOpenBlob( blob, filename);
-    }else{
-        // Create a link to the file
-        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-    
-        // Setting the file name
-        downloadLink.download = filename;
-        
-        //triggering the function
-        downloadLink.click();
-    }
-}</script>

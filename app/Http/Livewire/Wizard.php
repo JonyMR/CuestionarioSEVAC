@@ -103,8 +103,8 @@ class Wizard extends Component
             $this->nameSys = '';
             $this->cadp = '';
             $this->docsSys = '';
-            $this->startSys = '';
-            $this->updSys = '';
+            $this->startSys = null;
+            $this->updSys = null;
             $this->infSys = '';
             $this->currentStep = 4;
         }
@@ -228,8 +228,7 @@ class Wizard extends Component
             $this->currentStep = 9;
         }else {
             $this->perioRes = '';
-            $this->lastRes = '';
-            $this->NoResSys = '';
+            $this->lastRes = null;
             $this->currentStep = 10;
         }
         
@@ -1408,16 +1407,11 @@ public function updatedpre9(){
     if($this->pre9 != 0){
 
     }else{
-        $this->SRegCont9 = '';
-        $this->RegCont9 = '';
-        $this->SRegPre9 = '';
-        $this->RegPre9 = '';
-        $this->SRegAdm9 = '';
-        $this->RegAdm9 = '';
-        $this->SRegTra9 = '';
-        $this->RegTra9 = '';
-        $this->SRegCP9 = '';
-        $this->RegCP9 = '';
+        $this->RegCont9 = null;
+        $this->RegPre9 = null;
+        $this->RegAdm9 = null;
+        $this->RegTra9 = null;      
+        $this->RegCP9 = null;
     }
 }
 

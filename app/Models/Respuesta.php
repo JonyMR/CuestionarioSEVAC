@@ -14,6 +14,7 @@ class Respuesta extends Model
      *
      * @var array
      */
+
     protected $fillable = [
         'email', 'nombre', 'cargo', 'area', 'ente', 'pre5', 'nameSys', 'cadp', 'docsSys', 'startSys', 'updSys', 'infSys', 'noSys',
         'pre6', 'perioRes', 'lastRes', 'NoResSys', 'pre7', 'noRes', 'pre8', 'pre9', 'RegCont9','RegPre9', 'RegAdm9', 'RegTra9', 'RegCP9',

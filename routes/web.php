@@ -31,4 +31,6 @@ Route::get('ooo', function () {
     return view('search');
 });
 
+Route::get('data', [RespuestasController::class, 'getRespuestas']);
+
 
