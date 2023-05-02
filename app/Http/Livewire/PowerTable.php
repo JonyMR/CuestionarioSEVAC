@@ -9,6 +9,10 @@ use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\{ActionButton, WithExport};
 use PowerComponents\LivewirePowerGrid\Filters\Filter;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
+use Illuminate\Http\Request;
+use App\Exports\RespuestasExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 final class PowerTable extends PowerGridComponent
 {
@@ -34,18 +38,18 @@ final class PowerTable extends PowerGridComponent
         $this->persist(['columns', 'filters']);
 
         return [
+            Exportable::make('respuestas')
+               ->striped()
+               ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Header::make()->showSearchInput(),
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(mode: 'full'),
         ];
     }
+    
 
 
-
-public function export(){
-    return Storage::disk('exports')->download('export.csv');
-}
 
     /*
     |--------------------------------------------------------------------------
@@ -263,8 +267,7 @@ public function export(){
             Column::make('Email', 'email')
                 ->searchable()
                 ->bodyAttribute('text-center')
-                ->headerAttribute('text-center', 'color:black')
-                ->visibleInExport(true),
+                ->headerAttribute('text-center', 'color:black'),
 
             Column::make('Nombre', 'nombre')
                 ->bodyAttribute('text-center')

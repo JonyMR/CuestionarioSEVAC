@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\PowerTable;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,6 @@ Route::get('ooo', function () {
     return view('search');
 });
 
-Route::get('data', [RespuestasController::class, 'getRespuestas']);
+
 
 
