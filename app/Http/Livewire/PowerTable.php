@@ -15,7 +15,6 @@ final class PowerTable extends PowerGridComponent
     use ActionButton;
     use WithExport;
 
-    public string $primaryKey = 'email';
 
     public string $sortField = 'created_at';
     
@@ -31,15 +30,22 @@ final class PowerTable extends PowerGridComponent
     */
     public function setUp(): array
     {
-        //$this->showToggleColumns();
+        //$this->showCheckBox('email');
+        $this->persist(['columns', 'filters']);
 
         return [
             Header::make()->showSearchInput(),
             Footer::make()
                 ->showPerPage()
-                ->showRecordCount(),
+                ->showRecordCount(mode: 'full'),
         ];
     }
+
+
+
+public function export(){
+    return Storage::disk('exports')->download('export.csv');
+}
 
     /*
     |--------------------------------------------------------------------------
@@ -256,202 +262,552 @@ final class PowerTable extends PowerGridComponent
         return [
             Column::make('Email', 'email')
                 ->searchable()
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
                 ->visibleInExport(true),
 
             Column::make('Nombre', 'nombre')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
                 ->searchable(),
 
             Column::make('Cargo', 'cargo')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
                 ->searchable(),
 
             Column::make('Area de Adscripción', 'area')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
                 ->searchable(),
 
             Column::make('Ente Público', 'ente')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
                 ->searchable(),
 
-            Column::make('---Pregunta 5---', 'pre5'),
+            Column::make('---Pregunta 5---', 'pre5')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
             Column::make('Nombre del Sistema', 'nameSys')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
                 ->searchable(),
 
             Column::make('Origen del Sistema', 'cadp')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
                 ->searchable(),
 
             Column::make('Documentación del Sistema', 'docsSys')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
                 ->searchable(),
 
-            Column::make('Fecha de Inicio', 'startSys_formatted', 'startSys'),
-            Column::make('Fecha de Última Actualización', 'updSys_formatted', 'updSys'),
+            Column::make('Fecha de Inicio', 'startSys_formatted', 'startSys')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('Fecha de Última Actualización', 'updSys_formatted', 'updSys')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
             Column::make('Empresa / Documentos', 'infSys')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
                 ->searchable(),
-            Column::make('Motivo No usa Sistema', 'noSys'),
-            Column::make('Pregunta 6', 'pre6'),
-            Column::make('Periodo de Respaldos', 'perioRes'),
-            Column::make('Fecha de Último Respaldo', 'lastRes_formatted', 'lastRes'),
-            Column::make('Motivo no Respaldar Sistema', 'NoResSys'),
-            Column::make('Pregunta 7', 'pre7'),
-            Column::make('Usb como medio externo', 'usb'),
-            Column::make('HDD como medio externo', 'ddext'),
-            Column::make('CD/DVD como medio externo', 'cddvd'),
-            Column::make('Nube como medio externo', 'nube'),
-            Column::make('Otro equipo como medio externo', 'otroequipo'),
-            Column::make('Motivo de no tener respaldos', 'noRes'),
-            Column::make('Pregunta 8', 'pre8'),
-            Column::make('Pregunta 9', 'pre9'),
-            Column::make('% Registros Contables (9)', 'RegCont9'),
-            Column::make('% Registros Presupuestales (9)', 'RegPre9'),
-            Column::make('% Registros Administrativos (9)', 'RegAdm9'),
-            Column::make('% Registros Transparencia (9)', 'RegTra9'),
-            Column::make('% Registros Cuenta Pública (9)', 'RegCP9'),
-            Column::make('SEvAC P-1-2022 Instrumentos Contables (10)', 'SInstC10'),
-            Column::make('Ente P-1-2022 Instrumentos Contables (10)', 'InstC10'),
-            Column::make('SEvAC P-1-2022 Registros Contables (10)', 'SRegCont10'),
-            Column::make('Ente P-1-2022 Registros Contables (10)', 'RegCont10'),
-            Column::make('SEvAC P-1-2022 Reportes Contables (10)', 'SRepCont10'),
-            Column::make('Ente P-1-2022 Reportes Contables (10)', 'RepCont10'),
-            Column::make('SEvAC P-1-2022 Clasif. Presupuestales (11)', 'SClasP11'),
-            Column::make('Ente P-1-2022 Clasif. Presupuestales (11)', 'ClasP11'),
-            Column::make('SEvAC P-1-2022 Registros Presupuestarios (11)', 'SRegPre11'),
-            Column::make('Ente P-1-2022 Registros Presupuestarios (11)', 'RegPre11'),
-            Column::make('SEvAC P-1-2022 Reportes Presupuestarios (11)', 'SRepPre11'),
-            Column::make('Ente P-1-2022 Reportes Presupuestarios (11)', 'RepPre11'),
-            Column::make('SEvAC P-1-2022 Reportes Programáticos (11)', 'SPrePro11'),
-            Column::make('Ente P-1-2022 Reportes Programáticos (11)', 'PrePro11'),
-            Column::make('SEvAC P-1-2022 Control de Bienes (12)', 'SContBie12'),
-            Column::make('Ente P-1-2022 Control de Bienes (12)', 'ContBie12'),
-            Column::make('SEvAC P-1-2022 Recursos Federales (12)', 'SRecFed12'),
-            Column::make('Ente P-1-2022 Recursos Federales (12)', 'RecFed12'),
-            Column::make('SEvAC P-1-2022 Contenido Contable (13)', 'ContSP113'),
-            Column::make('Ente P-1-2022 Contenido Contable (13)', 'ContEP113'),
-            Column::make('SEvAC P-2-2022 Contenido Contable (13)', 'ContSP213'),
-            Column::make('Ente P-2-2022 Contenido Contable (13)', 'ContEP213'),
-            Column::make('SEvAC P-1-2022 Contenido Presupuestario (13)', 'PresSP113'),
-            Column::make('Ente P-1-2022 Contenido Presupuestario (13)', 'PresEP113'),
-            Column::make('SEvAC P-2-2022 Contenido Presupuestario (13)', 'PresSP213'),
-            Column::make('Ente P-2-2022 Contenido Presupuestario (13)', 'PresEP213'),
-            Column::make('SEvAC P-1-2022 Contenido Programático (13)', 'ProgSP113'),
-            Column::make('Ente P-1-2022 Contenido Programático (13)', 'ProgEP113'),
-            Column::make('SEvAC P-2-2022 Contenido Programático (13)', 'ProgSP213'),
-            Column::make('Ente P-2-2022 Contenido Programático (13)', 'ProgEP213'),
-            Column::make('SEvAC P-1-2022 Título V Anual (14)', 'TVASP114'),
-            Column::make('Ente P-1-2022 Título V Anual (14)', 'TVACP114'),
-            Column::make('SEvAC P-2-2022 Título V Anual (14)', 'TVASP214'),
-            Column::make('Ente P-2-2022 Título V Anual(14)', 'TVACP214'),
-            Column::make('SEvAC P-1-2022 Título V Trimestral (14) ', 'TVTSP114'),
-            Column::make('Ente P-1-2022 Título V Trimestral (14)', 'TVTCP114'),
-            Column::make('SEvAC P-2-2022 Título V Trimestral (14)', 'TVTSP214'),
-            Column::make('Ente P-2-2022 Título V Trimestral (14)', 'TVTCP214'),
-            Column::make('SEvAC P-1-2022 Otras Obligaciones Anual (14)', 'OASP114'),
-            Column::make('Ente P-1-2022 Otras Obligaciones Anual (14)', 'OACP114'),
-            Column::make('SEvAC P-2-2022 Otras Obligaciones Anual (14)', 'OASP214'),
-            Column::make('Ente P-2-2022 Otras Obligaciones Anual (14)', 'OACP214'),
-            Column::make('SEvAC P-1-2022 Otras Obligaciones Trimestral (14)', 'OTSP114'),
-            Column::make('Ente P-1-2022 Otras Obligaciones Trimestral (14)', 'OTCP114'),
-            Column::make('SEvAC P-2-2022 Otras Obligaciones Trimestral (14)', 'OTSP214'),
-            Column::make('Ente P-2-2022 Otras Obligaciones Trimestral (14)', 'OTCP214'),
-            Column::make('SEvAC P-2-2022 Resultados Generales y Consolidados (15)', 'SResGenCon15'),
-            Column::make('Ente P-2-2022 Resultados Generales y Consolidados (15)', 'ResGenCon15'),
-            Column::make('SEvAC P-2-2022 Tomo del Poder Ejecutivo (15)', 'TomoPE15'),
-            Column::make('Ente P-2-2022 Tomo del Poder Ejecutivo (15)', 'STomoPE15'),
-            Column::make('SEvAC P-2-2022 Tomo del Poder Legislativo (15)', 'STomoPL15'),
-            Column::make('Ente P-2-2022 Tomo del Poder Legislativo', 'TomoPL15'),
-            Column::make('SEvAC P-2-2022 Tomo del Poder Judicial (15)', 'STomoPJ15'),
-            Column::make('Ente P-2-2022 Tomo del Poder Judicial (15)', 'TomoPJ15'),
-            Column::make('SEvAC P-2-2022 Tomo de Órganos Autónomos (15)', 'STomoOA15'),
-            Column::make('Ente P-2-2022 Tomo de Órganos Autónomos (15)', 'TomoOA15'),
-            Column::make('SEvAC P-2-2022 Inf. Financiera Paraestatal (15)', 'SInfFin15'),
-            Column::make('Ente P-2-2022 Inf. Financiera Paraestatal (15)', 'InfFin15'),
-            Column::make('SEvAC P-2-2022 Tomo del Sector Paraestatal (15)', 'STomoSP15'),
-            Column::make('Ente P-2-2022 Tomo del Sector Paraestatal (15)', 'TomoSP15'),
-            Column::make('SEvAC P-2-2022 Resultados Generales y Consolidados (16)', 'SResGenCon16'),
-            Column::make('Ente P-2-2022 Resultados Generales y Consolidados (16)', 'ResGenCon16'),
-            Column::make('SEvAC P-2-2022 Inf. Financiera del Municipio (16)', 'SInfFinMun16'),
-            Column::make('Ente P-2-2022 Inf. Financiera del Municipio (16)', 'InfFinMun16'),
-            Column::make('SEvAC P-2-2022 Tomo del Sector Paramunicipal (16)', 'STomoSP16'),
-            Column::make('Ente P-2-2022 tomo del Sector Paramunicipal (16)', 'TomoSP16'),
-            Column::make('SEvAC Inf. Financiera Consolidada Paramunicipal (16)', 'SInfFin16'),
-            Column::make('Ente Inf. Financiera Consolidada Paramunicipal (16)', 'InfFin16'),
-            Column::make('Pregunta 17', 'pre17'),
+            Column::make('Motivo No usa Sistema', 'noSys')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('---Pregunta 6---', 'pre6')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('Periodo de Respaldos', 'perioRes')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('Fecha de Último Respaldo', 'lastRes_formatted', 'lastRes')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('Motivo no Respaldar Sistema', 'NoResSys')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('---Pregunta 7---', 'pre7')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('Usb como medio externo', 'usb')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('HDD como medio externo', 'ddext')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('CD/DVD como medio externo', 'cddvd')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('Nube como medio externo', 'nube')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('Otro equipo como medio externo', 'otroequipo')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('Motivo de no tener respaldos', 'noRes')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('---Pregunta 8---', 'pre8')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('---Pregunta 9---', 'pre9')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('% Registros Contables (9)', 'RegCont9')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('% Registros Presupuestales (9)', 'RegPre9')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('% Registros Administrativos (9)', 'RegAdm9')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('% Registros Transparencia (9)', 'RegTra9')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('% Registros Cuenta Pública (9)', 'RegCP9')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('SEvAC P-1-2022 Instrumentos Contables (10)', 'SInstC10')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Instrumentos Contables (10)', 'InstC10')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Registros Contables (10)', 'SRegCont10')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Registros Contables (10)', 'RegCont10')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Reportes Contables (10)', 'SRepCont10')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Reportes Contables (10)', 'RepCont10')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Clasif. Presupuestales (11)', 'SClasP11')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Clasif. Presupuestales (11)', 'ClasP11')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Registros Presupuestarios (11)', 'SRegPre11')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Registros Presupuestarios (11)', 'RegPre11')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Reportes Presupuestarios (11)', 'SRepPre11')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Reportes Presupuestarios (11)', 'RepPre11')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Reportes Programáticos (11)', 'SPrePro11')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Reportes Programáticos (11)', 'PrePro11')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Control de Bienes (12)', 'SContBie12')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Control de Bienes (12)', 'ContBie12')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Recursos Federales (12)', 'SRecFed12')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Recursos Federales (12)', 'RecFed12')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Contenido Contable (13)', 'ContSP113')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Contenido Contable (13)', 'ContEP113')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Contenido Contable (13)', 'ContSP213')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Contenido Contable (13)', 'ContEP213')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Contenido Presupuestario (13)', 'PresSP113')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Contenido Presupuestario (13)', 'PresEP113')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Contenido Presupuestario (13)', 'PresSP213')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Contenido Presupuestario (13)', 'PresEP213')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Contenido Programático (13)', 'ProgSP113')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Contenido Programático (13)', 'ProgEP113')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Contenido Programático (13)', 'ProgSP213')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Contenido Programático (13)', 'ProgEP213')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Título V Anual (14)', 'TVASP114')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Título V Anual (14)', 'TVACP114')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Título V Anual (14)', 'TVASP214')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Título V Anual(14)', 'TVACP214')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Título V Trimestral (14) ', 'TVTSP114')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Título V Trimestral (14)', 'TVTCP114')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Título V Trimestral (14)', 'TVTSP214')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Título V Trimestral (14)', 'TVTCP214')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Otras Obligaciones Anual (14)', 'OASP114')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Otras Obligaciones Anual (14)', 'OACP114')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Otras Obligaciones Anual (14)', 'OASP214')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Otras Obligaciones Anual (14)', 'OACP214')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-1-2022 Otras Obligaciones Trimestral (14)', 'OTSP114')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-1-2022 Otras Obligaciones Trimestral (14)', 'OTCP114')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Otras Obligaciones Trimestral (14)', 'OTSP214')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Otras Obligaciones Trimestral (14)', 'OTCP214')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Resultados Generales y Consolidados (15)', 'SResGenCon15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Resultados Generales y Consolidados (15)', 'ResGenCon15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Tomo del Poder Ejecutivo (15)', 'TomoPE15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Tomo del Poder Ejecutivo (15)', 'STomoPE15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Tomo del Poder Legislativo (15)', 'STomoPL15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Tomo del Poder Legislativo (15)', 'TomoPL15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Tomo del Poder Judicial (15)', 'STomoPJ15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Tomo del Poder Judicial (15)', 'TomoPJ15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Tomo de Órganos Autónomos (15)', 'STomoOA15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Tomo de Órganos Autónomos (15)', 'TomoOA15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Inf. Financiera Paraestatal (15)', 'SInfFin15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Inf. Financiera Paraestatal (15)', 'InfFin15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Tomo del Sector Paraestatal (15)', 'STomoSP15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Tomo del Sector Paraestatal (15)', 'TomoSP15')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Resultados Generales y Consolidados (16)', 'SResGenCon16')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Resultados Generales y Consolidados (16)', 'ResGenCon16')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Inf. Financiera del Municipio (16)', 'SInfFinMun16')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 Inf. Financiera del Municipio (16)', 'InfFinMun16')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC P-2-2022 Tomo del Sector Paramunicipal (16)', 'STomoSP16')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente P-2-2022 tomo del Sector Paramunicipal (16)', 'TomoSP16')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('SEvAC Inf. Financiera Consolidada Paramunicipal (16)', 'SInfFin16')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('Ente Inf. Financiera Consolidada Paramunicipal (16)', 'InfFin16')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black')
+                ->withAvg('Promedio', false, true),
+            Column::make('---Pregunta 17---', 'pre17')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Pregunta 18', 'pre18'),
+            Column::make('---Pregunta 18---', 'pre18')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Pregunta 19', 'pre19'),
-            Column::make('Pregunta 20', 'pre20'),
+            Column::make('Pregunta 19', 'pre19')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('Pregunta 20', 'pre20')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('¿Usa Zoom? (21)', 'zoom'),
+            Column::make('¿Usa Zoom? (21)', 'zoom')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('¿Usa Meet? (21)', 'meet'),
+            Column::make('¿Usa Meet? (21)', 'meet')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('¿Usa Skype? (21)', 'skype'),
+            Column::make('¿Usa Skype? (21)', 'skype')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('¿Usa Teams? (21)', 'teams'),
+            Column::make('¿Usa Teams? (21)', 'teams')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('¿Usa Nitro PDF? (21)', 'nitropdf'),
+            Column::make('¿Usa Nitro PDF? (21)', 'nitropdf')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('¿Usa Adobe? (21)', 'adobe'),
+            Column::make('¿Usa Adobe? (21)', 'adobe')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('¿Usa AnyDesk? (21)', 'anydesk'),
+            Column::make('¿Usa AnyDesk? (21)', 'anydesk')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('¿Usa Team Viewer? (21)', 'teamviwer'),
+            Column::make('¿Usa Team Viewer? (21)', 'teamviwer')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('¿Usa otras herramientas?', 'otrasHerramientas'),
+            Column::make('¿Usa otras herramientas?', 'otrasHerramientas')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+                
 
-            Column::make('Pregunta 22', 'pre22'),
+            Column::make('---Pregunta 22---', 'pre22')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+                
 
-            Column::make('Link Página Oficial', 'link'),
+            Column::make('Link Página Oficial', 'link')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Link apartado de transparencia', 'linklgcg'),
+            Column::make('Link apartado de transparencia', 'linklgcg')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Motivo no cuenta con sitio oficial', 'motivo'),
+            Column::make('Motivo no cuenta con sitio oficial', 'motivo')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('# de capacitaciones recibidas', 'Cantidad22'),
-            Column::make('Temas vistos en las capacitaciones', 'Temas22'),
+            Column::make('# de capacitaciones recibidas', 'Cantidad22')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
+            Column::make('Temas vistos en las capacitaciones', 'Temas22')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Capacitaciones impartidas por:', 'Impartido22'),
+            Column::make('Capacitaciones impartidas por:', 'Impartido22')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Área(s) capacitada(s)', 'Area22'),
+            Column::make('Área(s) capacitada(s)', 'Area22')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Pregunta 24', 'pre23'),
+            Column::make('---Pregunta 24---', 'pre23')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Área / Empresa', 'area23'),
+            Column::make('Área / Empresa', 'area23')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Pregunta 25', 'pre24'),
+            Column::make('---Pregunta 25---', 'pre24')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Tema 1', 'pre251'),
+            Column::make('Tema 1', 'pre251')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Tema 2', 'pre252'),
+            Column::make('Tema 2', 'pre252')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Tema 3', 'pre253'),
+            Column::make('Tema 3', 'pre253')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Tema 4', 'pre254'),
+            Column::make('Tema 4', 'pre254')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Tema 5', 'pre255'),
+            Column::make('Tema 5', 'pre255')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Tema 6', 'pre256'),
+            Column::make('Tema 6', 'pre256')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Tema 7', 'pre257'),
+            Column::make('Tema 7', 'pre257')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Tema 8', 'pre258'),
+            Column::make('Tema 8', 'pre258')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Tema 9', 'pre259'),
+            Column::make('Tema 9', 'pre259')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Tema 10', 'pre2510'),
+            Column::make('Tema 10', 'pre2510')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Tema 11', 'pre2511'),
+            Column::make('Tema 11', 'pre2511')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Pregunta 27', 'pre26'),
+            Column::make('---Pregunta 27---', 'pre26')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Motivo Pregunta 27', 'porque26'),
+            Column::make('Motivo Pregunta 27', 'porque26')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Pregunta 28', 'pre27'),
+            Column::make('---Pregunta 28---', 'pre27')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Motivo Pregunta 28', 'porque27'),
+            Column::make('Motivo Pregunta 28', 'porque27')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
-            Column::make('Pregunta 29', 'pre28'),
+            Column::make('Pregunta 29', 'pre28')
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
             Column::make('Fecha de registro', 'created_at_formatted', 'created_at')
-                ->sortable(),
+                ->sortable()
+                ->bodyAttribute('text-center')
+                ->headerAttribute('text-center', 'color:black'),
 
         ];
     }
@@ -467,43 +823,50 @@ final class PowerTable extends PowerGridComponent
             /*Filter::inputText('email')->operators(['contains']),
             Filter::inputText('nombre')->operators(['contains']),
             Filter::inputText('cargo')->operators(['contains']),
-            Filter::inputText('area')->operators(['contains']),
-            Filter::inputText('ente')->operators(['contains']),*/
+            Filter::inputText('area')->operators(['contains']),*/
+            Filter::inputText('ente')->operators(['contains']),
             Filter::boolean('pre5'),
-            /*Filter::inputText('nameSys')->operators(['contains']),
-            Filter::inputText('cadp')->operators(['contains']),
+            Filter::inputText('nameSys')->operators(['contains']),
+            /*Filter::inputText('cadp')->operators(['contains']),
             Filter::inputText('docsSys')->operators(['contains']),
             Filter::datepicker('startSys'),
             Filter::datepicker('updSys'),
-            Filter::inputText('infSys')->operators(['contains']),
+            Filter::inputText('infSys')->operators(['contains']),*/
             Filter::boolean('pre6'),
-            Filter::inputText('perioRes')->operators(['contains']),
-            Filter::datepicker('lastRes'),
+            /*Filter::inputText('perioRes')->operators(['contains']),
+            Filter::datepicker('lastRes'),*/
             Filter::boolean('pre7'),
             Filter::boolean('pre8'),
             Filter::boolean('pre9'),
-            Filter::inputText('pre17')->operators(['contains']),
-            Filter::inputText('pre18')->operators(['contains']),
-            Filter::boolean('zoom'),
+            Filter::boolean('pre17'),
+            Filter::select('pre18', 'pre18')
+                    ->dataSource(Respuesta::select('pre18')->distinct()->get())
+                    ->optionValue('pre18')
+                    ->optionLabel('pre18'),
+            /*Filter::boolean('zoom'),
             Filter::boolean('meet'),
             Filter::boolean('skype'),
             Filter::boolean('teams'),
             Filter::boolean('nitropdf'),
             Filter::boolean('adobe'),
             Filter::boolean('anydesk'),
-            Filter::boolean('teamviwer'),
+            Filter::boolean('teamviwer'),*/
             Filter::inputText('otrasHerramientas')->operators(['contains']),
             Filter::boolean('pre22'),
-            Filter::inputText('link')->operators(['contains']),
+            /*Filter::inputText('link')->operators(['contains']),
             Filter::inputText('linklgcg')->operators(['contains']),
             Filter::inputText('motivo')->operators(['contains']),
             Filter::inputText('Temas22')->operators(['contains']),
             Filter::inputText('Impartido22')->operators(['contains']),
-            Filter::inputText('Area22')->operators(['contains']),
-            Filter::inputText('pre23')->operators(['contains']),
-            Filter::inputText('area23')->operators(['contains']),
+            Filter::inputText('Area22')->operators(['contains']),*/
+            //Filter::inputText('pre23')->operators(['contains']),
+            //Filter::inputText('area23')->operators(['contains']),
+            Filter::select('pre23', 'pre23')
+                    ->dataSource(Respuesta::select('pre23')->distinct()->get())
+                    ->optionValue('pre23')
+                    ->optionLabel('pre23'),
             Filter::boolean('pre24'),
-            Filter::inputText('pre251')->operators(['contains']),
+            /*Filter::inputText('pre251')->operators(['contains']),
             Filter::inputText('pre252')->operators(['contains']),
             Filter::inputText('pre253')->operators(['contains']),
             Filter::inputText('pre254')->operators(['contains']),
@@ -513,10 +876,10 @@ final class PowerTable extends PowerGridComponent
             Filter::inputText('pre258')->operators(['contains']),
             Filter::inputText('pre259')->operators(['contains']),
             Filter::inputText('pre2510')->operators(['contains']),
-            Filter::inputText('pre2511')->operators(['contains']),
+            Filter::inputText('pre2511')->operators(['contains']),*/
             Filter::boolean('pre26'),
             Filter::boolean('pre27'),
-            Filter::boolean('usb'),
+            /*Filter::boolean('usb'),
             Filter::boolean('ddext'),
             Filter::boolean('cddvd'),
             Filter::boolean('nube'),
@@ -586,9 +949,5 @@ final class PowerTable extends PowerGridComponent
     }
     */
 
-    public function export()
-    {
-        return Storage::disk('exports')->download('export.csv');
-    }
 }
 

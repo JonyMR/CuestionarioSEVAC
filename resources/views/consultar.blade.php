@@ -16,12 +16,15 @@
     <link href="{{ asset('css/wizard.css') }}" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
-    <div class="container">        
-
-
-            <center><h5>Cuestionario para el Diagnóstico de los elementos del SEvAC de aplicación de los Entes Públicos del Estado de Michoacán.</h5></center>
-            </div>
+    <div class="container">   
+       
+<center><h5>Cuestionario para el Diagnóstico de los elementos del SEvAC de aplicación de los Entes Públicos del Estado de Michoacán.</h5></center>
+        <div class="card"><br>
             <livewire:power-table/>
+            </div>
+            
+        </div>    
+            
 
 
 

@@ -1,11 +1,10 @@
 <?php
   
-namespace App\Http\Livewire;
-  
+namespace App\Http\Livewire; 
 use Livewire\Component;
-use App\Models\Respuesta;
 use Illuminate\Support\Facades\DB;
 use App\Models\Entes;
+use App\Models\Respuesta;
   
 class Wizard extends Component
 {
@@ -13,21 +12,33 @@ class Wizard extends Component
 
 
 
-    public $email, $nombre, $cargo, $area, $ente, $pre5, $nameSys, $cadp, $docsSys, $startSys, $updSys, $infSys, $noSys,
-    $pre6, $perioRes, $lastRes, $NoResSys, $pre7, $noRes, $pre8, $pre9, $RegCont9, $RegPre9, $RegAdm9, $RegTra9, $RegCP9,  $SInstC10, $InstC10,  $SRegCont10, $RegCont10,  $SRepCont10, 
-    $RepCont10, $SClasP11,  $ClasP11,  $SRegPre11, $RegPre11,  $SRepPre11, $RepPre11,  $SPrePro11, $PrePro11,
+    public 
+    $email, $nombre, $cargo, $area, $ente,
+     $pre5, $nameSys, $cadp, $docsSys, $startSys, $updSys, $infSys, $noSys,
+    $pre6, $perioRes, $lastRes, $NoResSys, 
+    $pre7, $usb, $ddext, $cddvd, $nube, $otroequipo, $noRes, 
+    $pre8, 
+    $pre9, $RegCont9, $RegPre9, $RegAdm9, $RegTra9, $RegCP9,  
+    $SInstC10, $InstC10,  $SRegCont10, $RegCont10,  $SRepCont10, $RepCont10, 
+    $SClasP11,  $ClasP11,  $SRegPre11, $RegPre11,  $SRepPre11, $RepPre11,  $SPrePro11, $PrePro11,
     $SContBie12, $ContBie12, $SRecFed12, $RecFed12,
-    
     $ContSP113, $ContEP113, $ContSP213,$ContEP213, $PresSP113, $PresEP113,$PresSP213, $PresEP213,$ProgSP113, $ProgEP113, $ProgSP213, $ProgEP213,
-       $TVASP114, $TVACP114, $TVASP214, $TVACP214, $TVTSP114, $TVTCP114, $TVTSP214, $TVTCP214, $OASP114, $OACP114, $OASP214, $OACP214, $OTSP114, $OTCP114,
-       $OTSP214, $OTCP214,
-    
-    $SResGenCon15, $ResGenCon15, $STomoPE15, $TomoPE15, $STomoPL15, $TomoPL15, $STomoPJ15, $TomoPJ15, $STomoOA15, $TomoOA15, 
-    $SInfFin15, $InfFin15, $STomoSP15, $TomoSP15, $SResGenCon16, $ResGenCon16, $SInfFinMun16, $InfFinMun16, $STomoSP16, $TomoSP16, $SInfFin16, $InfFin16, 
-    $pre17, $pre18, $pre19, $pre20, $zoom, $meet, $skype, $teams, $nitropdf, $adobe, $anydesk, $teamviwer,
-    $otrasHerramientas, $pre22, $link, $linklgcg, $motivo, $Cantidad22, $Temas22, $Impartido22, $Area22, $pre23, $area23, $pre24, $pre251, 
-    $pre252, $pre253, $pre254, $pre255, $pre256, $usb, $ddext, $cddvd, $nube, $otroequipo,
-    $pre257, $pre258, $pre259, $pre2510, $pre2511, $pre26, $porque26, $pre27, $porque27, $pre28;
+    $TVASP114, $TVACP114, $TVASP214, $TVACP214, $TVTSP114, $TVTCP114, $TVTSP214, $TVTCP214, $OASP114, $OACP114, $OASP214, $OACP214, $OTSP114, $OTCP114,$OTSP214, $OTCP214,
+    $SResGenCon15, $ResGenCon15, $STomoPE15, $TomoPE15, $STomoPL15, $TomoPL15, $STomoPJ15, $TomoPJ15, $STomoOA15, $TomoOA15, $SInfFin15, $InfFin15, $STomoSP15, $TomoSP15,
+    $SResGenCon16, $ResGenCon16, $SInfFinMun16, $InfFinMun16, $STomoSP16, $TomoSP16, $SInfFin16, $InfFin16, 
+    $pre17, 
+    $pre18, 
+    $pre19, 
+    $pre20, 
+    $zoom, $meet, $skype, $teams, $nitropdf, $adobe, $anydesk, $teamviwer, $otrasHerramientas, 
+    $pre22, $link, $linklgcg, $motivo, 
+    $Cantidad22, $Temas22, $Impartido22, $Area22, 
+    $pre23, $area23, 
+    $pre24, 
+    $pre251, $pre252, $pre253, $pre254, $pre255, $pre256, $pre257, $pre258, $pre259, $pre2510, $pre2511, 
+    $pre26, $porque26, 
+    $pre27, $porque27, 
+    $pre28;
 
     public $successMessage = '', $mailMessage='', $alert='';
   
@@ -99,7 +110,6 @@ class Wizard extends Component
             $this->currentStep = 3;
             
         }else {
-
             $this->nameSys = '';
             $this->cadp = '';
             $this->docsSys = '';
@@ -555,67 +565,67 @@ class Wizard extends Component
             'ContSP113.required' => 'Este campo es obligatorio',
             'ContSP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'ContSP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ContSP113.integer' => 'Ingresa un número entero, sin decimales.',
+            'ContSP113.integer' => 'Ingresa un número entero.',
 
             'ContEP113.required' => 'Este campo es obligatorio',
             'ContEP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'ContEP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ContEP113.integer' => 'Ingresa un número entero, sin decimales.',
+            'ContEP113.integer' => 'Ingresa un número entero.',
 
             'ContSP213.required' => 'Este campo es obligatorio',
             'ContSP213.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'ContSP213.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ContSP213.integer' => 'Ingresa un número entero, sin decimales.',
+            'ContSP213.integer' => 'Ingresa un número entero.',
 
             'ContEP213.required' => 'Este campo es obligatorio',
             'ContEP213.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'ContEP213.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ContEP213.integer' => 'Ingresa un número entero, sin decimales.',
+            'ContEP213.integer' => 'Ingresa un número entero.',
 
             'PresSP113.required' => 'Este campo es obligatorio',
             'PresSP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'PresSP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'PresSP113.integer' => 'Ingresa un número entero, sin decimales.',
+            'PresSP113.integer' => 'Ingresa un número entero.',
 
             'PresEP113.required' => 'Este campo es obligatorio',
             'PresEP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'PresEP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'PresEP113.integer' => 'Ingresa un número entero, sin decimales.',
+            'PresEP113.integer' => 'Ingresa un número entero.',
 
             'PresSP213.required' => 'Este campo es obligatorio',
             'PresSP213.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'PresSP213.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'PresSP213.integer' => 'Ingresa un número entero, sin decimales.',
+            'PresSP213.integer' => 'Ingresa un número entero.',
 
             'PresEP213.required' => 'Este campo es obligatorio',
             'PresEP213.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'PresEP213.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'PresEP213.integer' => 'Ingresa un número entero, sin decimales.',
+            'PresEP213.integer' => 'Ingresa un número entero.',
 
             'ProgSP113.required' => 'Este campo es obligatorio',
             'ProgSP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'ProgSP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ProgSP113.integer' => 'Ingresa un número entero, sin decimales.',
+            'ProgSP113.integer' => 'Ingresa un número entero.',
 
             'ProgEP113.required' => 'Este campo es obligatorio',
             'ProgEP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'ProgEP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ProgEP113.integer' => 'Ingresa un número entero, sin decimales.',
+            'ProgEP113.integer' => 'Ingresa un número entero.',
 
             'ContSP113.required' => 'Este campo es obligatorio',
             'ContSP113.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'ContSP113.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ContSP113.integer' => 'Ingresa un número entero, sin decimales.',
+            'ContSP113.integer' => 'Ingresa un número entero.',
 
             'ProgSP213.required' => 'Este campo es obligatorio',
             'ProgSP213.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'ProgSP213.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ProgSP213.integer' => 'Ingresa un número entero, sin decimales.',
+            'ProgSP213.integer' => 'Ingresa un número entero.',
 
             'ProgEP213.required' => 'Este campo es obligatorio',
             'ProgEP213.min' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
             'ProgEP213.max' => 'Ingresa un número del 0 al 100 según sea tu porcentaje de cumplimiento.',
-            'ProgEP213.integer' => 'Ingresa un número entero, sin decimales.',
+            'ProgEP213.integer' => 'Ingresa un número entero.',
             
 
         ]);
@@ -1197,7 +1207,7 @@ class Wizard extends Component
 
 
     /**
-     * Metodo submit del formulario
+     * Reinicia los steps a 0 para el botón volver al inicio
      *
      * @return response()
      */
@@ -1740,6 +1750,9 @@ public function updatedpre9(){
 
     public function updatedCantidad22(){
         if($this->Cantidad22 != 0){
+            $this->Temas22='';
+                $this->Impartido22='';
+                $this->Area22='';
         }else{
             $this->Cantidad22='0';
                 $this->Temas22='';

@@ -1198,7 +1198,7 @@
                                 <label for="title">Escriba el nombre:</label><br>
                                 <input type="text" wire:model="otrasHerramientas" class="form-control" id="resotrasHerramientas" placeholder="Nombre de las herramientas"><br>
                                 
-                                <label class="radio-inline"><input type="radio" wire:model="otrasHerramientas" value="No usa" {{ $otrasHerramientas = '0' ? "checked" : "" }}> No</label>
+                                <label class="radio-inline"><input type="radio" wire:model="otrasHerramientas" value="-" {{ $otrasHerramientas = '0' ? "checked" : "" }}> No</label>
                                 <br>@error('otrasHerramientas') <span style="color:red">{{$message}}<br></span> @enderror
                                 
                             </div>

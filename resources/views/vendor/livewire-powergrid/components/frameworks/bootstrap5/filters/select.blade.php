@@ -30,11 +30,11 @@
 @else
     <div class="{{ $theme->baseClass }}" style="{{ $theme->baseStyle }}">
         <select class="{{ $filterClasses }}" style="{{ data_get($column, 'headerStyle') }}" {{ $defaultAttributes['selectAttributes'] }}>
-            <option value="">{{ trans('livewire-powergrid::datatable.select.all') }}</option>
+            <option value="">Todos</option>
             @foreach(data_get($filter, 'dataSource') as $key => $item)
                 <option wire:key="select-{{ $tableName }}-{{ $key }}"
                         value="{{ $item[data_get($filter, 'optionValue')] }}">
-                    {{ $item[data_get($filter, 'optionLabel')] }}as
+                    {{ $item[data_get($filter, 'optionLabel')] }}
                 </option>
             @endforeach
         </select>

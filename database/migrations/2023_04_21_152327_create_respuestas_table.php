@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('respuestas', function (Blueprint $table) {
 
+            $table -> increments('id');
             $table -> string('email')->nullable();
             $table -> string('nombre')->nullable();
             $table -> string('cargo')->nullable();

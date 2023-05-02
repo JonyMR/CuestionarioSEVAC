@@ -27,7 +27,7 @@
                 <br>
             @endif
             @if ($column->avg['footer'] && is_numeric($withoutPaginatedData[0][$field]))
-                <span>{{ $column->avg['label'] }}: {{ round($withoutPaginatedData->collect()->avg($field), $column->avg['rounded']) }}</span>
+                <span>{{ $column->avg['label'] }}: {{ round($withoutPaginatedData->collect()->avg($field), $column->avg['rounded']) }}%</span>
                 <br>
             @endif
             @if ($column->min['footer'] && is_numeric($withoutPaginatedData[0][$field]))
