@@ -13,7 +13,7 @@ use App\Http\Livewire\PowerTable;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['middleware' => ['cors']], function () {
 Route::get('/', function () {
     return view('default');
 });
@@ -30,6 +30,7 @@ Route::get('consultar', function () {
 
 Route::get('ooo', function () {
     return view('search');
+});
 });
 
 
